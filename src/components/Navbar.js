@@ -5,10 +5,14 @@ import { BrowserRouter, Route } from "react-router-dom";
 export default class Navbar extends Component {
         render(){
             return(
-                <nav>
+            <BrowserRouter>
+                <div>
+                    <nav>
 
 
-                </nav>
+                    </nav>
+                </div>
+            </BrowserRouter>
 
             )
 
