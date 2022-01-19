@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import { BrowserRouter, Route } from "react-router-dom"; 
+import { BrowserRouter, NavLink, Route } from "react-router-dom"; 
 
 
 export default class Navbar extends Component {
@@ -8,9 +8,13 @@ export default class Navbar extends Component {
             <BrowserRouter>
                 <div>
                     <nav>
-
+                        <NavLink to="/">Home</NavLink>
+                        <NavLink to="/pokedex">Pokedex</NavLink>
 
                     </nav>
+                    <Route path="/" exact component={Home}/>
+                    <Route path="/pokedex" exact component={About}/>
+
                 </div>
             </BrowserRouter>
 
