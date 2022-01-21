@@ -17,7 +17,8 @@ export default class Navbar extends Component {
                     <Route path="/pokedex" exact component={About}/>
                     <Route path="/pokedex" exact component={About}/>
 
-                </div>
+                </div>  
+
             </BrowserRouter>
 
             )
