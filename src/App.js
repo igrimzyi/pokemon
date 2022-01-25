@@ -7,6 +7,7 @@ import Pokecard from './components/Pokecard'
 function App() {
   return (
     <div className="App">
+      <Navbar/>
       <Pokecard 
       id={4}
       name="Charmander"
