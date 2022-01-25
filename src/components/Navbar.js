@@ -14,9 +14,9 @@ export default class Navbar extends Component {
                     </nav>
                     <Route path="/" exact component={Home}/>
                     <Route path="/pokedex" exact component={Pokedex}/>
-                    <Route path="/game" exact component={Game}/>
+                    {/* <Route path="/game" exact component={Game}/>
                     <Route path="/creator" exact component={Creator}/>
-                    <Route path="/pokedex" exact component={About}/>
+                    <Route path="/pokedex" exact component={About}/> */}
 
                 </div>  
 
