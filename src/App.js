@@ -13,9 +13,8 @@ function App() {
       <Navbar/>
       <div>
         <Routes>
-          <Route path='/' Component={Pokedex}>
-             
-          </Route>
+          <Route path='/pokedex' Component={Pokedex}/>
+          <Route path='/' Component={Home}/>
 
 
         </Routes>
