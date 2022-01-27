@@ -1,22 +1,39 @@
 import React, {Component} from 'react'; 
 import Navbar from './components/Navbar';
 import Pokecard from './components/Pokecard'
+import Pokedex from './components/Pokedex';
 
+import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
 function App() {
   return (
     <div className="App">
+      <Router>
       <Navbar/>
-      <Pokecard 
-      id={4}
-      name="Charmander"
-      type="fire"
-      exp={62}
-    
-      />
+      <div>
+        <Routes>
+          <Route path='/' Component={Pokedex}>
+             
+          </Route>
+
+
+        </Routes>
+      </div>
+      </Router>
+      
     </div>
   );
 }
 
 export default App;
+
+
+
+{/* <Pokecard 
+      id={4}
+      name="Charmander"
+      type="fire"
+      exp={62}
+    
+      /> */}
