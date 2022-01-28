@@ -3,7 +3,10 @@ import React,{Component} from "react";
 export default class Home extends Component{
         render(){
             return(
-                <div>This is a home page</div>
+                <div>
+                    <span>Welcome to Poke Stars</span>
+
+                </div>
                 )
                 }
 
