@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom"; 
-import Pokecard from "./Pokecard";
+
 import Pokedex from "./Pokedex";
 
 
