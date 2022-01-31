@@ -1,7 +1,7 @@
 import React, {Component} from "react"
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom"; 
 
-import Pokedex from "./Pokedex";
+
 
 
 export default class Navbar extends Component {
