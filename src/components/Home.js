@@ -1,7 +1,7 @@
 import React,{Component} from "react";
 
-export default class Home extends Component{
-        render(){
+export default function Home(){
+        
             return(
                 <div>
                     <span>Welcome to Poke Complex</span>
@@ -9,7 +9,7 @@ export default class Home extends Component{
 
                 </div>
                 )
-                }
+                
 
     }
 
