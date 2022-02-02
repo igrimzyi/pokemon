@@ -14,7 +14,7 @@ function App() {
       <div>
           <Routes>
             <Route path='/' element={Home}/>
-            <Route path='/pokedex' Component={Pokedex}/>
+            <Route path='/pokedex' element={Pokedex}/>
             
 
 
