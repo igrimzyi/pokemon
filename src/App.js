@@ -10,18 +10,16 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar/>
       <div>
+           <Navbar/>
           <Routes>
+          
             <Route path='/' element={Home}/>
             <Route path='/pokedex' element={Pokedex}/>
-        
-
-
-          </Routes>
+           </Routes>
        </div>
       </Router>
-      
+      <Home/>
     </div>
   );
 }
