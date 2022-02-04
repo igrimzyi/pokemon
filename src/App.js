@@ -15,13 +15,7 @@ function App() {
           <Routes>
             <Route path='/' element={Home}/>
             <Route path='/pokedex' element={Pokedex}/>
-            <Pokecard 
-      id={4}
-      name="Charmander"
-      type="fire"
-      exp={62}
-    
-      /> 
+        
 
 
           </Routes>
