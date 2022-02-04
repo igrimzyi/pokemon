@@ -1,7 +1,7 @@
-import React from "react";
+import React, {Component} from "react";
 
- function Home(){
-        
+ class Home extends Component{
+        render(){
             return(
                 <div>
                     <span>Welcome to Poke Complex</span>
@@ -9,7 +9,7 @@ import React from "react";
 
                 </div>
                 )
-                
+      }
 
     }
 
