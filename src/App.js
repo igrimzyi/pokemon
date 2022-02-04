@@ -19,7 +19,7 @@ function App() {
            </Routes>
        </div>
       </Router>
-      <Home/>
+     
     </div>
   );
 }
@@ -28,10 +28,3 @@ export default App;
 
 
 
-{/* <Pokecard 
-      id={4}
-      name="Charmander"
-      type="fire"
-      exp={62}
-    
-      /> */}
