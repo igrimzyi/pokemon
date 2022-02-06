@@ -5,7 +5,8 @@ import Pokedex from './components/Pokedex';
 import { Component } from 'react';
 
 import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
+// this is my main app component and will be the heart of the poke project for now 
+//contains the usage of react router and created as a component
  class App extends Component{
   render(){
     return (
