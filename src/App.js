@@ -15,6 +15,7 @@ import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
         <div>
            <Navbar/>
           <Routes>
+          {/* components need to be wrapped in </> or will be considered a function and throw and error */}
             <Route path='/' element={<Home/>}/>
             <Route path='/pokedex' element={<Pokedex/>}/>
            </Routes>
