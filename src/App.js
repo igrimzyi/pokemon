@@ -10,6 +10,7 @@ import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
   render(){
     return (
      <div className="App">
+      {/* Always wrap routes in router component */}
         <Router>
         <div>
            <Navbar/>
