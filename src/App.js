@@ -6,7 +6,7 @@ import Pokedex from './components/Pokedex';
 import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
-function App() {
+ export default App = () =>{
   return (
     <div className="App">
       <Router>
@@ -23,7 +23,6 @@ function App() {
   );
 }
 
-export default App;
 
 
 
