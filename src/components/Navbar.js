@@ -1,14 +1,12 @@
 import React, {Component} from "react"
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom"; 
-// import {  NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, UncontrolledDropdown,DropdownToggle, DropdownMenu,DropdownItem, NavbarText} from "reactstrap";
-
-import 'reactstrap'
+import {  Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, UncontrolledDropdown,DropdownToggle, DropdownMenu,DropdownItem, NavbarText} from "reactstrap";
 
 
 export default class NavbarReact extends Component {
         render(){
             return(
-            <div>
+            
   <Navbar
     color="light"
     expand="md"
@@ -24,7 +22,7 @@ export default class NavbarReact extends Component {
         navbar
       >
         <NavItem>
-          <NavLink href="/components/">
+          <NavLink href="/components/Pokedex">
             Components
           </NavLink>
         </NavItem>
@@ -62,7 +60,7 @@ export default class NavbarReact extends Component {
       </NavbarText>
     </Collapse>
   </Navbar>
-</div>
+
            
 
             )
