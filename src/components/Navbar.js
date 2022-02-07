@@ -22,7 +22,7 @@ export default class NavbarReact extends Component {
         navbar
       >
         <NavItem>
-          <NavLink href="/components/Pokedex">
+          <NavLink to ="/Pokedex">
             Components
           </NavLink>
         </NavItem>
@@ -41,7 +41,7 @@ export default class NavbarReact extends Component {
           >
             Options
           </DropdownToggle>
-          <DropdownMenu right>
+          <DropdownMenu end>
             <DropdownItem>
               Option 1
             </DropdownItem>
