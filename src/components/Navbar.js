@@ -8,9 +8,9 @@ export default class NavbarReact extends Component {
             return(
             
   <Navbar
-    color="light"
+    color="dark"
     expand="md"
-    light
+    dark
   >
     <NavbarBrand href="/">
       reactstrap
@@ -21,11 +21,11 @@ export default class NavbarReact extends Component {
         className="me-auto"
         navbar
       >
-        <NavItem>
+        <span>
           <NavLink to ={"/Pokedex"}>
-            Components
+            Pokedex
           </NavLink>
-        </NavItem>
+        </span>
         <NavItem>
           <NavLink to={"/Game"}>
             GitHub
