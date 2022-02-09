@@ -1,7 +1,7 @@
 import React, {Component} from "react"
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom"; 
 import {  Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, UncontrolledDropdown,DropdownToggle, DropdownMenu,DropdownItem, NavbarText} from "reactstrap";
-
+//Usage of reactstrap for navbar styles
 
 export default class NavbarReact extends Component {
         render(){
