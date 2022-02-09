@@ -22,12 +22,12 @@ export default class NavbarReact extends Component {
         navbar
       >
         <NavItem>
-          <NavLink to ="/Pokedex">
+          <NavLink to ={"/Pokedex"}>
             Components
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink href="https://github.com/reactstrap/reactstrap">
+          <NavLink to={"/Game"}>
             GitHub
           </NavLink>
         </NavItem>
