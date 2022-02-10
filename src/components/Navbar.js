@@ -13,7 +13,7 @@ export default class NavbarReact extends Component {
     dark
   >
     <NavbarBrand href="/">
-      reactstrap
+      Poke Complex
     </NavbarBrand>
     <NavbarToggler onClick={function noRefCheck(){}} />
     <Collapse navbar>
@@ -21,14 +21,15 @@ export default class NavbarReact extends Component {
         className="me-auto"
         navbar
       >
-        <span>
-          <NavLink to ={"/Pokedex"}>
+        <NavItem>
+
+          <NavLink active to ={"/Pokedex"}>
             Pokedex
           </NavLink>
-        </span>
+        </NavItem>
         <NavItem>
           <NavLink to={"/Game"}>
-            GitHub
+            Poke Game
           </NavLink>
         </NavItem>
         <UncontrolledDropdown
