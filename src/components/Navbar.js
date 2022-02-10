@@ -23,7 +23,7 @@ export default class NavbarReact extends Component {
       >
         <NavItem>
 
-          <NavLink active to ={"/Pokedex"}>
+          <NavLink to ={"/Pokedex"}>
             Pokedex
           </NavLink>
         </NavItem>
