@@ -12,7 +12,7 @@ export default class NavbarReact extends Component {
     expand="md"
     dark
   >
-    <NavbarBrand href="/">
+    <NavbarBrand to="/">
       Poke Complex
     </NavbarBrand>
     <NavbarToggler onClick={function noRefCheck(){}} />
