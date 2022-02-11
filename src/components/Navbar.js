@@ -1,6 +1,7 @@
 import React, {Component} from "react"
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom"; 
 import {  Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, UncontrolledDropdown,DropdownToggle, DropdownMenu,DropdownItem, NavbarText} from "reactstrap";
+import "../styles/navstyles.css"
 //Usage of reactstrap for navbar styles
 
 export default class NavbarReact extends Component {
@@ -12,6 +13,7 @@ export default class NavbarReact extends Component {
     expand="md"
     dark
   >
+
     <NavbarBrand to="/">
       Poke Complex
     </NavbarBrand>
@@ -21,9 +23,10 @@ export default class NavbarReact extends Component {
         className="me-auto"
         navbar
       >
+        
         <NavItem>
 
-          <NavLink to ={"/Pokedex"}>
+          <NavLink className='linkstyle' to ={"/Pokedex"}>
             Pokedex
           </NavLink>
         </NavItem>
@@ -62,7 +65,6 @@ export default class NavbarReact extends Component {
     </Collapse>
   </Navbar>
 
-           
 
             )
 
