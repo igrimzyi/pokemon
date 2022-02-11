@@ -3,7 +3,7 @@ import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import {  Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, UncontrolledDropdown,DropdownToggle, DropdownMenu,DropdownItem, NavbarText} from "reactstrap";
 import "../styles/navstyles.css"
 //Usage of reactstrap for navbar styles
-
+//create certain components within seperate folders for styling wise
 export default class NavbarReact extends Component {
         render(){
             return(
