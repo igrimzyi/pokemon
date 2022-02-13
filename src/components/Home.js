@@ -4,7 +4,7 @@ import React, {Component} from "react";
         render(){
             return(
                 <div>
-                    <span>Welcome to Poke Complex</span>
+                    <span className="mb-auto">Welcome to Poke Complex</span>
                     <h3>Check out the pokedex and the game that comes with!</h3>
 
                 </div>
