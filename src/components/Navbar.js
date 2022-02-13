@@ -61,7 +61,7 @@ export default class NavbarReact extends Component {
         </UncontrolledDropdown>
       </Nav>
       <NavbarText>
-        Simple Text
+        Login
       </NavbarText>
     </Collapse>
   </Navbar>
