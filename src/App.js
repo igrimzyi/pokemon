@@ -1,6 +1,6 @@
 import React from 'react'; 
-import NavbarReact from './components/Navbar';
-import Home from './components/Home';
+import NavbarReact from './components/navbar/Navbar';
+import Home from './components/home/Home';
 import Pokedex from './components/Pokedex';
 import { Component } from 'react';
 
