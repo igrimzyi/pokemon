@@ -40,12 +40,7 @@ export default class NavbarReact extends Component {
           inNavbar
           nav
         >
-          <DropdownToggle
-            caret
-            nav
-          >
-            Options
-          </DropdownToggle>
+          
           <DropdownMenu end>
             <DropdownItem>
               Option 1
