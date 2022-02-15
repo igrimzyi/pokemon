@@ -1,12 +1,15 @@
 import React, {Component} from "react";
+import './home.css'
 
  class Home extends Component{
         render(){
             return(
                 <div>
-                    <span className="mb-auto">Welcome to Poke Complex</span>
-                    <h3>Check out the pokedex and the game that comes with!</h3>
+                    <div className="title">
+                        <h3 className="mb-auto">Welcome to Poke Complex</h3>
+                        <span>Check out the pokedex and the game that comes with!</span>
 
+                    </div>
                 </div>
                 )
       }
