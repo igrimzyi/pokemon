@@ -1,6 +1,15 @@
 import React, {Component} from "react"
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom"; 
-import {  Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, UncontrolledDropdown,DropdownToggle, DropdownMenu,DropdownItem, NavbarText} from "reactstrap";
+import {  Navbar, 
+NavbarBrand, 
+NavbarToggler, 
+Collapse, 
+Nav, 
+NavItem, 
+UncontrolledDropdown,
+DropdownMenu,
+DropdownItem, 
+NavbarText} from "reactstrap";
 import "./navstyles.css"
 //Usage of reactstrap for navbar styles
 //create certain components within seperate folders for styling wises
