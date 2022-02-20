@@ -14,8 +14,8 @@
 .main{
     background-image: url("/public/images/poke-background.jpg") ;
     background-color: aliceblue;
-    background-size:no-repeat center center/cover;
+    background-size:cover ;
     height: 100vh;
-    
+    background-position: center;
 
 }
