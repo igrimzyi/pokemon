@@ -24,7 +24,7 @@ export default class NavbarReact extends Component {
 
   >
 
-    <NavbarBrand to="/">
+    <NavbarBrand href="/">
       Poke Complex
     </NavbarBrand>
     <NavbarToggler onClick={function noRefCheck(){}} />
@@ -34,7 +34,7 @@ export default class NavbarReact extends Component {
         navbar
       >
         
-        <NavItem>
+        <NavItem >
 
           <NavLink className='linkstyle' to ={"/Pokedex"}>
             Pokedex
