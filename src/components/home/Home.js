@@ -15,6 +15,7 @@ import {Button} from 'reactstrap'
                     <Button
                     color="dark"
                     size=""
+                    href="/pokedex"
                     >
                     View Pokedex
                     </Button>
