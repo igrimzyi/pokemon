@@ -8,14 +8,17 @@
     top:50%;
     margin:-100px 0 0 -150px;
     text-align: center;
-    color: white;
+    color: black;
 }
 /* main is considered for the highest level within my JSX */
 .main{
-    background-image: url("/public/images/poke-background.jpg") ;
-    background-color: aliceblue;
+    background-image: url("/public/images/pokebackgrounds.png") ;
     background-size:cover ;
     height: 100vh;
     background-position: center;
 
+}
+/* readjusting positioning on button */
+.button{
+    margin-top: 1rem;
 }
