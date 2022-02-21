@@ -33,19 +33,19 @@ export default class NavbarReact extends Component {
         className="me-auto"
         navbar
       >
-        
+       
         <NavItem >
-
-          <NavLink className='linkstyle' to ={"/Pokedex"}>
+          <NavLink to ={"/Pokedex"}>
             Pokedex
           </NavLink>
         </NavItem>
+
         <NavItem>
           <NavLink to={"/Game"}>
             Poke Game
           </NavLink>
         </NavItem>
-        <UncontrolledDropdown
+        {/* <UncontrolledDropdown
           inNavbar
           nav
         >
@@ -62,9 +62,9 @@ export default class NavbarReact extends Component {
               Reset
             </DropdownItem>
           </DropdownMenu>
-        </UncontrolledDropdown>
+        </UncontrolledDropdown> */}
       </Nav>
-      <NavbarText>
+      <NavbarText >
         Login
       </NavbarText>
     </Collapse>
