@@ -22,8 +22,7 @@ export default class NavbarReact extends Component {
     expand="md"
     dark
     fixed="top"
-
-  >
+    >
 
     <NavbarBrand href="/">
       Poke Complex
@@ -36,13 +35,13 @@ export default class NavbarReact extends Component {
       >
        
         <NavItem >
-          <NavLink to ={"/Pokedex"}>
-            Pokedex
+          <NavLink to={"/pokedex"}>
+          Pokedex
           </NavLink>
         </NavItem>
 
         <NavItem>
-          <NavLink to={"/Game"}>
+          <NavLink to={"/game"}>
             Poke Game
           </NavLink>
         </NavItem>
