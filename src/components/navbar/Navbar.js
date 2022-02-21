@@ -21,6 +21,7 @@ export default class NavbarReact extends Component {
     color="dark"
     expand="md"
     dark
+    fixed="top"
 
   >
 
