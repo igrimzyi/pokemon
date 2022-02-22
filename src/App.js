@@ -1,7 +1,7 @@
 import React from 'react'; 
 import NavbarReact from './components/navbar/Navbar';
 import Home from './components/home/Home';
-import Pokedex from './components/Pokedex';
+import Pokedex from './components/pokedex/Pokedex';
 import Game from './components/Game';
 import { Component } from 'react';
 
@@ -18,9 +18,9 @@ import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
         <div>
            <NavbarReact/>
           <Routes>
-          {/* components need to be wrapped in </> or will be considered a function and throw and error */}
-            <Route path='/' element={<Home/>}/>
-            <Route path='/pokedex' element={<Pokedex/>}/>
+          {/* components need to be wrapped in </> or will be considered a function and throw an error */}
+            <Route path='/' exact element={<Home/>}/>
+            <Route path='/pokedex' exact element={<Pokedex/>}/>
             <Route path='/game' element={<Game/>}/>
            </Routes>
        </div>
