@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 
-export default class Pokedex extends Component{
+class Pokedex extends Component{
     render(){
             return(
                     <div>
-                        <h1>hello</h1>
+                        <h1>This is the pokedex</h1>
                     </div>
                 )
 
@@ -12,3 +12,5 @@ export default class Pokedex extends Component{
 
 
 }
+
+export default Pokedex; 
