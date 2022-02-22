@@ -6,7 +6,7 @@ import {Button} from 'reactstrap'
         render(){
             return(
                 <section className="main">
-                <div className="main">
+                <div>
                     
                     <div className="title">
                         <h3 className="">Welcome to Poke Complex</h3>
