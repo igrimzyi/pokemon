@@ -15,15 +15,15 @@ import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
      <div className="App">
       {/* Always wrap routes in router component */}
         <Router>
-        <div>
+        
            <NavbarReact/>
           <Routes>
           {/* components need to be wrapped in </> or will be considered a function and throw an error */}
-            <Route path='/' exact element={<Home/>}/>
-            <Route path='/pokedex' exact element={<Pokedex/>}/>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/pokedex' element={<Pokedex/>}/>
             <Route path='/game' element={<Game/>}/>
            </Routes>
-       </div>
+       
       </Router>
      
     </div>
