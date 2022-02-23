@@ -3,7 +3,7 @@ import React, {Component} from "react";
 class Pokedex extends Component{
     render(){
             return(
-                    <div>
+                    <div className="title">
                         <h1>This is the pokedex</h1>
                     </div>
                 )
