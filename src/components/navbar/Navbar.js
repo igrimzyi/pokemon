@@ -11,7 +11,6 @@ DropdownMenu,
 DropdownItem, 
 NavbarText} from "reactstrap";
 import "./navstyles.css"
-import Pokedex from "../pokedex/Pokedex";
 //Usage of reactstrap for navbar styles
 //create certain components within seperate folders for styling wises
 export default class NavbarReact extends Component {
@@ -36,13 +35,12 @@ export default class NavbarReact extends Component {
       >
        
         <NavItem >
-          <NavLink to={"/Pokedex"}>
-          Pokedex
+          <NavLink to="/pokedex">
+            Pokedex
           </NavLink>
         </NavItem>
-
         <NavItem>
-          <NavLink to={"/Game"}>
+          <NavLink to="/game">
             Poke Game
           </NavLink>
         </NavItem>
