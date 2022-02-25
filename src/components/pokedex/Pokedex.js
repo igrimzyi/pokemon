@@ -19,16 +19,16 @@ class Pokedex extends Component{
     />
     <CardBody>
       <CardTitle tag="h5">
-        Card title
+        Pokemon
       </CardTitle>
       <CardSubtitle
         className="mb-2 text-muted"
         tag="h6"
       >
-        Card subtitle
+        Level
       </CardSubtitle>
       <CardText>
-        This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+        This is an overview of the Pokemon
       </CardText>
       <Button>
         Button
