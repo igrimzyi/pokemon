@@ -20,7 +20,7 @@ class Pokedex extends Component{
     
         <div>
    
-
+    {/* CardGroup used to display the information regarding every pokemon */}
     <CardGroup className="card-margins">
      <Card>
     <CardImg
