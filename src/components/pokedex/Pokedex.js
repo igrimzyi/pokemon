@@ -8,8 +8,13 @@ CardBody,
 CardTitle, 
 Button} from "reactstrap";
 import './pokedex.css'
+const axios = require('axios')
+
+const baseURL= "https://pokeapi.co/api/v2/pokemon"
 
 class Pokedex extends Component{
+       
+
     render(){
             return(
     
@@ -38,7 +43,7 @@ class Pokedex extends Component{
         This is an overview of the Pokemon
       </CardText>
       <Button>
-        Button
+        Favorite
       </Button>
     </CardBody>
   </Card>
