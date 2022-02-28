@@ -1,5 +1,4 @@
 /* Styles for the pokedex tab */
-.style{
-color: aliceblue;
-
+.card-margins{
+    margin-top:5rem ;
 }
