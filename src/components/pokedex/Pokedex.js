@@ -3,45 +3,52 @@ import { CardGroup,
 Card, 
 CardImg, 
 CardSubtitle,
-CardText} from "reactstrap";
+CardText, 
+CardBody, 
+CardTitle, 
+Button} from "reactstrap";
 import './pokedex.css'
 
 class Pokedex extends Component{
     render(){
             return(
+    
+        <div>
+   
 
-    <h1 className="style">helllo</h1>
+    <CardGroup className="card-margins">
+     <Card>
+    <CardImg
+      alt="Card image cap"
+      src="https://picsum.photos/318/180"
+      top
+      width="100%"
+    />
+    <CardBody>
+      <CardTitle tag="h5">
+        Pokemon
+      </CardTitle>
+      <CardSubtitle
+        className="mb-2 text-muted"
+        tag="h6"
+      >
+        Level
+      </CardSubtitle>
+      <CardText>
+        This is an overview of the Pokemon
+      </CardText>
+      <Button>
+        Button
+      </Button>
+    </CardBody>
+  </Card>
+                    </CardGroup>
 
-//                     <CardGroup>
-//                      <Card>
-//     <CardImg
-//       alt="Card image cap"
-//       src="https://picsum.photos/318/180"
-//       top
-//       width="100%"
-//     />
-//     <CardBody>
-//       <CardTitle tag="h5">
-//         Pokemon
-//       </CardTitle>
-//       <CardSubtitle
-//         className="mb-2 text-muted"
-//         tag="h6"
-//       >
-//         Level
-//       </CardSubtitle>
-//       <CardText>
-//         This is an overview of the Pokemon
-//       </CardText>
-//       <Button>
-//         Button
-//       </Button>
-//     </CardBody>
-//   </Card>
-//                     </CardGroup>
+</div>
                 )
 
         }
+
 
 
 }
