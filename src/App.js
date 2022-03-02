@@ -5,7 +5,7 @@ import Pokedex from './components/pokedex/Pokedex';
 import Game from './components/Game';
 import { Component } from 'react';
 
-
+//hello
 import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/login/Login';
 // this is my main app component and will be the heart of the poke project for now 
