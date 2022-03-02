@@ -7,7 +7,7 @@ import { Component } from 'react';
 
 
 import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import login from './components/login/login';
+import Login from './components/login/Login';
 // this is my main app component and will be the heart of the poke project for now 
 //contains the usage of react router and created as a component
  class App extends Component{
@@ -23,7 +23,7 @@ import login from './components/login/login';
             <Route path='/' element={<Home/>}/>
             <Route path='/pokedex' element={<Pokedex/>}/>
             <Route path='/game' element={<Game/>}/>
-            <Route path='/login' element={<login/>}/>
+            <Route path='/login' element={<Login/>}/>
            </Routes>
        
       </Router>
