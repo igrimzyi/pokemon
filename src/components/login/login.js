@@ -1,15 +1,18 @@
 import React, {Component} from 'react'; 
-import {Form, FormGroup, Label, Input} from 'reactstrap';
+import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
+import "./login.css"
+
+//login component that is only show for now and does not have any backend application
 
 export default class login extends Component {
         render(){
                 return(
-                      <Form inline>
+                      <Form className='form-margins' inline>
     <FormGroup floating>
       <Input
         id="exampleEmail"
         name="email"
-        placeholder="Email"
+        placeholder="Email/Username"
         type="email"
       />
       <Label for="exampleEmail">

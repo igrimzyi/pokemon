@@ -18,6 +18,7 @@ import Login from './components/login/Login';
         <Router>
         
            <NavbarReact/>
+          
           <Routes>
           {/* components need to be wrapped in </> or will be considered a function and throw an error */}
             <Route path='/' element={<Home/>}/>
