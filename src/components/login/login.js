@@ -1,5 +1,5 @@
 import React, {Component} from 'react'; 
-import {Form, FormGroup, Label} from 'reactstrap';
+import {Form, FormGroup, Label, Input} from 'reactstrap';
 
 export default class login extends Component {
         render(){

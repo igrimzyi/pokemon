@@ -35,7 +35,7 @@ export default class NavbarReact extends Component {
       >
        
         <NavItem >
-          <NavLink to="/pokedex">
+          <NavLink className= {"text-decoration"}to="/pokedex">
             Pokedex
           </NavLink>
         </NavItem>
