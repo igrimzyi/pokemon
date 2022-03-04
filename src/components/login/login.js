@@ -7,8 +7,13 @@ import "./login.css"
 export default class login extends Component {
         render(){
                 return(
+
+    <div>
+      
     <Form className='form-margins' inline>
+      <h2>Login</h2>
     <FormGroup floating>
+    
       <Input
         id="Email"
         name="email"
@@ -32,10 +37,11 @@ export default class login extends Component {
       </Label>
     </FormGroup>
     {' '}
-    <Button>
+    <Button color='success'>
       Submit
     </Button>
   </Form>
+  </div>
 
 
 
