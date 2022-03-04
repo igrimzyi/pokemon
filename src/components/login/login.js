@@ -7,16 +7,16 @@ import "./login.css"
 export default class login extends Component {
         render(){
                 return(
-                      <Form className='form-margins' inline>
+    <Form className='form-margins' inline>
     <FormGroup floating>
       <Input
-        id="exampleEmail"
+        id="Email"
         name="email"
         placeholder="Email/Username"
         type="email"
       />
       <Label for="exampleEmail">
-        Email
+        Email/Username
       </Label>
     </FormGroup>
     {' '}
