@@ -1,5 +1,12 @@
-.form-margins{
-    margin-top: 5rem; ;
+/* styles for the login form component */
 
+/* form sizing and positioning */
+.form-margins{
+    
+    max-width: 20rem;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin:-100px 0 0 -150px;
 
 }
