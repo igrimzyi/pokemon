@@ -3,7 +3,17 @@
     color: rgba(255,255,255,.55);
     font-weight: 400;
 }
+
+/* change the styles of the nav buttons */
 .text-decoration{
     text-decoration: none;
+    color:aliceblue;
+}
+
+/* adding spacing to the nav button */
+.margins{
+    margin-left: .5rem;
+
 
 }
+
