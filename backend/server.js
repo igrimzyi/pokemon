@@ -3,12 +3,17 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-  res.send('hello world')
+  try{
+    res.send('hello world')
+  }catch(err){
+    res.send(console.error(err))
+  }
+  
 })
 
-app.listen(6000 , () =>{
+app.listen(4000, () =>{
 
-console.log('listening on port 6000')
+console.log('listening on port 7000')
 
 });
 
