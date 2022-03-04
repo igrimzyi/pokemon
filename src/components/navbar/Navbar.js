@@ -9,6 +9,7 @@ NavItem,
 UncontrolledDropdown,
 DropdownMenu,
 DropdownItem, 
+DropdownToggle,
 NavbarText} from "reactstrap";
 import "./navstyles.css"
 //Usage of reactstrap for navbar styles
@@ -16,6 +17,7 @@ import "./navstyles.css"
 export default class NavbarReact extends Component {
         render(){
             return(
+
             
   <Navbar
     color="dark"
@@ -34,13 +36,13 @@ export default class NavbarReact extends Component {
         navbar
       >
        
-        <NavItem >
-          <NavLink className= {"text-decoration"}to="/pokedex">
+        <NavItem>
+          <NavLink className= {'text-decoration'} to="/pokedex">
             Pokedex
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/game">
+          <NavLink className={'text-decoration margins'} to="/game">
             Poke Game
           </NavLink>
         </NavItem>
