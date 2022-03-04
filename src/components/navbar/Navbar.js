@@ -66,7 +66,7 @@ export default class NavbarReact extends Component {
         </UncontrolledDropdown> */}
       </Nav>
      <NavItem>
-          <NavLink to="/login">
+          <NavLink className={'text-decoration'} to="/login">
             Login
           </NavLink>
     </NavItem>
