@@ -22,16 +22,18 @@ class Pokedex extends Component{
    
     {/* CardGroup used to display the information regarding every pokemon */}
     <CardGroup className="card-margins">
-     <Card>
-    <CardImg
+     <Card >
+    <CardImg 
       alt="Card image cap"
-      src="https://picsum.photos/318/180"
+      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
       top
-      width="100%"
+      className="image-margins"
+      width="25%"
+      height="50%"
     />
     <CardBody>
       <CardTitle tag="h5">
-        Pokemon
+        Bulbasaur
       </CardTitle>
       <CardSubtitle
         className="mb-2 text-muted"
@@ -40,7 +42,7 @@ class Pokedex extends Component{
         Level
       </CardSubtitle>
       <CardText>
-        This is an overview of the Pokemon
+       this is a description of the pokemon
       </CardText>
       <Button>
         Favorite
@@ -50,9 +52,10 @@ class Pokedex extends Component{
 <Card>
     <CardImg
       alt="Card image cap"
-      src="https://picsum.photos/318/180"
+      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
       top
       width="100%"
+      className="image-margins"
     />
     <CardBody>
       <CardTitle tag="h5">
