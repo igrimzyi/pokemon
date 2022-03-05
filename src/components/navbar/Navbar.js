@@ -44,12 +44,12 @@ export default class NavbarReact extends Component {
       >
        
         <NavItem>
-          <NavLink className= {'text-decoration'} to="/pokedex">
+          <NavLink className= {'text-decoration margins'} to="/pokedex">
             Pokedex
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink className={'text-decoration margins'} to="/game">
+          <NavLink className={'text-decoration'} to="/game">
             Poke Game
           </NavLink>
         </NavItem>
@@ -73,7 +73,7 @@ export default class NavbarReact extends Component {
         </UncontrolledDropdown> */}
       </Nav>
      <NavItem>
-          <NavLink className={'text-decoration'} to="/login">
+          <NavLink className={'text-decoration right-link' } to="/login">
             Login
           </NavLink>
     </NavItem>

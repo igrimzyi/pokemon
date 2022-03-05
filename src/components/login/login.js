@@ -21,7 +21,7 @@ export default class login extends Component {
         type="email"
       />
       <Label for="exampleEmail">
-        Email/Username
+        Email
       </Label>
     </FormGroup>
     {' '}
