@@ -15,6 +15,13 @@ import "./navstyles.css"
 //Usage of reactstrap for navbar styles
 //create certain components within seperate folders for styling wises
 export default class NavbarReact extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = { isOpen: false}
+  }
+
+
         render(){
             return(
 
@@ -29,8 +36,8 @@ export default class NavbarReact extends Component {
     <NavbarBrand href="/">
       Poke Complex
     </NavbarBrand>
-    <NavbarToggler onClick={function noRefCheck(){}} />
-    <Collapse navbar>
+    <NavbarToggler onClick={() => this.setState({ isOpen: !this.state.isOpen})} />
+    <Collapse isOpen={this.state.isOpen} navbar>
       <Nav
         className="me-auto"
         navbar
