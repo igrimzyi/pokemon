@@ -75,6 +75,32 @@ class Pokedex extends Component{
       </Button>
     </CardBody>
   </Card>
+  <Card>
+    <CardImg
+      alt="Card image cap"
+      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+      top
+      width="100%"
+      className="image-margins"
+    />
+    <CardBody>
+      <CardTitle tag="h5">
+        Pokemon
+      </CardTitle>
+      <CardSubtitle
+        className="mb-2 text-muted"
+        tag="h6"
+      >
+        Level
+      </CardSubtitle>
+      <CardText>
+        This is an overview of the Pokemon
+      </CardText>
+      <Button>
+        Favorite
+      </Button>
+    </CardBody>
+  </Card>
                     </CardGroup>
 
 </div>
