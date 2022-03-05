@@ -14,8 +14,8 @@ import Login from './components/login/Login';
  class App extends Component{
   render(){
     return (
-     <div className="App">
-      {/* Always wrap routes in router component */}
+     <div>
+       
         <Router>
         
            <NavbarReact/>
@@ -26,6 +26,7 @@ import Login from './components/login/Login';
             <Route path='/pokedex' element={<Pokedex/>}/>
             <Route path='/game' element={<Game/>}/>
             <Route path='/login' element={<Login/>}/>
+            {/* <Route path='/Register' element={<Register/>}></Route> */}
            </Routes>
        
       </Router>
