@@ -4,6 +4,7 @@ import Home from './components/home/Home';
 import Pokedex from './components/pokedex/Pokedex';
 import Game from './components/Game';
 import { Component } from 'react';
+import Register from './components/register/register';
 
 
 //hello
@@ -26,7 +27,7 @@ import Login from './components/login/Login';
             <Route path='/pokedex' element={<Pokedex/>}/>
             <Route path='/game' element={<Game/>}/>
             <Route path='/login' element={<Login/>}/>
-            {/* <Route path='/Register' element={<Register/>}></Route> */}
+            <Route path='/register' element={<Register/>}></Route>
            </Routes>
        
       </Router>
