@@ -75,13 +75,13 @@ class Pokedex extends Component{
       </Button>
     </CardBody>
   </Card>
-  <Card>
+  <Card >
     <CardImg
       alt="Card image cap"
       src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
       top
       width="100%"
-      className="image-margins"
+      className="image-margins card-align"
     />
     <CardBody>
       <CardTitle tag="h5">
