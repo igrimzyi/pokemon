@@ -42,12 +42,12 @@ export default class login extends Component {
     <Button color='success'>
       Submit
     </Button>
+{/*  Redirection to the register page  */}
    <Button
    className='text-margins'
    outline="false"
    color='primary'
    href="/register"
-   
    >
       Not Registered Yet?
 </Button>
