@@ -4,18 +4,26 @@ const app = express();
 
 const PORT = 4000; 
 
+const baseURL = 'https://pokeapi.co/api/v2/';
+
+const connectDB = require('./config/db');
+
+connectDB();
+
+app.use(express.json());
+
 app.get('/', (req, res) => {
   try{
-    res.send('hello world')
+    res.json({name : 'hello'});
   }catch(err){
     res.send(console.error(err));
   }
   
 })
 
-app.get('https://pokeapi.co/api/v2/pokemon', (req,res) =>{
+app.get('/name', (req,res) =>{
   try{
-    res.json();
+    res.json({name : 'hello'});
 
 
   }catch(err){
