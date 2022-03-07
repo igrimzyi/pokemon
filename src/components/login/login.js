@@ -1,5 +1,6 @@
 import React, {Component} from 'react'; 
-import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
+import { NavLink } from 'react-router-dom';
+import {Form, FormGroup, Label, Input, Button, FormText} from 'reactstrap';
 import "./login.css"
 
 //login component that is only show for now and does not have any backend application
@@ -40,6 +41,11 @@ export default class login extends Component {
     <Button color='success'>
       Submit
     </Button>
+    <FormText 
+    
+    className='text-margins'>
+      Not registered yet?
+      </FormText>
   </Form>
   </div>
 
