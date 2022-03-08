@@ -19,8 +19,9 @@ class Pokedex extends Component{
     super(props);
 
     this.state = {
-        number: 0,
-        pokedata: ''
+        stats: 0,
+        imageURL: '', 
+        type:''
 
     }
 
@@ -36,14 +37,24 @@ class Pokedex extends Component{
     console.log('***componentDidMount');
 
 
-    axios.get(`/${1}`)
+    axios.get(`${baseURL}${8}`)
       .then(response => {
-        const data = response.data 
+        const data = response.data
+
+        this.setState({
+            imageURL: data.sprites.front_default ,
+            stats: data.base_experience, 
+            type: data.types[0].type.name
+
+        })
+        console.log(data)
       })
       .catch(error => {
         console.log('***', error )
 
       })
+
+
     axios.get(baseURL)
       .then(response => {
         const data = response.data;
@@ -77,13 +88,13 @@ class Pokedex extends Component{
       return <Card key={i} className='card-align'>
       <CardImg 
         alt="Card image cap"
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${1}.png`}
+        src={this.state.imageURL}
         top
         className="image-margins"
         width="25%"
         height="50%"
       />
-      <CardBody>
+      <CardBody className="body-styles">
         <CardTitle tag="h5">
           { pokemon.name }
         </CardTitle>
@@ -91,12 +102,15 @@ class Pokedex extends Component{
           className="mb-2 text-muted"
           tag="h6"
         >
-          Level
+          {this.state.stats}
         </CardSubtitle>
-        <CardText>
-         this is a description of the pokemon
+        <CardText >
+        type: {this.state.type}  
         </CardText>
-        <Button>
+        <Button
+        color='danger'
+        outline
+        >
           Favorite
         </Button>
       </CardBody>
