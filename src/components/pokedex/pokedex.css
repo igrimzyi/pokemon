@@ -3,16 +3,21 @@
 /* card margins used to space the card appropriately */
 .card-margins{
     margin-top:5rem ;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
 }
-
+/* changing the sizes of the images */
 .image-margins{
-    width: 5rem;
+    width: 8rem;
     
 
 }
-
-/* .card-align{
-
+/* changing the alignments of the contents within the card */
+.card-align{
+    flex-direction: column;
     align-items: center;
+    margin-top: 1rem;
 
-} */
+}
