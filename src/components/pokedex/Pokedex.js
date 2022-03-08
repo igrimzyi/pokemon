@@ -18,6 +18,11 @@ class Pokedex extends Component{
        
   constructor(props) {
     super(props)
+    
+    this.state ={
+
+      
+    }
 
     this.state = {
       count: 0,
@@ -63,7 +68,7 @@ class Pokedex extends Component{
       return <Card key={i} className='card-align'>
       <CardImg 
         alt="Card image cap"
-        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${1}.png`}
         top
         className="image-margins"
         width="25%"
@@ -89,7 +94,7 @@ class Pokedex extends Component{
     </Card>;
     })}
                     
-                    {/* </CardColumns> */}
+                  
     </div>
 </div>
                 )
