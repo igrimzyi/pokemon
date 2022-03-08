@@ -45,7 +45,7 @@ export default class login extends Component {
 {/*  Redirection to the register page  */}
    <Button
    className='text-margins'
-   outline="false"
+   outline
    color='primary'
    href="/register"
    >
