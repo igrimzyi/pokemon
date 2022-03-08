@@ -13,6 +13,13 @@ const axios = require('axios')
 
 const baseURL= "https://pokeapi.co/api/v2/pokemon/"
 
+const eachPokemon = (baseURL) => {
+  for(let i = count; i<1200; i++){
+
+  }
+
+}
+
 class Pokedex extends Component{
        
   constructor(props) {
@@ -36,7 +43,7 @@ class Pokedex extends Component{
   componentDidMount() {
     console.log('***componentDidMount');
 
-
+// get request for pokemon stats, experience, and type
     axios.get(`${baseURL}${8}`)
       .then(response => {
         const data = response.data
@@ -53,7 +60,7 @@ class Pokedex extends Component{
         console.log('***', error )
 
       })
-
+// get request for pokemon name and count
 
     axios.get(baseURL)
       .then(response => {
