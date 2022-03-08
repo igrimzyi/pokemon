@@ -6,22 +6,22 @@ CardSubtitle,
 CardText, 
 CardBody, 
 CardTitle, 
-Button,
-CardColumns} from "reactstrap";
+Button} from "reactstrap";
 import './pokedex.css'
 
 const axios = require('axios')
 
-const baseURL= "https://pokeapi.co/api/v2/pokemon"
+const baseURL= "https://pokeapi.co/api/v2/pokemon/"
 
 class Pokedex extends Component{
        
   constructor(props) {
-    super(props)
-    
-    this.state ={
+    super(props);
 
-      
+    this.state = {
+        number: 0,
+        pokedata: ''
+
     }
 
     this.state = {
@@ -35,6 +35,15 @@ class Pokedex extends Component{
   componentDidMount() {
     console.log('***componentDidMount');
 
+
+    axios.get(`/${1}`)
+      .then(response => {
+        const data = response.data 
+      })
+      .catch(error => {
+        console.log('***', error )
+
+      })
     axios.get(baseURL)
       .then(response => {
         const data = response.data;
