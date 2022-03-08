@@ -6,103 +6,91 @@ CardSubtitle,
 CardText, 
 CardBody, 
 CardTitle, 
-Button} from "reactstrap";
+Button,
+CardColumns} from "reactstrap";
 import './pokedex.css'
+
 const axios = require('axios')
 
 const baseURL= "https://pokeapi.co/api/v2/pokemon"
 
 class Pokedex extends Component{
        
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      count: 0,
+      pokemon: []
+    }
+
+    console.log('***constuctor');
+  }
+
+  componentDidMount() {
+    console.log('***componentDidMount');
+
+    axios.get(baseURL)
+      .then(response => {
+        const data = response.data;
+
+        this.setState({
+          count: data.count,
+          pokemon: data.results
+        });
+
+        console.log('***data', data);
+      })
+      .catch(error => {
+        console.log('***', error);
+      })
+  }
+
 
     render(){
+      console.log('***render');
+
             return(
     
-        <div>
+        <div className="container ">
+         
+
    
     {/* CardGroup used to display the information regarding every pokemon */}
-    <CardGroup className="card-margins">
-     <Card >
-    <CardImg 
-      alt="Card image cap"
-      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
-      top
-      className="image-margins"
-      width="25%"
-      height="50%"
-    />
-    <CardBody>
-      <CardTitle tag="h5">
-        Bulbasaur
-      </CardTitle>
-      <CardSubtitle
-        className="mb-2 text-muted"
-        tag="h6"
-      >
-        Level
-      </CardSubtitle>
-      <CardText>
-       this is a description of the pokemon
-      </CardText>
-      <Button>
-        Favorite
-      </Button>
-    </CardBody>
-  </Card>
-<Card>
-    <CardImg
-      alt="Card image cap"
-      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
-      top
-      width="100%"
-      className="image-margins"
-    />
-    <CardBody>
-      <CardTitle tag="h5">
-        Pokemon
-      </CardTitle>
-      <CardSubtitle
-        className="mb-2 text-muted"
-        tag="h6"
-      >
-        Level
-      </CardSubtitle>
-      <CardText>
-        This is an overview of the Pokemon
-      </CardText>
-      <Button>
-        Favorite
-      </Button>
-    </CardBody>
-  </Card>
-  <Card >
-    <CardImg
-      alt="Card image cap"
-      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
-      top
-      width="100%"
-      className="image-margins card-align"
-    />
-    <CardBody>
-      <CardTitle tag="h5">
-        Pokemon
-      </CardTitle>
-      <CardSubtitle
-        className="mb-2 text-muted"
-        tag="h6"
-      >
-        Level
-      </CardSubtitle>
-      <CardText>
-        This is an overview of the Pokemon
-      </CardText>
-      <Button>
-        Favorite
-      </Button>
-    </CardBody>
-  </Card>
-                    </CardGroup>
-
+    {/* <CardColumns className="card-margins"> */}
+    <div className="card-margins">
+    { this.state.pokemon.map((pokemon, i) => {
+      return <Card key={i} className='card-align'>
+      <CardImg 
+        alt="Card image cap"
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+        top
+        className="image-margins"
+        width="25%"
+        height="50%"
+      />
+      <CardBody>
+        <CardTitle tag="h5">
+          { pokemon.name }
+        </CardTitle>
+        <CardSubtitle
+          className="mb-2 text-muted"
+          tag="h6"
+        >
+          Level
+        </CardSubtitle>
+        <CardText>
+         this is a description of the pokemon
+        </CardText>
+        <Button>
+          Favorite
+        </Button>
+      </CardBody>
+    </Card>;
+    })}
+                    
+                    {/* </CardColumns> */}
+    </div>
 </div>
                 )
 
