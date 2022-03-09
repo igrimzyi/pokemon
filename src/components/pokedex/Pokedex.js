@@ -14,8 +14,16 @@ const axios = require('axios')
 const baseURL= "https://pokeapi.co/api/v2/pokemon/"
 
 const eachPokemon = (baseURL) => {
-  for(let i = count; i<1200; i++){
 
+let pokeInfo =[{
+    id:0, 
+    imageURL: '', 
+    type:'',
+    pokemon: ''
+}]
+
+  for(let i = count; i<1200; i++){
+    axios.get   
   }
 
 }
@@ -26,15 +34,16 @@ class Pokedex extends Component{
     super(props);
 
     this.state = {
-        stats: 0,
-        imageURL: '', 
-        type:''
+        stats: [],
+        imageURL: [], 
+        type:[]
 
     }
 
     this.state = {
-      count: 0,
-      pokemon: []
+      count: 20,
+      pokemon: [],
+      pokeURL: []
     }
 
     console.log('***constuctor');
@@ -44,7 +53,9 @@ class Pokedex extends Component{
     console.log('***componentDidMount');
 
 // get request for pokemon stats, experience, and type
-    axios.get(`${baseURL}${8}`)
+    
+
+    axios.get(`${baseURL}${1}`)
       .then(response => {
         const data = response.data
 
@@ -62,13 +73,15 @@ class Pokedex extends Component{
       })
 // get request for pokemon name and count
 
+
     axios.get(baseURL)
       .then(response => {
         const data = response.data;
 
         this.setState({
           count: data.count,
-          pokemon: data.results
+          pokemon: data.results,
+          pokeURL: data.results.url
         });
 
         console.log('***data', data);
@@ -76,7 +89,28 @@ class Pokedex extends Component{
       .catch(error => {
         console.log('***', error);
       })
+      //Get Request for every single pokemon and their information
+      console.log(this.state.count)
+      for(let i = 1; i<this.state.count; i++){
+        axios.get(`${baseURL}${i}`)
+          .then(response =>{
+            const data = response.data; 
+
+            this.setState({
+              count: data.count,
+             
+            })
+
+
+
+          })
+      }
+
   }
+
+
+
+  
 
 
     render(){
@@ -117,8 +151,15 @@ class Pokedex extends Component{
         <Button
         color='danger'
         outline
+        // className="button-margins"
         >
           Favorite
+        </Button>
+        <Button
+        color="success"
+        className="button-margins"
+        >
+          View This Pokemon
         </Button>
       </CardBody>
     </Card>;
