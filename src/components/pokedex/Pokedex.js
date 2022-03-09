@@ -41,7 +41,7 @@ class Pokedex extends Component{
     }
 
     this.state = {
-      count: 20,
+      count: 21,
       pokemon: [],
       pokeURL: []
     }
@@ -97,9 +97,13 @@ class Pokedex extends Component{
             const data = response.data; 
 
             this.setState({
-              count: data.count,
+              imageURL: [...this.state.imageURL, data.sprites.front_default] ,
+              stats: data.base_experience, 
+              type: data.types[0].type.name
              
             })
+
+            console.log(this.state.imageURL)
 
 
 
@@ -129,7 +133,7 @@ class Pokedex extends Component{
       return <Card key={i} className='card-align'>
       <CardImg 
         alt="Card image cap"
-        src={this.state.imageURL}
+        src={this.state.imageURL[88]}
         top
         className="image-margins"
         width="25%"
