@@ -1,3 +1,4 @@
+
 import React, {Component} from "react";
 import { CardGroup, 
 Card, 
@@ -15,12 +16,12 @@ const baseURL= "https://pokeapi.co/api/v2/pokemon/"
 
 const eachPokemon = (baseURL) => {
 
-let pokeInfo =[{
-    id:0, 
-    imageURL: '', 
-    type:'',
-    pokemon: ''
-}]
+// let pokeInfo =[{
+//     id:0, 
+//     imageURL: '', 
+//     type:'',
+//     pokemon: ''
+// }]
 
   for(let i = count; i<1200; i++){
     axios.get   
@@ -34,11 +35,11 @@ class Pokedex extends Component{
     super(props);
 
     this.state = {
-        stats: [],
-        imageURL: [], 
+        stats:[],
+        imageURL:[], 
         type:[]
 
-    }
+  }
 
     this.state = {
       count: 21,
@@ -46,11 +47,11 @@ class Pokedex extends Component{
       pokeURL: []
     }
 
-    console.log('***constuctor');
+    // console.log('***constuctor');
   }
 
   componentDidMount() {
-    console.log('***componentDidMount');
+    // console.log('***componentDidMount');
 
 // get request for pokemon stats, experience, and type
     
@@ -73,6 +74,11 @@ class Pokedex extends Component{
     //   })
 // get request for pokemon name and count
 
+    axios.get('http://localhost:4000/name')
+      .then(response =>{
+        const name = response;
+        console.log(name)
+      })
 
     axios.get(baseURL)
       .then(response => {
@@ -92,28 +98,41 @@ class Pokedex extends Component{
       //Get Request for every single pokemon and their information
       console.log(this.state.count)
 
+      const statsArray = [];
+      const imageArray = [];
+      const typeArray = []
 
       for(let i = 1; i<this.state.count; i++){
         axios.get(`${baseURL}${i}`)
+        
           .then(response =>{
             const data = response.data; 
+            const url = data.sprites.front_default;
+            
+            statsArray.push(data.base_experience)
+            imageArray.push(data.sprites.front_default)
+            typeArray.push(data.types[0].type.name)
+            
 
-            console.log(this.state.imageURL)
+            // console.log(this.state.imageURL)
             //setting state that will push onto the array a new value that will either be 
             //stats, image, and type
-            this.setState({
-              imageURL: data.sprites.front_default, ...this.state.imageURL ,
-              stats: data.base_experience.toString(), ...this.state.stats, 
-              type: data.types[0].type.name, ...this.state.type
-             
-            })
-
-            console.log(this.state.imageURL)
-
-
-
+           
+          })
+          .catch(error => {
+            console.error('***', error)
           })
       }
+
+      this.setState({
+        imageURL: imageArray,
+        stats: statsArray,
+        type: typeArray
+       
+      })
+     
+      console.log(this.state.imageURL)
+      console.log(typeArray)
 
   }
 
@@ -123,7 +142,7 @@ class Pokedex extends Component{
 
 
     render(){
-      console.log('***render');
+      // console.log('***render');
 
             return(
     
@@ -152,7 +171,8 @@ class Pokedex extends Component{
           className="mb-2 text-muted"
           tag="h6"
         >
-          {this.state.stats}
+          
+          {/* {this.state.stats} */}
         </CardSubtitle>
         <CardText >
         type: {this.state.type}  
