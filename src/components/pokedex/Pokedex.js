@@ -55,22 +55,22 @@ class Pokedex extends Component{
 // get request for pokemon stats, experience, and type
     
 
-    axios.get(`${baseURL}${1}`)
-      .then(response => {
-        const data = response.data
+    // axios.get(`${baseURL}${1}`)
+    //   .then(response => {
+    //     const data = response.data
 
-        this.setState({
-            imageURL: data.sprites.front_default ,
-            stats: data.base_experience, 
-            type: data.types[0].type.name
+    //     this.setState({
+    //         imageURL: data.sprites.front_default ,
+    //         stats: data.base_experience.toString(), 
+    //         type: data.types[0].type.name
 
-        })
-        console.log(data)
-      })
-      .catch(error => {
-        console.log('***', error )
+    //     })
+    //     console.log(this.state.stats.toString())
+    //   })
+    //   .catch(error => {
+    //     console.log('***', error )
 
-      })
+    //   })
 // get request for pokemon name and count
 
 
@@ -91,15 +91,20 @@ class Pokedex extends Component{
       })
       //Get Request for every single pokemon and their information
       console.log(this.state.count)
+
+
       for(let i = 1; i<this.state.count; i++){
         axios.get(`${baseURL}${i}`)
           .then(response =>{
             const data = response.data; 
 
+            console.log(this.state.imageURL)
+            //setting state that will push onto the array a new value that will either be 
+            //stats, image, and type
             this.setState({
-              imageURL: [...this.state.imageURL, data.sprites.front_default] ,
-              stats: data.base_experience, 
-              type: data.types[0].type.name
+              imageURL: data.sprites.front_default, ...this.state.imageURL ,
+              stats: data.base_experience.toString(), ...this.state.stats, 
+              type: data.types[0].type.name, ...this.state.type
              
             })
 
@@ -128,12 +133,12 @@ class Pokedex extends Component{
    
     {/* CardGroup used to display the information regarding every pokemon */}
     {/* <CardColumns className="card-margins"> */}
-    <div className="card-margins">
+    <div className="card-margins phone">
     { this.state.pokemon.map((pokemon, i) => {
       return <Card key={i} className='card-align'>
       <CardImg 
         alt="Card image cap"
-        src={this.state.imageURL[88]}
+        src={this.state.imageURL}
         top
         className="image-margins"
         width="25%"
