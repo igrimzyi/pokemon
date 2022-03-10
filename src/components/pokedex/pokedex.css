@@ -30,3 +30,11 @@
 .button-margins{
         margin-left: 1rem;
 }
+
+/* Responsive alignment for the pokecards that will change for the viewport of a phone */
+
+@media screen and (max-width: 700px) {
+    .phone{
+        justify-content: center;
+    }
+}
