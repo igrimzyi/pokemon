@@ -33,7 +33,7 @@ class Pokedex extends Component{
        
   constructor(props) {
     super(props);
-
+    
     this.state = {
         stats:[],
         imageURL:[], 
@@ -52,26 +52,7 @@ class Pokedex extends Component{
 
   componentDidMount() {
     // console.log('***componentDidMount');
-
-// get request for pokemon stats, experience, and type
     
-
-    // axios.get(`${baseURL}${1}`)
-    //   .then(response => {
-    //     const data = response.data
-
-    //     this.setState({
-    //         imageURL: data.sprites.front_default ,
-    //         stats: data.base_experience.toString(), 
-    //         type: data.types[0].type.name
-
-    //     })
-    //     console.log(this.state.stats.toString())
-    //   })
-    //   .catch(error => {
-    //     console.log('***', error )
-
-    //   })
 // get request for pokemon name and count
 
     axios.get('http://localhost:4000/name')
@@ -108,6 +89,8 @@ class Pokedex extends Component{
           .then(response =>{
             const data = response.data; 
             const url = data.sprites.front_default;
+
+
             
             statsArray.push(data.base_experience)
             imageArray.push(data.sprites.front_default)
@@ -123,15 +106,16 @@ class Pokedex extends Component{
             console.error('***', error)
           })
       }
-
-      this.setState({
-        imageURL: imageArray,
-        stats: statsArray,
-        type: typeArray
-       
-      })
      
-      console.log(this.state.imageURL)
+      
+      // this.setState({
+      //   imageURL: imageArray,
+      //   stats: [...this.state.stats, statsArray[1]],
+      //   type: typeArray
+       
+      // })
+     
+      console.log(this.state.stats)
       console.log(typeArray)
 
   }
