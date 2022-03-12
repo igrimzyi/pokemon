@@ -1,4 +1,5 @@
 
+
 import React, {Component} from "react";
 import { CardGroup, 
 Card, 
@@ -35,10 +36,11 @@ class Pokedex extends Component{
     super(props);
     
     this.state = {
-        stats:[],
+      
+        stats: [],
         imageURL:[], 
         type:[]
-
+      
   }
 
     this.state = {
@@ -76,6 +78,8 @@ class Pokedex extends Component{
       .catch(error => {
         console.log('***', error);
       })
+
+   
       //Get Request for every single pokemon and their information
       console.log(this.state.count)
 
@@ -107,16 +111,19 @@ class Pokedex extends Component{
           })
       }
      
-      
+
+
+
+      // this.setState({ stats: [...this.state.stats, ...[1,2,3] ] }) 
       // this.setState({
       //   imageURL: imageArray,
-      //   stats: [...this.state.stats, statsArray[1]],
+      //   stats: this.state.pokemon,
       //   type: typeArray
        
       // })
      
       console.log(this.state.stats)
-      console.log(typeArray)
+      console.log(statsArray)
 
   }
 
@@ -127,7 +134,7 @@ class Pokedex extends Component{
 
     render(){
       // console.log('***render');
-
+     
             return(
     
         <div className="container ">
