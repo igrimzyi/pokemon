@@ -15,20 +15,73 @@ const axios = require('axios')
 
 const baseURL= "https://pokeapi.co/api/v2/pokemon/"
 
-const eachPokemon = (baseURL) => {
+class PokemonDetails extends Component {
+  constructor(props) {
+    super(props);
 
-// let pokeInfo =[{
-//     id:0, 
-//     imageURL: '', 
-//     type:'',
-//     pokemon: ''
-// }]
-
-  for(let i = count; i<1200; i++){
-    axios.get   
+    this.state = {
+      loading: true,
+      details: {}
+    }
   }
 
+  componentDidMount() {
+    axios.get(this.props.pokemon.url)
+      .then((response) => {
+        this.setState({ 
+          loading: false,
+          details: response.data
+        })
+      })
+  }
+
+
+  render () {
+    if (this.state.loading) {
+      return <p>Loading...</p>
+    }
+
+    return <Card className='card-align'>  
+    <CardImg 
+      alt="Card image cap"
+      src={this.state.details.sprites.front_default}
+      top
+      className="image-margins"
+      width="25%"
+      height="50%"
+    />
+    <CardBody className="body-styles">
+      <CardTitle tag="h5">
+        { this.state.details.name }
+      </CardTitle>
+      <CardSubtitle
+        className="mb-2 text-muted"
+        tag="h6"
+      >
+        
+        {/* {this.state.stats} */}
+      </CardSubtitle>
+      <CardText >
+      type: {this.state.details.types[0].type.name}  
+      </CardText>
+      <Button
+      color='danger'
+      outline
+      // className="button-margins"
+      >
+        Favorite
+      </Button>
+      <Button
+      color="success"
+      className="button-margins"
+      >
+        View This Pokemon
+      </Button>
+    </CardBody>
+  </Card>;
+  }
 }
+
 
 class Pokedex extends Component{
        
@@ -36,164 +89,38 @@ class Pokedex extends Component{
     super(props);
     
     this.state = {
-      
-        stats: [],
-        imageURL:[], 
-        type:[]
-      
-  }
-
-    this.state = {
-      count: 21,
-      pokemon: [],
-      pokeURL: []
+      poks: []
     }
-
-    // console.log('***constuctor');
   }
 
   componentDidMount() {
-    // console.log('***componentDidMount');
-    
-// get request for pokemon name and count
-
-    axios.get('http://localhost:4000/name')
-      .then(response =>{
-        const name = response;
-        console.log(name)
-      })
-
     axios.get(baseURL)
       .then(response => {
-        const data = response.data;
-
         this.setState({
-          count: data.count,
-          pokemon: data.results,
-          pokeURL: data.results.url
-        });
-
-        console.log('***data', data);
+          poks: response.data.results
+        })
       })
       .catch(error => {
         console.log('***', error);
       })
-
-   
-      //Get Request for every single pokemon and their information
-      console.log(this.state.count)
-
-      const statsArray = [];
-      const imageArray = [];
-      const typeArray = []
-
-      for(let i = 1; i<this.state.count; i++){
-        axios.get(`${baseURL}${i}`)
-        
-          .then(response =>{
-            const data = response.data; 
-            const url = data.sprites.front_default;
-
-
-            
-            statsArray.push(data.base_experience)
-            imageArray.push(data.sprites.front_default)
-            typeArray.push(data.types[0].type.name)
-            
-
-            // console.log(this.state.imageURL)
-            //setting state that will push onto the array a new value that will either be 
-            //stats, image, and type
-           
-          })
-          .catch(error => {
-            console.error('***', error)
-          })
-      }
-     
-
-
-
-      // this.setState({ stats: [...this.state.stats, ...[1,2,3] ] }) 
-      // this.setState({
-      //   imageURL: imageArray,
-      //   stats: this.state.pokemon,
-      //   type: typeArray
-       
-      // })
-     
-      console.log(this.state.stats)
-      console.log(statsArray)
-
   }
 
-
-
-  
-
-
     render(){
-      // console.log('***render');
+
+      if (this.state.poks.length === 0) {
+        return <h1>Loading...</h1>
+      }
      
-            return(
-    
+      return(
         <div className="container ">
-         
-
-   
-    {/* CardGroup used to display the information regarding every pokemon */}
-    {/* <CardColumns className="card-margins"> */}
-    <div className="card-margins phone">
-    { this.state.pokemon.map((pokemon, i) => {
-      return <Card key={i} className='card-align'>
-      <CardImg 
-        alt="Card image cap"
-        src={this.state.imageURL}
-        top
-        className="image-margins"
-        width="25%"
-        height="50%"
-      />
-      <CardBody className="body-styles">
-        <CardTitle tag="h5">
-          { pokemon.name }
-        </CardTitle>
-        <CardSubtitle
-          className="mb-2 text-muted"
-          tag="h6"
-        >
-          
-          {/* {this.state.stats} */}
-        </CardSubtitle>
-        <CardText >
-        type: {this.state.type}  
-        </CardText>
-        <Button
-        color='danger'
-        outline
-        // className="button-margins"
-        >
-          Favorite
-        </Button>
-        <Button
-        color="success"
-        className="button-margins"
-        >
-          View This Pokemon
-        </Button>
-      </CardBody>
-    </Card>;
-    })}
-                    
-                  
-    </div>
-</div>
-                )
-
-        }
-
-
-
+          <div className="card-margins phone">
+              {this.state.poks.map((pokemon, i) => {
+                return <PokemonDetails key={i} pokemon={pokemon} />
+              })}
+          </div>
+        </div>
+      )
+    }
 }
 
 export default Pokedex; 
