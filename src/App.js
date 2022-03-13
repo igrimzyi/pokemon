@@ -24,7 +24,7 @@ import Login from './components/login/Login';
           <Routes>
           {/* components need to be wrapped in </> or will be considered a function and throw an error */}
             <Route path='/' element={<Home/>}/>
-            <Route path='/pokedex' element={<Pokedex/>}/>
+            <Route path='/pokedex' element={<Pokedex />}/>
             <Route path='/game' element={<Game/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/register' element={<Register/>}></Route>
