@@ -65,15 +65,9 @@ class PokemonDetails extends Component {
       type: {this.state.details.types[0].type.name}  
       </CardText>
       <Button
-      color='danger'
-      outline
-      // className="button-margins"
-      >
-        Favorite
-      </Button>
-      <Button
       color="success"
-      className="button-margins"
+      block
+      href="/"
       >
         View This Pokemon
       </Button>
