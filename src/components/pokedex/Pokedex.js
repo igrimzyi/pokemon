@@ -67,7 +67,7 @@ class PokemonDetails extends Component {
       <Button
       color="success"
       block
-      href="/"
+      href="/login"
       >
         View This Pokemon
       </Button>
