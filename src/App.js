@@ -30,7 +30,7 @@ import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
             <Route path='/register' element={<Register/>}/>
           {/*dynamic routing in the navbar component  */}
           <Route path='/pokedex' element={<Pokedex />}/> 
-          <Route path='/pokedex/:name' element={<Pokemon/>}/>
+          <Route path='/pokedex/:pokeId' element={<Pokemon/>}/>
           
        
            </Routes>
