@@ -38,3 +38,10 @@
         justify-content: center;
     }
 }
+
+/* type styles */
+    .fire-type{
+        font-weight: 600;
+        color: crimson;
+        opacity: .9;
+    }
