@@ -63,7 +63,7 @@ class PokemonDetails extends Component {
         
         {/* {this.state.stats} */}
       </CardSubtitle>
-      <CardText >
+      <CardText>
       type: {this.state.details.types[0].type.name}  
       </CardText>
       <Button
