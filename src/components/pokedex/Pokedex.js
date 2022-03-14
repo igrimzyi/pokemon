@@ -28,11 +28,13 @@ class PokemonDetails extends Component {
   componentDidMount() {
     axios.get(this.props.pokemon.url)
       .then((response) => {
+
         this.setState({ 
           loading: false,
           details: response.data
         })
       })
+      
   }
 
 
@@ -67,7 +69,7 @@ class PokemonDetails extends Component {
       <Button
       color="success"
       block
-      href="/login"
+      href={`pokedex/${this.state.details.name}`}
       >
         View This Pokemon
       </Button>
