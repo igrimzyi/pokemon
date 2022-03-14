@@ -24,12 +24,15 @@ import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
           <Routes>
           {/* components need to be wrapped in </> or will be considered a function and throw an error */}
             <Route path='/' element={<Home/>}/>
-            <Route path='/pokedex' element={<Pokedex />}/>
+           
             <Route path='/game' element={<Game/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/register' element={<Register/>}/>
           {/*dynamic routing in the navbar component  */}
-            <Route path='pokemon/:pokeId' element={<Pokemon/>}/>
+          <Route path='/pokedex' element={<Pokedex />}/> 
+          <Route path='/pokedex/:name' element={<Pokemon/>}/>
+          
+       
            </Routes>
        
       </Router>

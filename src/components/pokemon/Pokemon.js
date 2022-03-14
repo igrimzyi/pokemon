@@ -1,17 +1,16 @@
 import React, {Component} from 'react'; 
+import { useParams } from 'react-router-dom';
 
-export default class PokemonInformation extends Component {
-    render(){
+    export default function PokemonInformation() {
+        let params = useParams;
+
+
         return(
-            <div className='title'>hello</div>
+        <div className='title'>
+            Pokemon
+            HELLLOOOOOO
 
+        </div>
         )
 
-
-
-
     }
-
-
-
-}
