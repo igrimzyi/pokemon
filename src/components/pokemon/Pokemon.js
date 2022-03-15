@@ -19,32 +19,36 @@ import {
         //functional components require you to use the useState hook in order to set state unlike class components where they
         //use this.state or this.setState method
         const [pokeData, setPokeData] = useState('');
-        const [pokeExperience, setPokeExperience] = useState()
-        const [pokeType, setPokeType] = useState();
+        const [pokeExperience, setPokeExperience] = useState('');
+        const [pokeType, setPokeType] = useState('');
+        const [pokeDefaultInfo, setPokeDefaultInfo] = useState('');
+        const [errorRender, setErrorRender] = useState('');
         
         
 
         //get the pokemon information and render that specific pokemon on to the page!
         axios.get(`${baseUrl}${pokeId}`)
             .then((res)=>{
-                let data = res.data
-                
+                let data = res.data;
                 let imgURL = data.sprites.front_default;
                 setPokeData(imgURL);
                 setPokeExperience(data.base_experience)
                 setPokeType(data.types[0].type.name);
-               console.log(data)
+                console.log(data)
             })
             .catch((err) =>{
-                console.log('err: ' + err)
-
+                console.log( + err)
+                setErrorRender(err);
             })
-            
-           
-            
-         
-       //returning an empty card during the loading phase of the react state
-            if(pokeData === ''){
+    //returning a 404 page not found res to the user.
+            if(errorRender !== ''){
+                return(
+                    <h3 className='title'>404</h3>
+                )
+
+            }
+            //returning an empty card during the loading phase of the react state
+            else if(!pokeData ){
                 return(
         <div className='title'>
         <Card>
@@ -52,12 +56,12 @@ import {
                <CardText tag='h2'>
                    Loading...
                </CardText>
-                <CardTitle tag='h5' className=''>
+                {/* <CardTitle tag='h5' className=''>
                 {pokeId}
                 </CardTitle>
                 <CardText>
                 {pokeExperience}
-                </CardText>
+                </CardText> */}
             </CardBody>
             </Card>
            
