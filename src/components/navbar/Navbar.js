@@ -53,24 +53,7 @@ export default class NavbarReact extends Component {
             Poke Game
           </NavLink>
         </NavItem>
-        {/* <UncontrolledDropdown
-          inNavbar
-          nav
-        >
-          
-          <DropdownMenu end>
-            <DropdownItem>
-              Option 1
-            </DropdownItem>
-            <DropdownItem>
-              Option 2
-            </DropdownItem>
-            <DropdownItem divider />
-            <DropdownItem>
-              Reset
-            </DropdownItem>
-          </DropdownMenu>
-        </UncontrolledDropdown> */}
+       
       </Nav>
      <NavItem>
           <NavLink className={'text-decoration right-link' } to="/login">
