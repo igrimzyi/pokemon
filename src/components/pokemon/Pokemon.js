@@ -18,7 +18,6 @@ import {
     export default function PokemonInformation() {
        
         let {pokeId} = useParams();
-        console.log(pokeId)
         let baseUrl = 'https://pokeapi.co/api/v2/pokemon/';
         //functional components require you to use the useState hook in order to set state unlike class components where they
         //use this.state or this.setState method
@@ -63,6 +62,11 @@ import {
                 setUrlParam(urlParam +1)
                 console.log(urlParam)
                }
+               function handleSubmitDecrement(e, i) {
+                e.preventDefault();
+                setUrlParam(urlParam -1)
+                console.log(urlParam)
+               }
 
 
             //returning an empty card during the loading phase of the react state
@@ -85,7 +89,10 @@ import {
  //only returning the pokemon name as of right now 
         return(
            <div className='div-styles title'>
-               <button>hello</button>
+               <div>
+               <button onClick={handleSubmitDecrement} className='arrow left'></button>
+               <p onClick={handleSubmitDecrement}>Prev Pokemon</p>
+               </div>
             <div >
 
         <Card >
@@ -147,7 +154,7 @@ import {
 
             <div>
             <button onClick={handleSubmit} className='arrow right'> </button>
-            <p>Next Pokemon</p>
+            <p onClick={handleSubmit}>Next Pokemon</p>
             </div>
             </div>
             
