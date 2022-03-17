@@ -1,10 +1,48 @@
 .title{
-    width:300px;
-    height:200px;
-    position:absolute;
-    left:50%;
-    top:50%;
+    width:50rem;
+    justify-content: space-between;
+    position:absolute; 
+    left: 32.5%; 
+    top:20rem;
     margin:-100px 0 0 -150px;
     text-align: center;
     color: black;
+    
+}
+/* alignment for div*/
+.div-styles{
+    display: flex;
+    
+
+}
+.card-body-width{
+width: 18rem;
+
+}
+.arrow {
+        border: solid black;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 3px;
+        height: .63rem;
+        background-color: white;
+    }
+    .right {
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+    }
+    .left {
+        transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+      }
+p:hover{
+    cursor: pointer;
+}
+    
+.arrow-alignment{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }
