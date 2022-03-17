@@ -64,8 +64,11 @@ import {
                }
                function handleSubmitDecrement(e, i) {
                 e.preventDefault();
+                if(urlParam === 1){
+                    return urlParam;
+                }else {
                 setUrlParam(urlParam -1)
-                console.log(urlParam)
+                console.log(urlParam)}
                }
 
 
@@ -89,7 +92,7 @@ import {
  //only returning the pokemon name as of right now 
         return(
            <div className='div-styles title'>
-               <div>
+               <div className='arrow-alignment'>
                <button onClick={handleSubmitDecrement} className='arrow left'></button>
                <p onClick={handleSubmitDecrement}>Prev Pokemon</p>
                </div>
@@ -152,8 +155,8 @@ import {
           
             </div>
 
-            <div>
-            <button onClick={handleSubmit} className='arrow right'> </button>
+            <div className='arrow-alignment'>
+            <button onClick={handleSubmit} className='arrow right' href={`pokedex/:${urlParam}`}> </button>
             <p onClick={handleSubmit}>Next Pokemon</p>
             </div>
             </div>
