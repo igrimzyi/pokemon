@@ -8,7 +8,7 @@ import {Button} from 'reactstrap'
                 <section className="main">
                 <div>
                     
-                    <div className="title">
+                    <div className="main-title">
                         <h3 className="">Welcome to Poke Complex</h3>
                         <span>Check out the pokedex and the game that comes with!</span>
                         <div>

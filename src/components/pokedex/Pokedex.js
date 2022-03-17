@@ -69,7 +69,7 @@ class PokemonDetails extends Component {
       <Button
       color="success"
       block
-      href={`pokedex/${this.state.details.name}`}
+      href={`pokedex/${this.state.details.id}`}
       >
         View This Pokemon
       </Button>
