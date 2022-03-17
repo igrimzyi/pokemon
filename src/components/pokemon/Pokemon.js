@@ -13,8 +13,10 @@ import {
     Progress,
    
     } from "reactstrap";
+    import './pokemon.css'
 
     export default function PokemonInformation() {
+       
         let {pokeId} = useParams();
         console.log(pokeId)
         let baseUrl = 'https://pokeapi.co/api/v2/pokemon/';
@@ -26,17 +28,19 @@ import {
         const [pokeHealth, setPokeHealth] = useState('');
         const [pokeAttack, setPokeAttack] = useState('');
         const [pokeDefense, setPokeDefense] = useState('');
-        const [errorRender, setErrorRender] = useState('');
         const [pokeName, setPokeName] = useState('')
+        const [pokeAbility, setPokeAbility] = useState('');
+        const [urlParam, setUrlParam] = useState(parseInt(pokeId))
+        
         
         
 
         //get the pokemon information and render that specific pokemon on to the page!
-        axios.get(`${baseUrl}${pokeId}`)
+        axios.get(`${baseUrl}${urlParam}`)
             .then((res)=>{
                 let data = res.data;
-                console.log(data)
-                let imgURL = data.sprites.front_default;
+              
+                let imgURL = data.sprites.front_default;        
                 setPokeName(data.name)
                 setPokeData(imgURL);
                 setPokeExperience(data.base_experience)
@@ -44,20 +48,23 @@ import {
                 setPokeHealth(data.stats[0].base_stat);
                 setPokeAttack(data.stats[1].base_stat);
                 setPokeDefense(data.stats[2].base_stat);
-                console.log(data)
+                setPokeAbility(data.abilities[0].ability.name)
+               
+               
             })
             .catch((err) =>{
                 console.log( + err)
                 setErrorRender(err);
             })
+            //handeling onClick events 
+           
+            function handleSubmit(e, i) {
+                e.preventDefault();
+                setUrlParam(urlParam +1)
+                console.log(urlParam)
+               }
 
-    // //returning a 404 page not found res to the user.
-    //         if(errorRender !== ''){
-    //             return(
-    //                 <h3 className='title'>404</h3>
-    //             )
 
-    //         }
             //returning an empty card during the loading phase of the react state
             if(!pokeData){
                 return(
@@ -77,9 +84,12 @@ import {
 
  //only returning the pokemon name as of right now 
         return(
-        <div className='title'>
-        <Card>
-            <CardBody>
+           <div className='div-styles title'>
+               <button>hello</button>
+            <div >
+
+        <Card >
+            <CardBody className='card-body-width'>
                 <CardImg 
                 src={pokeData}
                 top
@@ -93,8 +103,8 @@ import {
                 <CardText>
                     {pokeType} 
                 </CardText>
-                <CardText>
-                    Default exp: {pokeExperience}
+                <CardText tag='h5'>
+                    Base Experience:
                 </CardText>
 
                 {/* setting the stats of the pokemon */}
@@ -114,7 +124,7 @@ import {
                 <Progress
                 max="255"
                 value={pokeAttack}
-                color='danger'
+                color='success'
                 >
                 Attack
                 </Progress>
@@ -128,12 +138,20 @@ import {
                 >
                 Defense
                 </Progress>
-    
-             
-            </CardBody>
+        </CardBody>
+         
             </Card>
+           
+          
+            </div>
+
+            <div>
+            <button onClick={handleSubmit} className='arrow right'> </button>
+            <p>Next Pokemon</p>
+            </div>
+            </div>
             
-        </div>
+       
         )
 
     }
