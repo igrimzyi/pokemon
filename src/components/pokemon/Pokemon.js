@@ -42,13 +42,29 @@ import {
                 return(
                     <>
                     <Button disabled={urlParam===1} href={`/pokedex/${urlParam-1}`}  className='arrow left'></Button>
-                <a href={`/pokedex/${urlParam-1}`} className='a-tag-styles'>Prev Pokemon</a>
+                    <a href={`/pokedex/${urlParam-1}`} className='a-tag-styles'>Prev Pokemon</a>
                     </>
     
                 )
             }
-    
-    
+        }
+
+        function DecrementButtons(){
+            let urlParams = useParams();
+            if(urlParams.pokeId === '898'){
+                return <></>
+            }else{
+                return(
+                    <>
+                        <Button href={`/pokedex/${urlParam+1}`} className='arrow right'  > </Button>
+                        <a href={`/pokedex/${urlParam+1}`} className='a-tag-styles'>Next Pokemon</a>
+                    </>
+
+                )
+            }
+
+
+
         }
 
 
@@ -94,7 +110,7 @@ import {
 
         //only returning the pokemon name as of right now 
         return(
-           <div className='div-styles title iphone-xr disable-select'>
+<div className='div-styles title iphone-xr disable-select'>
                <div className='arrow-alignment'>
                {/* <Button disabled={urlParam===1} href={`/pokedex/${urlParam-1}`}  className='arrow left'></Button>
                <a href={`/pokedex/${urlParam-1}`} className='a-tag-styles'>Prev Pokemon</a> */}
@@ -152,23 +168,13 @@ import {
                 >
                 Defense
                 </Progress>
-                
-
-               
-        </CardBody>
-         
-            </Card>
-           
-          
-            </div>
-           
-            <div className='arrow-alignment'>
-            <Button href={`/pokedex/${urlParam+1}`} className='arrow right'  > </Button>
-            <a href={`/pokedex/${urlParam+1}`} className='a-tag-styles'>Next Pokemon</a>
-
-           
-            </div>
-            </div>
+            </CardBody>
+        </Card>
+    </div>
+           <div className='arrow-alignment'>
+                <DecrementButtons/>
+           </div>
+</div>
             
        
         )
