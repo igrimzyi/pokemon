@@ -56,7 +56,7 @@ import {
         axios.get(`${baseUrl}${pokeId}`)
             .then((res)=>{
                 let data = res.data;
-              
+            //   setting state within a funcitonal component using my second param 
                 let imgURL = data.sprites.front_default;        
                 setPokeName(data.name)
                 setPokeData(imgURL);
@@ -75,19 +75,6 @@ import {
             })
             //handeling onClick events 
         
-
-               function setPokeId(pokeId, urlParam){
-                if(pokeId != urlParam){
-                    let pokeId = urlParam;
-                    return pokeId;
-                } else{
-                    return pokeId
-                }
-
-
-               }
-
-               setPokeId();
             //returning an empty card during the loading phase of the react state
             if(!pokeData){
                 return(
@@ -105,7 +92,7 @@ import {
             )
             }
 
- //only returning the pokemon name as of right now 
+        //only returning the pokemon name as of right now 
         return(
            <div className='div-styles title iphone-xr disable-select'>
                <div className='arrow-alignment'>
