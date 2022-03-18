@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, {Component, useState} from 'react'; 
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { 
     CardGroup, 
     Card, 
@@ -14,6 +14,9 @@ import {
    
     } from "reactstrap";
     import './pokemon.css'
+
+  
+
 
     export default function PokemonInformation() {
        
@@ -30,12 +33,27 @@ import {
         const [pokeName, setPokeName] = useState('')
         const [pokeAbility, setPokeAbility] = useState('');
         const [urlParam, setUrlParam] = useState(parseInt(pokeId))
-        
-        
-        
+    
+        function IterateButtons(){
+            let urlParams = useParams();
+            if (urlParams.pokeId === '1'){
+                return <></>
+            }else{
+                return(
+                    <>
+                    <Button disabled={urlParam===1} href={`/pokedex/${urlParam-1}`}  className='arrow left'></Button>
+                <a href={`/pokedex/${urlParam-1}`} className='a-tag-styles'>Prev Pokemon</a>
+                    </>
+    
+                )
+            }
+    
+    
+        }
+
 
         //get the pokemon information and render that specific pokemon on to the page!
-        axios.get(`${baseUrl}${urlParam}`)
+        axios.get(`${baseUrl}${pokeId}`)
             .then((res)=>{
                 let data = res.data;
               
@@ -56,22 +74,20 @@ import {
                 setErrorRender(err);
             })
             //handeling onClick events 
-           
-            function handleSubmit(e, i) {
-                e.preventDefault();
-                setUrlParam(urlParam +1)
-                console.log(urlParam)
-               }
-               function handleSubmitDecrement(e, i) {
-                e.preventDefault();
-                if(urlParam === 1){
-                    return urlParam;
-                }else {
-                setUrlParam(urlParam -1)
-                console.log(urlParam)}
-               }
+        
+
+               function setPokeId(pokeId, urlParam){
+                if(pokeId != urlParam){
+                    let pokeId = urlParam;
+                    return pokeId;
+                } else{
+                    return pokeId
+                }
 
 
+               }
+
+               setPokeId();
             //returning an empty card during the loading phase of the react state
             if(!pokeData){
                 return(
@@ -91,10 +107,11 @@ import {
 
  //only returning the pokemon name as of right now 
         return(
-           <div className='div-styles title'>
+           <div className='div-styles title iphone-xr disable-select'>
                <div className='arrow-alignment'>
-               <button onClick={handleSubmitDecrement} className='arrow left'></button>
-               <p onClick={handleSubmitDecrement}>Prev Pokemon</p>
+               {/* <Button disabled={urlParam===1} href={`/pokedex/${urlParam-1}`}  className='arrow left'></Button>
+               <a href={`/pokedex/${urlParam-1}`} className='a-tag-styles'>Prev Pokemon</a> */}
+                <IterateButtons/>
                </div>
             <div >
 
@@ -148,16 +165,21 @@ import {
                 >
                 Defense
                 </Progress>
+                
+
+               
         </CardBody>
          
             </Card>
            
           
             </div>
-
+           
             <div className='arrow-alignment'>
-            <button onClick={handleSubmit} className='arrow right' href={`pokedex/:${urlParam}`}> </button>
-            <p onClick={handleSubmit}>Next Pokemon</p>
+            <Button href={`/pokedex/${urlParam+1}`} className='arrow right'  > </Button>
+            <a href={`/pokedex/${urlParam+1}`} className='a-tag-styles'>Next Pokemon</a>
+
+           
             </div>
             </div>
             
