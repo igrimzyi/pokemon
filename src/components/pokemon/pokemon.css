@@ -2,7 +2,7 @@
     width:50rem;
     justify-content: space-between;
     position:absolute; 
-    left: 32.5%; 
+    left: 31.5%; 
     top:20rem;
     margin:-100px 0 0 -150px;
     text-align: center;
@@ -34,13 +34,14 @@
            
 
         }
-        .title{
-        height: 35rem;
+        .title-iphone{
+        height: 40rem;
         justify-content: space-between;
         position: absolute;
         left: 52%;
-        top: 20rem;
-        /* margin: -100px 0 0 -150px; */
+        top: 30%;
+       
+        margin: -100px 0 0 -150px;
         text-align: center;
         color: black;
     }
