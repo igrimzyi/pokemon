@@ -14,11 +14,20 @@ import {
    
     } from "reactstrap";
     import './pokemon.css'
-
+    import Heart from "react-animated-heart";
   
 
 
     export default function PokemonInformation() {
+
+        function LikeButton() {
+            const [isClick, setClick] = useState(false);
+            return (
+              <div className="App">
+                <Heart isClick={isClick} onClick={() => setClick(!isClick)} />
+              </div>
+            );
+          }
        
         let {pokeId} = useParams();
         let baseUrl = 'https://pokeapi.co/api/v2/pokemon/';
@@ -64,6 +73,10 @@ import {
             }
 
 
+
+        }
+
+        function FavoritePokemon(){
 
         }
 
@@ -118,8 +131,10 @@ import {
                </div>
             <div >
 
-        <Card >
+        <Card className='card-alignment'>
+            <LikeButton/>
             <CardBody className='card-body-width'>
+                
                 <CardImg 
                 src={pokeData}
                 top
@@ -174,6 +189,7 @@ import {
            <div className='arrow-alignment'>
                 <DecrementButtons/>
            </div>
+
 </div>
             
        
