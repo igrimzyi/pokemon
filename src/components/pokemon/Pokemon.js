@@ -11,6 +11,9 @@ import {
     CardTitle, 
     Button,
     Progress,
+    ButtonToggle,
+    ButtonToolbar,
+    ButtonGroup,
    
     } from "reactstrap";
     import './pokemon.css'
@@ -124,13 +127,19 @@ import {
         //only returning the pokemon name as of right now 
         return(
 <div className='div-styles title title-iphone iphone-xr disable-select'>
-               <div className='arrow-alignment'>
-               {/* <Button disabled={urlParam===1} href={`/pokedex/${urlParam-1}`}  className='arrow left'></Button>
-               <a href={`/pokedex/${urlParam-1}`} className='a-tag-styles'>Prev Pokemon</a> */}
+               {/* <div className='arrow-alignment'>
+              
                 <IterateButtons/>
-               </div>
-            <div >
-
+               </div> */}
+              
+            <div className='arrow-alignment'>
+                <IterateButtons />
+             </div>
+    <div >
+            {/* <div className='arrow-alignment'>
+              
+              <IterateButtons/>
+             </div> */}
         <Card className='card-alignment'>
             <LikeButton/>
             <CardBody className='card-body-width'>
@@ -190,6 +199,7 @@ import {
                 <DecrementButtons/>
            </div>
 
+       
 </div>
             
        

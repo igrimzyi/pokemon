@@ -113,3 +113,11 @@ p:hover{
     align-items: flex-end;
     
  }
+
+ /* Button toolbar styles */
+
+ .button-toolbar{
+    display: flex;
+    align-items: center;
+
+ }
