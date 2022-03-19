@@ -13,7 +13,7 @@ import './pokedex.css'
 
 const axios = require('axios')
 
-const baseURL= "https://pokeapi.co/api/v2/pokemon/"
+const baseURL= "https://pokeapi.co/api/v2/pokemon?offset=1&limit=100"
 
 class PokemonDetails extends Component {
   constructor(props) {
