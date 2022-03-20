@@ -10,13 +10,15 @@ CardBody,
 CardTitle, 
 Button} from "reactstrap";
 import './pokedex.css'
+import {useParams} from 'react-router-dom';
 
 const axios = require('axios')
 
-const baseURL= "https://pokeapi.co/api/v2/pokemon?offset=1&limit=100"
+const baseURL= "https://pokeapi.co/api/v2/pokemon?offset=1&limit=105"
 
 class PokemonDetails extends Component {
-  constructor(props) {
+    constructor(props) {
+   
     super(props);
 
     this.state = {
@@ -42,7 +44,7 @@ class PokemonDetails extends Component {
     if (this.state.loading) {
       return <p>Loading...</p>
     }
-
+    
     return <Card className='card-align'>  
     <CardImg 
       alt="Card image cap"
