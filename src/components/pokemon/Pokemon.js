@@ -3,7 +3,7 @@ import React, {Component, useState} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { 
     Card, 
-    CardImg, 
+    CardImg,
     CardText, 
     CardBody, 
     CardTitle, 
