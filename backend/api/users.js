@@ -28,21 +28,25 @@ async(req,res) => {
 const {name, email, password} = req.body;
 
 try{
-    let user = await User.findOne({email}); 
+    
+    
+    let checkUser = await User.findOne({email}); 
     //validate if user already exist or not.
-    if(user){
+    if(checkUser){
+        console.log(checkUser)
         return res
-        .status()
+        .status(400)
         .json({errors:
-        [{msg:'user already exist'}]
+        [{msg:`${checkUser} already exist`}]
         });
+        
     }
 
-    user = new User({
+     const user = new User({
         name, 
         email, 
         password
-    })
+    });
 
     //salting and hashing the password 
     const salt = await bcrypt.genSalt(10); 
@@ -51,14 +55,14 @@ try{
 
     await user.save()
 
-
+    res.send(user)
 
 
 }catch(error){
-    console.log(error)
-    res.status(500).send('Server error')
+    console.error(error.message);
+    res.status(500).send('Server error');
 }
 
-})
+});
 
 module.exports = router; 
