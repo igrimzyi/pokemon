@@ -1,6 +1,9 @@
 const express = require('express')
 const {check , validationResult} = require('express-validator');
 const router = express.Router();
+const bcrypt = require('bcryptjs'); 
+const jwt = require('jsonwebtoken');
+const User = require('../models/User');
 
 
 
@@ -12,7 +15,50 @@ router.post('/', [
     .isEmpty(), 
     check('email', 'Enter a valid email')
     .isEmail(), 
+    check('password' , 'Enter password correctly ')
+    .isLength({min: 6})
+], 
+async(req,res) => {
+    const errors = validationResult(req); 
+    if(!errors.isEmpty()) {
+        return res.status(400).json({errors: errors.array()})
     
+}
+
+const {name, email, password} = req.body;
+
+try{
+    let user = await User.findOne({email}); 
+    //validate if user already exist or not.
+    if(user){
+        return res
+        .status()
+        .json({errors:
+        [{msg:'user already exist'}]
+        });
+    }
+
+    user = new User({
+        name, 
+        email, 
+        password
+    })
+
+    //salting and hashing the password 
+    const salt = await bcrypt.genSalt(10); 
+
+    user.password = await bcrypt.hash(password, salt);
+
+    await user.save()
 
 
-])
+
+
+}catch(error){
+    console.log(error)
+    res.status(500).send('Server error')
+}
+
+})
+
+module.exports = router; 
