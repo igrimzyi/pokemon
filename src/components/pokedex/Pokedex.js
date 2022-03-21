@@ -45,7 +45,7 @@ class PokemonDetails extends Component {
       return <p>Loading...</p>
     }
     
-    return <Card className='card-align'>  
+    return   <Card className='card-align'>  
     <CardImg 
       alt="Card image cap"
       src={this.state.details.sprites.front_default}

@@ -2,19 +2,13 @@ import axios from 'axios';
 import React, {Component, useState} from 'react'; 
 import { useNavigate, useParams } from 'react-router-dom';
 import { 
-    CardGroup, 
     Card, 
     CardImg, 
-    CardSubtitle,
     CardText, 
     CardBody, 
     CardTitle, 
     Button,
     Progress,
-    ButtonToggle,
-    ButtonToolbar,
-    ButtonGroup,
-   
     } from "reactstrap";
     import './pokemon.css'
     import Heart from "react-animated-heart";
@@ -77,12 +71,7 @@ import {
 
 
 
-        }
-
-        function FavoritePokemon(){
-
-        }
-
+        }       
 
         //get the pokemon information and render that specific pokemon on to the page!
         axios.get(`${baseUrl}${pokeId}`)
