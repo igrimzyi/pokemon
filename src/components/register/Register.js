@@ -28,6 +28,7 @@ export default class Register extends  Component {
           return res.data
         })
         .catch(error =>{
+          console.log(error.data)
           return error
         })
     

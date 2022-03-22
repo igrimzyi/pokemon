@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () =>{
     try{
-        await mongoose.connect('mongodb://localhost:27017/pokeapplication', {useNewUrlParser: true, useUnifiedTopology: true})
+        await mongoose.connect('mongodb://localhost:27017/pokeapp', {useNewUrlParser: true, useUnifiedTopology: true})
         console.log('Database connected')
     }catch(err){
         console.error(err.message)
