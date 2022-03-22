@@ -10,10 +10,16 @@ const PORT = 4000;
 
 app.use(express.json({extended:false}));
 
+const cors=require("cors");
 
+const corsOptions ={
+   origin:'*', 
+   credentials:true,            //access-control-allow-credentials:true
+   optionSuccessStatus:200,
+}
+
+app.use(cors(corsOptions)) 
 app.use('/api/users', require('./api/users'))
-
-
 
 
 
