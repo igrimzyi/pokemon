@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { NavLink } from 'react-router-dom';
 import {Form, FormGroup, Label, Input, Button, FormText} from 'reactstrap';
 
+const axios = require('axios');
+
 import "./login.css"
 
 //login component that is only show for now and does not have any backend application
