@@ -11,9 +11,8 @@ export default class Register extends  Component {
     super(props);
     this.state = {
       email: '',
-      username: '', 
-      password:'',
-      checkPassword: ''
+      name: '', 
+      password:''
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -22,15 +21,14 @@ export default class Register extends  Component {
   
   handleSubmit(e){
     e.preventDefault();
-    const data = this.state
-    console.log(data)
-    axios.post('https://localhost:4000/api/users' , {
-      username: this.username,
-      email: this.email, 
-      password: this.password
-      })
+    console.log(this.state)
+    axios
+        .post('http://localhost:4000/api/users' , this.state)
         .then(res =>{
-          console.log(res.data)
+          return res.data
+        })
+        .catch(error =>{
+          return error
         })
     
   
@@ -70,13 +68,13 @@ export default class Register extends  Component {
     
     <Input
       id="username"
-      name="username"
-      placeholder="Username"
-      type="username"
+      name="name"
+      placeholder="name"
+      type="name"
       value={this.state.value}
       onChange={this.handleInputChange}
     />
-    <Label for="username">
+    <Label for="name">
       Username
     </Label>
   </FormGroup>
@@ -94,19 +92,19 @@ export default class Register extends  Component {
         Password
       </Label>
     </FormGroup>
-    <FormGroup floating>
+    {/* <FormGroup floating>
       <Input
         id="check-Password"
         name="check-password"
         placeholder="Password"
-        type="password"
+        type="check-password"
         value={this.state.value} 
         onChange={this.handleInputChange}
       />
       <Label for="check-Password">
         Confirm Password
       </Label>
-    </FormGroup>
+    </FormGroup> */}
     {' '}
     <Button color='success'>
       Submit
