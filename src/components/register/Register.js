@@ -6,13 +6,17 @@ import { Form,
     Button } from 'reactstrap';
     const axios = require('axios'); 
 import './register.css'
+
+
+
 export default class Register extends  Component {
   constructor(props){
     super(props);
     this.state = {
       email: '',
       name: '', 
-      password:''
+      password:'',
+      errResponse: ''
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -28,7 +32,7 @@ export default class Register extends  Component {
           return res.data
         })
         .catch(error =>{
-          console.log(error.data)
+        console.log(error.response.data)
           return error
         })
     
