@@ -7,9 +7,27 @@ import { Form,
     const axios = require('axios'); 
 import './register.css'
 
+class Alert extends Component{
+    
+  
+  
+  
+  render(){
+    return(
+    <div>
+      <Alert
+        color="primary"
+      >
+         return certain error
+      </Alert>
+    </div>
+    )
+    }
+}
 
 
-export default class Register extends  Component {
+
+export default class Register extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -26,15 +44,25 @@ export default class Register extends  Component {
   handleSubmit(e){
     e.preventDefault();
     console.log(this.state)
+    //post req to my backend
     axios
         .post('http://localhost:4000/api/users' , this.state)
         .then(res =>{
           return res.data
         })
         .catch(error =>{
-        console.log(error.response.data)
+          //<param>.response.data is what gets the backend response and allows the data to be console logged 
+        this.setState({errResponse: error.response.data})
+        console.log(this.state.errResponse)
+        if(!this.state.errResponse){
+          alert("You signed up correctly")
+        }else{
+          alert(this.state.errResponse)
+        }
+        
           return error
         })
+    
     
   
   }
