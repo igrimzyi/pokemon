@@ -8,10 +8,6 @@ import { Form,
 import './register.css'
 
 class Alert extends Component{
-    
-  
-  
-  
   render(){
     return(
     <div>
@@ -35,6 +31,7 @@ export default class Register extends Component {
       name: '', 
       password:'',
       errResponse: ''
+
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -46,7 +43,7 @@ export default class Register extends Component {
     console.log(this.state)
     //post req to my backend
     axios
-        .post('http://localhost:4000/api/users' , this.state)
+        .post('http://localhost:4000/api/users' ,this.state)
         .then(res =>{
           return res.data
         })
@@ -59,12 +56,10 @@ export default class Register extends Component {
         }else{
           alert(this.state.errResponse)
         }
-        
           return error
         })
-    
-    
-  
+
+       
   }
 
   handleInputChange(e) {
@@ -75,12 +70,11 @@ export default class Register extends Component {
         [name]: value
     })
   }
-
-  
-
     render(){
             return(
 <div>
+    
+
   <Form className='register-margins' onSubmit={this.handleSubmit} inline>
       <h2>Register</h2>
     <FormGroup floating>

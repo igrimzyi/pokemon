@@ -25,15 +25,12 @@ async(req,res) => {
     if(!errors.isEmpty()) {
         //returning specific params from the error array
         let msg = errors.array()[0].msg
-        console.log(msg)
         return res.status(400).send(msg)
 }
 
 const {name, email, password} = req.body;
 
 try{
-    
-    
     let checkUser = await User.findOne({email}); 
     //validate if user already exist or not.
     if(checkUser){
