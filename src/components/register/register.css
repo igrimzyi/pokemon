@@ -7,3 +7,11 @@
     margin:-100px 0 0 -150px;
 
 }
+
+.alert-margins{
+    width: 50%;
+    margin-top: 5rem;
+    left: 25%;
+    display: flex;
+    justify-content: center;
+}

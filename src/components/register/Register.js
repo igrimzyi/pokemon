@@ -1,27 +1,28 @@
-import react, {Component} from 'react'; 
+import react, {Component, useState} from 'react'; 
 import { Form, 
     Input,
     FormGroup, 
     Label, 
-    Button } from 'reactstrap';
+    Button,
+     Alert } from 'reactstrap';
     const axios = require('axios'); 
 import './register.css'
 
-class Alert extends Component{
-  render(){
-    return(
-    <div>
-      <Alert
-        color="primary"
-      >
-         return certain error
-      </Alert>
-    </div>
-    )
-    }
+const AlertError = (props) => {
+  console.log(props)
+  const [visible, setVisible] = useState(true);
+  const [res, setRes] = useState(props.props)
+  const onDismiss = () => setVisible(false);
+if(!res){
+  return<></>
+}else{
+  return (
+    <Alert className="alert-margins" color="info" isOpen={visible} toggle={onDismiss}>
+      {props.props}
+    </Alert>
+  );
 }
-
-
+}
 
 export default class Register extends Component {
   constructor(props){
@@ -30,7 +31,8 @@ export default class Register extends Component {
       email: '',
       name: '', 
       password:'',
-      errResponse: ''
+      errResponse: '',
+      isOpen:true
 
     };
 
@@ -50,7 +52,7 @@ export default class Register extends Component {
         .catch(error =>{
           //<param>.response.data is what gets the backend response and allows the data to be console logged 
         this.setState({errResponse: error.response.data})
-        console.log(this.state.errResponse)
+   
         if(!this.state.errResponse){
           alert("You signed up correctly")
         }else{
@@ -70,6 +72,11 @@ export default class Register extends Component {
         [name]: value
     })
   }
+  componentDidUpdate(){
+    
+  }
+
+
     render(){
             return(
 <div>
