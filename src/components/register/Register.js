@@ -72,8 +72,10 @@ export default class Register extends Component {
         [name]: value
     })
   }
-  componentDidUpdate(){
-    
+  
+  componentDidUpdate(prevProps,prevState){
+    console.log(err)
+    console.log('hello')
   }
 
 
