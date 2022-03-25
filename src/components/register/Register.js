@@ -8,21 +8,6 @@ import { Form,
     const axios = require('axios'); 
 import './register.css'
 
-const AlertError = (props) => {
-  console.log(props)
-  const [visible, setVisible] = useState(true);
-  const [res, setRes] = useState(props.props)
-  const onDismiss = () => setVisible(false);
-if(!res){
-  return<></>
-}else{
-  return (
-    <Alert className="alert-margins" color="info" isOpen={visible} toggle={onDismiss}>
-      {props.props}
-    </Alert>
-  );
-}
-}
 
 export default class Register extends Component {
   constructor(props){
@@ -32,14 +17,14 @@ export default class Register extends Component {
       name: '', 
       password:'',
       errResponse: '',
-      isOpen:true
+      isOpen:false
 
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   } 
-  
+
   handleSubmit(e){
     e.preventDefault();
     console.log(this.state)
@@ -52,11 +37,14 @@ export default class Register extends Component {
         .catch(error =>{
           //<param>.response.data is what gets the backend response and allows the data to be console logged 
         this.setState({errResponse: error.response.data})
+        this.setState({isOpen:false})
    
         if(!this.state.errResponse){
-          alert("You signed up correctly")
+          
         }else{
-          alert(this.state.errResponse)
+          this.setState({isOpen:true})
+        
+          
         }
           return error
         })
@@ -73,17 +61,20 @@ export default class Register extends Component {
     })
   }
   
-  componentDidUpdate(prevProps,prevState){
-    console.log(err)
-    console.log('hello')
+  componentDidUpdate(err){
+  
+
+    
   }
 
 
     render(){
             return(
 <div>
-    
-
+  <Alert className="alert-margins" color="danger" isOpen={this.state.isOpen} toggle={() =>{this.setState({isOpen:false})}}>
+            {this.state.errResponse}
+  </Alert>
+  {/* toggle={onDismiss} */}
   <Form className='register-margins' onSubmit={this.handleSubmit} inline>
       <h2>Register</h2>
     <FormGroup floating>
