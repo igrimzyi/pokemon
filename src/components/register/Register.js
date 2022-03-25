@@ -57,7 +57,7 @@ export default class Register extends Component {
   <Alert className="alert-margins" color="danger" isOpen={this.state.isOpen} toggle={() =>{this.setState({isOpen:false})}}>
             {this.state.errResponse}
   </Alert>
-  {/* toggle={onDismiss} */}
+
   <Form className='register-margins' onSubmit={this.handleSubmit} inline>
       <h2>Register</h2>
     <FormGroup floating>

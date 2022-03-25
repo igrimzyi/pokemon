@@ -11,9 +11,7 @@ import "./login.css"
 export default class login extends Component {
         render(){
                 return(
-
     <div>
-      
     <Form className='form-margins' inline>
       <h2>Login</h2>
     <FormGroup floating>
