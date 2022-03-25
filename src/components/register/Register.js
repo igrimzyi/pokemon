@@ -12,6 +12,7 @@ import './register.css'
 export default class Register extends Component {
   constructor(props){
     super(props);
+    //setting the state of my params with as well setting the state of my response... isOpen will be triggered through the error response
     this.state = {
       email: '',
       name: '', 
@@ -36,22 +37,12 @@ export default class Register extends Component {
         })
         .catch(error =>{
           //<param>.response.data is what gets the backend response and allows the data to be console logged 
+          //err response and is open will be triggered which will fire a response to the front end notifying my user
         this.setState({errResponse: error.response.data})
-        this.setState({isOpen:false})
-   
-        if(!this.state.errResponse){
-          
-        }else{
-          this.setState({isOpen:true})
-        
-          
-        }
+        this.setState({isOpen:true})
           return error
-        })
-
-       
+        })  
   }
-
   handleInputChange(e) {
     const target = e.target;
     const value = target.value;
@@ -60,14 +51,6 @@ export default class Register extends Component {
         [name]: value
     })
   }
-  
-  componentDidUpdate(err){
-  
-
-    
-  }
-
-
     render(){
             return(
 <div>
