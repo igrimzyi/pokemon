@@ -15,3 +15,13 @@
     display: flex;
     justify-content: center;
 }
+
+@media screen and (max-width:450px){
+        
+    .iphone-xr-alert{
+        width: 18rem;
+        left:16%;
+    
+    }
+  
+}

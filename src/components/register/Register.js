@@ -18,16 +18,25 @@ export default class Register extends Component {
       name: '', 
       password:'',
       errResponse: '',
+      passwordCheck:'',
       isOpen:false
 
     };
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+  this.handleInputChange = this.handleInputChange.bind(this);
+  this.handleSubmit = this.handleSubmit.bind(this);
   } 
 
   handleSubmit(e){
     e.preventDefault();
+    if(this.state.email === '' || this.state.password === ''){
+      this.setState({errResponse:"You have submitted information incorrectly"})
+      this.setState({isOpen:true})
+    }else if(this.state.password != this.state.passwordCheck){
+      this.setState({errResponse:"Passwords don't match!"})
+      this.setState({isOpen:true})
+    }else{
+    
     console.log(this.state)
     //post req to my backend
     axios
@@ -42,6 +51,8 @@ export default class Register extends Component {
         this.setState({isOpen:true})
           return error
         })  
+
+      }
   }
   handleInputChange(e) {
     const target = e.target;
@@ -54,7 +65,7 @@ export default class Register extends Component {
     render(){
             return(
 <div>
-  <Alert className="alert-margins" color="danger" isOpen={this.state.isOpen} toggle={() =>{this.setState({isOpen:false})}}>
+  <Alert className="alert-margins iphone-xr-alert" color="danger" isOpen={this.state.isOpen} toggle={() =>{this.setState({isOpen:false})}}>
             {this.state.errResponse}
   </Alert>
 
@@ -102,19 +113,19 @@ export default class Register extends Component {
         Password
       </Label>
     </FormGroup>
-    {/* <FormGroup floating>
+    <FormGroup floating>
       <Input
-        id="check-Password"
-        name="check-password"
+        id="passwordCheck"
+        name="passwordCheck"
         placeholder="Password"
-        type="check-password"
+        type="passwordCheck"
         value={this.state.value} 
         onChange={this.handleInputChange}
       />
-      <Label for="check-Password">
+      <Label for="passwordCheck">
         Confirm Password
       </Label>
-    </FormGroup> */}
+    </FormGroup>
     {' '}
     <Button color='success'>
       Submit
