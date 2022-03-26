@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
@@ -45,6 +47,10 @@ async(req,res) =>{
             .send(400)
             .send("Invalid Credentials")
         }
+
+        const user = {name: email}
+        const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+        res.json({accessToken: accessToken})
      }catch(err){
          let user = await User.findOne({email});
      }

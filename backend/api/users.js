@@ -1,9 +1,12 @@
+require('dotenv').config()
+
 const express = require('express')
 const {check , validationResult} = require('express-validator');
 const router = express.Router();
 const bcrypt = require('bcryptjs'); 
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const authToken = require('../middleware/authMiddle')
 // const config = require('config');
 
 
@@ -17,7 +20,7 @@ router.post('/', [
     .isEmpty(), 
     check('email', 'Enter a valid email')
     .isEmail(), 
-    check('password' , 'Enter password correctly ')
+    check('password' , 'Enter password correctly')
     .isLength({min: 6})
 ], 
 async(req,res) => {
@@ -56,23 +59,14 @@ try{
 
     await user.save()
 
-    res.send(user)
+    //user is now saved and token is the only thing that should be sent in order to access the user privileged tabs
 
-//     const payload ={
-//         user:{
-//             id: user.id
-//         }
-    
-//     }
+    const userToken = {name: email}
+    const accessToken = jwt.sign(userToken, process.env.ACCESS_TOKEN_SECRET)
 
-//     jwt.sign(payload, config.get('jwtsecret'),
-//     {expiresIn: 40000},
-//     (err, token) =>{
-//         if (err) throw err; 
-//         res.json({token})
-//     }
+    res.send({accessToken: accessToken})
 
-// )
+    authToken(userToken)
 
 
 }catch(error){
