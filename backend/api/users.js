@@ -4,7 +4,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs'); 
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-
+// const config = require('config');
 
 
 //These routes will be specifically designed to orchestrate my endpoint to create read update and delete users.
@@ -57,6 +57,22 @@ try{
     await user.save()
 
     res.send(user)
+
+//     const payload ={
+//         user:{
+//             id: user.id
+//         }
+    
+//     }
+
+//     jwt.sign(payload, config.get('jwtsecret'),
+//     {expiresIn: 40000},
+//     (err, token) =>{
+//         if (err) throw err; 
+//         res.json({token})
+//     }
+
+// )
 
 
 }catch(error){
