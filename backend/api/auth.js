@@ -3,7 +3,6 @@ require('dotenv').config()
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const config = require('../config')
 const {check, validationResult} = require('express-validator');
 const jwt = require('jsonwebtoken')
 const User = require('../models/User');
@@ -26,7 +25,8 @@ router.post('/', [
 ],
 async(req,res) =>{
     const errors = validationResult(req);
-    let msg = errors.array()[0].msg
+    // console.log(errors.array[0])
+    //  let msg = errors.array()[0].msg
     if(!errors.isEmpty()){
         return res
         .status(400)
@@ -35,24 +35,29 @@ async(req,res) =>{
     const {email,password} = req.body;
 
      try{
-        let user = await User.findOne({email});
-        if(!user){
+        
+        let checkUser = await User.findOne({email});
+        if(!checkUser){
             return res
             .status(400)
             .send("Invalid Credentials");
         }
-        const isMatch = await bcrypt.compare(password, user.password);
+        const isMatch = await bcrypt.compare(password, checkUser.password);
         if(!isMatch){
             return res
-            .send(400)
+            .status(400)
             .send("Invalid Credentials")
         }
 
         const user = {name: email}
         const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
         res.json({accessToken: accessToken})
+
+
      }catch(err){
          let user = await User.findOne({email});
      }
 }
 )
+
+module.exports = router;
