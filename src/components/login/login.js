@@ -1,6 +1,6 @@
 import React, {Component} from 'react'; 
 import { NavLink } from 'react-router-dom';
-import {Form, FormGroup, Label, Input, Button, FormText} from 'reactstrap';
+import {Form, FormGroup, Label, Input, Button, FormText, Alert} from 'reactstrap';
 
 const axios = require('axios');
 
@@ -32,7 +32,8 @@ export default class login extends Component {
       return res.data; 
     })
     .catch(error =>{
-      console.log(error)
+      this.setState({errResponse: error.response.data})
+      this.setState({isOpen:true})
       return error
     })
 
@@ -51,6 +52,12 @@ export default class login extends Component {
         render(){
                 return(
     <div>
+
+<Alert className="alert-margins iphone-xr-alert" color="danger" isOpen={this.state.isOpen} toggle={() =>{this.setState({isOpen:false})}}>
+            {this.state.errResponse}
+  </Alert>
+
+
     <Form className='form-margins' onSubmit={this.handleSubmit} inline>
       <h2>Login</h2>
     <FormGroup floating>
