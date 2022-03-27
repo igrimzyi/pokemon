@@ -30,7 +30,7 @@ async(req,res) =>{
     if(!errors.isEmpty()){
         return res
         .status(400)
-        .send(msg)
+        .send(errors.array()[0].msg)
     }
     const {email,password} = req.body;
 

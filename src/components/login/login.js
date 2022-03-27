@@ -9,32 +9,75 @@ import "./login.css"
 //login component that is only show for now and does not have any backend application
 
 export default class login extends Component {
+  constructor(props){
+    super(props)
+    this.state ={
+      email:'',
+      password:'',  
+      errResponse: '',
+      isOpen:false
+    }
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+//essentially we are handling the form submit as we are in our login page.
+
+  handleSubmit(e){
+    e.preventDefault()
+    console.log(this.state)
+    axios
+    .post('http://localhost:4000/api/auth', this.state)
+    .then(res =>{
+      return res.data; 
+    })
+    .catch(error =>{
+      console.log(error)
+      return error
+    })
+
+  }
+  handleInputChange(e){
+    const target = e.target; 
+    const value = target.value;
+    const name = target.name; 
+    this.setState({
+      [name]:value
+    })
+
+  }
+
+
         render(){
                 return(
     <div>
-    <Form className='form-margins' inline>
+    <Form className='form-margins' onSubmit={this.handleSubmit} inline>
       <h2>Login</h2>
     <FormGroup floating>
     
       <Input
         id="Email"
         name="email"
-        placeholder="Email/Username"
+        placeholder="Email"
         type="email"
+        onChange={this.handleInputChange}
+        value={this.state.value}
       />
-      <Label for="exampleEmail">
+      <Label for="Email">
         Email
       </Label>
     </FormGroup>
     {' '}
     <FormGroup floating>
       <Input
-        id="examplePassword"
+        id="Password"
         name="password"
         placeholder="Password"
         type="password"
+        onChange={this.handleInputChange}
+        value={this.state.value}
       />
-      <Label for="examplePassword">
+      <Label for="Password">
         Password
       </Label>
     </FormGroup>
