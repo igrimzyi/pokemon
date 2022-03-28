@@ -1,6 +1,6 @@
 import React, {Component} from 'react'; 
 import { NavLink } from 'react-router-dom';
-import {Form, FormGroup, Label, Input, Button, FormText, Alert} from 'reactstrap';
+import {Form, FormGroup, Label, Input, Button,Alert} from 'reactstrap';
 
 const axios = require('axios');
 
@@ -29,7 +29,8 @@ export default class login extends Component {
     axios
     .post('http://localhost:4000/api/auth', this.state)
     .then(res =>{
-      return res.data; 
+      
+      return res.data.accessToken; 
     })
     .catch(error =>{
       this.setState({errResponse: error.response.data})
