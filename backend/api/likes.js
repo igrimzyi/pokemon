@@ -12,6 +12,10 @@ router.get('/', authToken, (req,res,next)=>{
     }
 })
 
-router.patch('/', authToken, (req,res,next)  =>{
-
+router.patch('/', authToken, (req,res)  =>{
+    try{
+        
+    }catch(err){
+        res.status(500).send("Server Error" + err)
+    }
 } )

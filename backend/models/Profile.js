@@ -6,17 +6,18 @@ const ProfileSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref:'user'
         },
+    name:{
+        type:String,
+        required:true
+        },
     profilePicture: {
         type:String, 
         required:false,
         default: 'https://i.stack.imgur.com/l60Hf.png'
     }, 
-    likes:[{
-        pokemon:{
-            type:String,
-        }
-
-    }]
+    likes:{
+        type:Array
+    }
 })
 
 module.exports = Profile = mongoose.model('Profile', ProfileSchema);
