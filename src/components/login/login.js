@@ -30,6 +30,9 @@ export default class login extends Component {
     .post('http://localhost:4000/api/auth', this.state)
     .then(res =>{
       
+      //store token in local storage based off response
+      localStorage.setItem('userToken', res.data.accessToken)
+      
       return res.data.accessToken; 
     })
     .catch(error =>{
