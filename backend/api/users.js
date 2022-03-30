@@ -42,9 +42,7 @@ try{
         console.log(checkUser)
         return res
         .status(400)
-        .json({errors:
-        [{msg:`${checkUser} already exist`}]
-        });
+        .send("This user or email already exist");
         
     }
     
