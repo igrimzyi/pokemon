@@ -6,7 +6,10 @@ const router = express.Router();
 const bcrypt = require('bcryptjs'); 
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-const authToken = require('../middleware/authMiddle')
+const Profile = require('../models/Profile');
+
+
+// const authToken = require('../middleware/authMiddle')
 // const config = require('config');
 
 
@@ -45,28 +48,47 @@ try{
         });
         
     }
-
-     const user = new User({
+    
+    const user = new User({
         name, 
         email, 
         password
     });
+    const profile = new Profile({
+        name,
+    }) 
 
     //salting and hashing the password 
     const salt = await bcrypt.genSalt(10); 
 
     user.password = await bcrypt.hash(password, salt);
 
+    //Saving the user profile and saving the user creds to the mongo shell 
     await user.save()
+    await profile.save()
 
     //user is now saved and token is the only thing that should be sent in order to access the user privileged tabs
 
-    const userToken = {name: email}
+    const userToken = {name: email, 
+    id: user._id}
     const accessToken = jwt.sign(userToken, process.env.ACCESS_TOKEN_SECRET)
 
-    res.send({accessToken: accessToken})
+    res.status(200).send({accessToken: accessToken})
 
-    authToken(userToken)
+
+    
+    function authToken(req,res,next) {
+        const authHeader = req.headers['authorization']
+        const token = authHeader && authHeader.split(' ')[1]
+        if(token === null) return res.status(403)
+
+        jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err,userToken) =>{
+            if(err) return res.status(403)
+            req.userToken = userToken
+            next()
+        })
+    } 
+    // authToken(userToken)
 
 
 }catch(error){
