@@ -19,7 +19,10 @@ const corsOptions ={
 }
 
 app.use(cors(corsOptions)) 
+
 app.use('/api/users', require('./api/users'))
+app.use('/api/auth', require('./api/auth'))
+app.use('/api/likes', require('./api/likes'))
 
 
 

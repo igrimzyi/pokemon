@@ -1,8 +1,9 @@
 require('dotenv').config()
 
 const express = require('express')
-const app = express();
-const jwt = require('jsonwebtoken')
+const router = express.Router();
+const jwt = require('jsonwebtoken');
+
 
 function authToken(req,res,next){
     const authHeader = req.headers['authorization'];

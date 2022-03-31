@@ -66,26 +66,13 @@ try{
 
     //user is now saved and token is the only thing that should be sent in order to access the user privileged tabs
 
-    const userToken = {name: email, 
-    id: user._id}
-    const accessToken = jwt.sign(userToken, process.env.ACCESS_TOKEN_SECRET)
+    const userToken = {
+        name: email, 
+        id: user._id}
+    const accessToken = jwt.sign(userToken, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1h'})
 
     res.status(200).send({accessToken: accessToken})
 
-
-    
-    function authToken(req,res,next) {
-        const authHeader = req.headers['authorization']
-        const token = authHeader && authHeader.split(' ')[1]
-        if(token === null) return res.status(403)
-
-        jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err,userToken) =>{
-            if(err) return res.status(403)
-            req.userToken = userToken
-            next()
-        })
-    } 
-    // authToken(userToken)
 
 
 }catch(error){
