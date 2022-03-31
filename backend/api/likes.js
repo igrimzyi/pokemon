@@ -19,6 +19,14 @@ router.get('/', authenticateToken, async(req,res)=>{
         console.log(err)
         res.status(500).send("Server Error" + err)
     }
+}); 
+router.patch('/', authenticateToken, async(req,res)=>{
+    try{
+        const profile = await Profile.findOne({email:req.user.id})
+        
+    }catch(err){
+
+    }
 })
 //middleware in order to verify and decode token
 function authenticateToken(req,res,next){

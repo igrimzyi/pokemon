@@ -130,7 +130,7 @@ import {
               <IterateButtons/>
              </div> */}
         <Card className='card-alignment'>
-            <LikeButton/>
+            <LikeButton />
             <CardBody className='card-body-width'>
                 
                 <CardImg 
