@@ -8,7 +8,6 @@ const {check , validationResult} = require('express-validator');
 
 
 router.get('/', (req,res)=>{
- 
     try{
         const profile = Profile.findById(req.body._id)
         const likes = profile.likes
