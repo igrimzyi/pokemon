@@ -49,13 +49,19 @@ async(req,res) =>{
             .send("Invalid Credentials")
         }
 
-        const user = {name: email}
-        const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+        const userToken = {
+            name: email, 
+            id: checkUser._id}
+    
+        const accessToken = jwt.sign(userToken, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1h'})
         res.json({accessToken: accessToken})
 
 
      }catch(err){
          let user = await User.findOne({email});
+         if(user){
+             return "user already exists"
+         }
      }
 }
 )
