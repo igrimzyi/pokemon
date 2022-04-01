@@ -19,7 +19,21 @@ import {
 
         function LikeButton() {
             const [isClick, setClick] = useState(false);
+            const config = {
+                headers:{
+                    Authorization: 'Bearer ' + localStorage.getItem('userToken')
+                }
+            }
+            axios.patch("http://localhost:4000/api/likes" , config , (req,res)=>{
+                try{
+                    console.log(req)
+                }catch(err){
+                    console.log(err)
+                }
+            })
+            
             return (
+                
               <div className="App">
                 <Heart isClick={isClick} onClick={() => setClick(!isClick)} />
               </div>
