@@ -23,9 +23,13 @@ router.get('/', authenticateToken, async(req,res)=>{
 router.patch('/', authenticateToken, async(req,res)=>{
     try{
         const profile = await Profile.findOne({email:req.user.id})
+        console.log(req.user.name)
+        await Profile.updateOne({email:req.user.name},{$push:{likes:'hi'}})
+
+        res.send(profile)
         console.log(profile)
     }catch(err){
-
+        return err
     }
 })
 //middleware in order to verify and decode token
