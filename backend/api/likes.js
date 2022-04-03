@@ -20,13 +20,14 @@ router.get('/', authenticateToken, async(req,res)=>{
         res.status(500).send("Server Error" + err)
     }
 }); 
-router.patch('/', authenticateToken, async(req,res)=>{
+
+//patch route for likes to be stored into mongodb
+router.post('/', authenticateToken, async(req,res)=>{
     try{
         const profile = await Profile.findOne({email:req.user.id})
         console.log(req.user.name)
         await Profile.updateOne({email:req.user.name},{$push:{likes:'hi'}})
-
-        res.send(profile)
+        res.status(201).send(profile)
         console.log(profile)
     }catch(err){
         return err

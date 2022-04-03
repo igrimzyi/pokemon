@@ -17,29 +17,6 @@ import {
 
     export default function PokemonInformation() {
 
-        function LikeButton() {
-            const [isClick, setClick] = useState(false);
-            const config = {
-                headers:{
-                    Authorization: 'Bearer ' + localStorage.getItem('userToken')
-                }
-            }
-            axios.patch("http://localhost:4000/api/likes" , config , (req,res)=>{
-                try{
-                    console.log(req)
-                }catch(err){
-                    console.log(err)
-                }
-            })
-            
-            return (
-                
-              <div className="App">
-                <Heart isClick={isClick} onClick={() => setClick(!isClick)} />
-              </div>
-            );
-          }
-       
         let {pokeId} = useParams();
         let baseUrl = 'https://pokeapi.co/api/v2/pokemon/';
         //functional components require you to use the useState hook in order to set state unlike class components where they
@@ -53,6 +30,32 @@ import {
         const [pokeName, setPokeName] = useState('')
         const [pokeAbility, setPokeAbility] = useState('');
         const [urlParam, setUrlParam] = useState(parseInt(pokeId))
+
+        function LikeButton() {
+            
+            const [isClick, setClick] = useState(false);
+            const config = {
+                headers:{
+                    Authorization: "Bearer " + localStorage.getItem('userToken')
+                }
+            }
+            let body = ''
+            axios.post("http://localhost:4000/api/likes" ,{hello:"sup"}, config)
+            .then(res=>{
+                console.log(res)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+            
+            return (
+                
+              <div className="App">
+                <Heart isClick={isClick} onClick={() => setClick(!isClick)} />
+              </div>
+            );
+          }
+       
     
         function IterateButtons(){
             let urlParams = useParams();
