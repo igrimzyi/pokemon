@@ -21,40 +21,26 @@ import {
         let baseUrl = 'https://pokeapi.co/api/v2/pokemon/';
         //functional components require you to use the useState hook in order to set state unlike class components where they
         //use this.state or this.setState method
-        const [pokeData, setPokeData] = useState('');
-        const [pokeExperience, setPokeExperience] = useState('');
-        const [pokeType, setPokeType] = useState('');
-        const [pokeHealth, setPokeHealth] = useState('');
-        const [pokeAttack, setPokeAttack] = useState('');
-        const [pokeDefense, setPokeDefense] = useState('');
-        const [pokeName, setPokeName] = useState('')
-        const [pokeAbility, setPokeAbility] = useState('');
+        const [pokeData, setPokeData] = useState();
+        
         const [urlParam, setUrlParam] = useState(parseInt(pokeId))
 
-        function LikeButton() {
-            
-            const [isClick, setClick] = useState(false);
+        function isLiked(){
             const config = {
                 headers:{
                     Authorization: "Bearer " + localStorage.getItem('userToken')
                 }
             }
-            let body = ''
-            axios.post("http://localhost:4000/api/likes" ,{hello:"sup"}, config)
-            .then(res=>{
-                console.log(res)
+            axios.get("http://localhost:4000/api/likes", config, (req,res) =>{
+                try{
+                    console.log(res.data.likes)
+                }catch(err){
+                   console.log(err)
+                }
+
             })
-            .catch(err=>{
-                console.log(err)
-            })
-            
-            return (
-                
-              <div className="App">
-                <Heart isClick={isClick} onClick={() => setClick(!isClick)} />
-              </div>
-            );
-          }
+        }
+        
        
     
         function IterateButtons(){
@@ -91,27 +77,47 @@ import {
         }       
 
         //get the pokemon information and render that specific pokemon on to the page!
+       if(!pokeData){
         axios.get(`${baseUrl}${pokeId}`)
             .then((res)=>{
                 let data = res.data;
-            //   setting state within a funcitonal component using my second param 
-                let imgURL = data.sprites.front_default;        
-                setPokeName(data.name)
-                setPokeData(imgURL);
-                setPokeExperience(data.base_experience)
-                setPokeType(data.types[0].type.name);
-                setPokeHealth(data.stats[0].base_stat);
-                setPokeAttack(data.stats[1].base_stat);
-                setPokeDefense(data.stats[2].base_stat);
-                setPokeAbility(data.abilities[0].ability.name)
-               
+            //   setting state within a funcitonal component using my second param   
+                    setPokeData(data)   
                
             })
             .catch((err) =>{
-                console.log( + err)
-                setErrorRender(err);
+                console.log(err)
+
             })
+        }
+        
             //handeling onClick events 
+
+                function LikeButton() {
+                
+                    const [isClick, setClick] = useState(false);
+                    const config = {
+                        headers:{
+                            Authorization: "Bearer " + localStorage.getItem('userToken')
+                        }
+                    }
+                    let body = ''
+                    console.log(isClick)
+                    axios.post("http://localhost:4000/api/likes" , {hello:"sup"}, config)
+                    .then(res=>{
+                        console.log(res)
+                    })
+                    .catch(err=>{
+                        console.log(err)
+                    })
+                    
+                    return (
+                        
+                    <div className="App">
+                        <Heart isClick={isClick} onClick={() => setClick(!isClick)} />
+                    </div>
+                    );
+                }
         
             //returning an empty card during the loading phase of the react state
             if(!pokeData){
@@ -133,35 +139,29 @@ import {
         //only returning the pokemon name as of right now 
         return(
 <div className='div-styles title title-iphone iphone-xr disable-select'>
-               {/* <div className='arrow-alignment'>
-              
-                <IterateButtons/>
-               </div> */}
+        
               
             <div className='arrow-alignment'>
                 <IterateButtons />
              </div>
     <div >
-            {/* <div className='arrow-alignment'>
-              
-              <IterateButtons/>
-             </div> */}
+           
         <Card className='card-alignment'>
             <LikeButton />
             <CardBody className='card-body-width'>
                 
                 <CardImg 
-                src={pokeData}
+                src={pokeData.sprites.front_default}
                 top
                 className="image-margins"
                 width="30%"
                 height="80%"
                 />  
                 <CardTitle tag='h5' className=''>
-                    {pokeName}
+                    {pokeData.name}
                 </CardTitle>
                 <CardText>
-                    {pokeType} 
+                    {pokeData.types[0].type.name} 
                 </CardText>
                 <CardText tag='h5'>
                     Base Experience:
@@ -169,31 +169,31 @@ import {
 
                 {/* setting the stats of the pokemon */}
                 <div className="text-center">
-                    {pokeHealth} of 255
+                    {pokeData.stats[0].base_stat} of 255
                 </div>
                  <Progress
                 max="255"
-                value={pokeHealth}
+                value={pokeData.stats[0].base_stat}
                 color='danger'
                 >
                 health
                 </Progress>
                 <div className="text-center">
-                    {pokeAttack} of 255
+                    {pokeData.stats[2].base_stat} of 255
                 </div>
                 <Progress
                 max="255"
-                value={pokeAttack}
+                value={pokeData.stats[2].base_stat}
                 color='success'
                 >
                 Attack
                 </Progress>
                 <div className="text-center">
-                    {pokeDefense} of 255
+                    {pokeData.stats[1].base_stat} of 255
                 </div>
                 <Progress
                 max="255"
-                value={pokeDefense}
+                value={pokeData.stats[1].base_stat}
                 color='primary'
                 >
                 Defense
