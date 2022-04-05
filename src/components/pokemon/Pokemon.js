@@ -15,6 +15,7 @@ import {
   
 
 
+
     export default function PokemonInformation() {
 
         let {pokeId} = useParams();
@@ -25,22 +26,22 @@ import {
         
         const [urlParam, setUrlParam] = useState(parseInt(pokeId))
 
-        function isLiked(){
-            const config = {
-                headers:{
-                    Authorization: "Bearer " + localStorage.getItem('userToken')
-                }
-            }
-            axios.get("http://localhost:4000/api/likes", config, (req,res) =>{
-                try{
-                    console.log(res.data.likes)
-                }catch(err){
-                   console.log(err)
-                }
+            // function isLiked(){
+            //     const config = {
+            //         headers:{
+            //             Authorization: "Bearer " + localStorage.getItem('userToken')
+            //         }
+            //     }
+            //     axios.get("http://localhost:4000/api/likes", config, (req,res) =>{
+            //         try{
+            //             console.log(res.data.likes)
+            //         }catch(err){
+            //            console.log(err)
+            //         }
 
-            })
-        }
-        
+            //     })
+            // }
+            
        
     
         function IterateButtons(){
@@ -78,6 +79,7 @@ import {
 
         //get the pokemon information and render that specific pokemon on to the page!
        if(!pokeData){
+   
         axios.get(`${baseUrl}${pokeId}`)
             .then((res)=>{
                 let data = res.data;
@@ -90,7 +92,8 @@ import {
 
             })
         }
-        
+    
+
             //handeling onClick events 
 
                 function LikeButton() {
@@ -103,6 +106,9 @@ import {
                     }
                     let body = ''
                     console.log(isClick)
+
+                    function handleCLick(){
+                        setClick(!isClick)
                     axios.post("http://localhost:4000/api/likes" , {hello:"sup"}, config)
                     .then(res=>{
                         console.log(res)
@@ -110,11 +116,12 @@ import {
                     .catch(err=>{
                         console.log(err)
                     })
+                    }
                     
                     return (
                         
                     <div className="App">
-                        <Heart isClick={isClick} onClick={() => setClick(!isClick)} />
+                        <Heart isClick={isClick} onClick={handleCLick} />
                     </div>
                     );
                 }
