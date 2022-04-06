@@ -32,7 +32,7 @@ export default class login extends Component {
       
       //store token in local storage based off response
       localStorage.setItem('userToken', res.data.accessToken)
-      
+      console.log(res.data.accessToken)
       return res.data.accessToken; 
     })
     .catch(error =>{
