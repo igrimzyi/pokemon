@@ -21,8 +21,9 @@ router.get('/', async(req,res)=>{
 //patch route for likes to be stored into mongodb
 router.post('/', authenticateToken, async(req,res)=>{
     try{    
+        console.log(req.body)
         const profile = await Profile.findOne({email:req.user.id})
-        await Profile.updateOne({email:req.user.name},{$push:{likes:'hi'}})
+        await Profile.updateOne({email:req.user.name},{$push:{likes:req.body.pokemon}})
         return res.status(201).send("created page")
     }catch(err){
         return err
