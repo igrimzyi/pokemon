@@ -25,6 +25,7 @@ app.use('/api/users', require('./api/users'))
 app.use('/api/auth', require('./api/auth'))
 app.use('/api/likes', require('./api/likes'))
 app.use('/api/delete', require('./api/delete'))
+app.use('/api/profile', require('./api/profile'))
 
 
 
