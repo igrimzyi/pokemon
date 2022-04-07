@@ -5,13 +5,13 @@ const jwt = require('jsonwebtoken');
 const {check , validationResult} = require('express-validator'); 
 const Profile = require('../models/Profile');
 
+
 //protected route that receives user information and sends it to my frontend 
-router.get('/', async(req,res)=>{
+router.get('/',authenticateToken, async(req,res)=>{
     try{
-        console.log('protected route')
         const profile = await Profile.findOne({email:req.user.id})
-        const likes = profile.likes
-        res.send(likes)  
+        const likes = {likes:profile.likes}
+        return res.status(200).send(likes) 
     }catch(err){
         console.log(err)
         res.status(500).send("Server Error" + err)
@@ -25,16 +25,6 @@ router.post('/', authenticateToken, async(req,res)=>{
         const profile = await Profile.findOne({email:req.user.id})
         await Profile.updateOne({email:req.user.name},{$push:{likes:req.body.pokemon}})
         return res.status(201).send("created page")
-    }catch(err){
-        return err
-    }
-})
-//delete route to delete any 
-router.delete('/', authenticateToken, async(req,res)=>{
-    try{
-        console.log(req.body); 
-        await Profile.updateOne({email:req.user.name}, {$pull:{likes:req.body.pokemon}})
-        return res.status(204).send('deleted like')
     }catch(err){
         return err
     }
