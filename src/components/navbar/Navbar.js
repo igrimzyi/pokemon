@@ -88,7 +88,7 @@ export default class NavbarReact extends Component {
       
       <NavItem>
         
-          <NavLink className={'text-decoration right-link' } to="/pokedex">
+          <NavLink className={'text-decoration right-link' } to="/profile">
             <img src={this.state.profilePicture} className="profile-styles"></img>
           </NavLink>
         </NavItem>
