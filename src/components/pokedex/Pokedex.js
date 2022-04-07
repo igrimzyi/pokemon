@@ -30,13 +30,11 @@ class PokemonDetails extends Component {
   componentDidMount() {
     axios.get(this.props.pokemon.url)
       .then((response) => {
-
         this.setState({ 
           loading: false,
           details: response.data
         })
       })
-      
   }
 
 

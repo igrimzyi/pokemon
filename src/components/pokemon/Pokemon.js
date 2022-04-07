@@ -73,8 +73,7 @@ import {
             .then((res)=>{
                 let data = res.data;
             //   setting state within a funcitonal component using my second param   
-            
-                    setPokeData(data)   
+            setPokeData(data)   
             })
             .catch((err) =>{
                 console.log(err)
@@ -105,7 +104,7 @@ import {
                         })
                     }
                         
-                            console.log(likes)
+                            
                     function handleCLick(){
                     //setting isClick to false as of right
                     // setClick(!isClick) 
