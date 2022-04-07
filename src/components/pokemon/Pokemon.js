@@ -28,6 +28,8 @@ import {
 
         const [isClick, setClick] = useState(false);
        
+
+        //Incrementing the pokemon's url in order to go to the next pokemon in order...
         function IterateButtons(){
             let urlParams = useParams();
             if (urlParams.pokeId === '1'){
@@ -43,6 +45,7 @@ import {
             }
         }
 
+        //decrementing the pokemon's url to go to the previous pokemon in order...
         function DecrementButtons(){
             let urlParams = useParams();
             if(urlParams.pokeId === '898'){
@@ -77,10 +80,10 @@ import {
 
             })
         }
-        console.log(pokeData)
+      
     
 
-            //handeling onClick events 
+           //Like button feature
 
                 function LikeButton() {
                     function handleCLick(){
