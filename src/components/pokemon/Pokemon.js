@@ -26,24 +26,8 @@ import {
         
         const [urlParam, setUrlParam] = useState(parseInt(pokeId))
 
-            // function isLiked(){
-            //     const config = {
-            //         headers:{
-            //             Authorization: "Bearer " + localStorage.getItem('userToken')
-            //         }
-            //     }
-            //     axios.get("http://localhost:4000/api/likes", config, (req,res) =>{
-            //         try{
-            //             console.log(res.data.likes)
-            //         }catch(err){
-            //            console.log(err)
-            //         }
-
-            //     })
-            // }
-            
+        const [isClick, setClick] = useState(false);
        
-    
         function IterateButtons(){
             let urlParams = useParams();
             if (urlParams.pokeId === '1'){
@@ -85,6 +69,7 @@ import {
                 let data = res.data;
             //   setting state within a funcitonal component using my second param   
                     setPokeData(data)   
+                    
                
             })
             .catch((err) =>{
@@ -92,24 +77,23 @@ import {
 
             })
         }
+        console.log(pokeData)
     
 
             //handeling onClick events 
 
                 function LikeButton() {
-                
-                    const [isClick, setClick] = useState(false);
+                    function handleCLick(){
+                    //setting isClick to false as of right
+                    setClick(!isClick) 
                     const config = {
                         headers:{
                             Authorization: "Bearer " + localStorage.getItem('userToken')
                         }
                     }
-                    let body = ''
-                    console.log(isClick)
-
-                    function handleCLick(){
-                        setClick(!isClick)
-                    axios.post("http://localhost:4000/api/likes" , {hello:"sup"}, config)
+                    
+                    if(isClick=== false){
+                    axios.post("http://localhost:4000/api/likes" , {pokemon:`${pokeData.species.url}`},  config)
                     .then(res=>{
                         console.log(res)
                     })
@@ -117,6 +101,18 @@ import {
                         console.log(err)
                     })
                     }
+                    if(isClick === true){
+
+                    axios.delete("http://localhost:4000/api/likes" , {config ,pokemon:`${pokeData.species.url}`})
+                    .then(res=>{
+                        console.log(res)
+                    })
+                    .catch(err=>{
+                        console.log(err)
+                    })
+                    }
+                    }
+
                     
                     return (
                         
