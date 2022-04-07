@@ -91,8 +91,9 @@ import {
                             Authorization: "Bearer " + localStorage.getItem('userToken')
                         }
                     }
-                    
+                    //seeing if the state is liked or not liked and from there I could determine whether if I need to delete or post to my DB
                     if(isClick=== false){
+                    //posting to my DB and sending the specific pokemon url to it
                     axios.post("http://localhost:4000/api/likes" , {pokemon:`${pokeData.species.url}`},  config)
                     .then(res=>{
                         console.log(res)
@@ -102,7 +103,7 @@ import {
                     })
                     }
                     if(isClick === true){
-
+                    //deleting my pokemon like from the database and resetting the state to unliked 
                     axios.delete("http://localhost:4000/api/likes" , {config ,pokemon:`${pokeData.species.url}`})
                     .then(res=>{
                         console.log(res)
