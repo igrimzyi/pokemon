@@ -27,6 +27,8 @@ import {
         const [urlParam, setUrlParam] = useState(parseInt(pokeId))
 
         const [isClick, setClick] = useState(false);
+
+        const [likes, setLikes] = useState();
        
 
         //Incrementing the pokemon's url in order to go to the next pokemon in order...
@@ -71,44 +73,68 @@ import {
             .then((res)=>{
                 let data = res.data;
             //   setting state within a funcitonal component using my second param   
+            
                     setPokeData(data)   
-                    
-               
             })
             .catch((err) =>{
                 console.log(err)
 
             })
         }
-      
-    
 
            //Like button feature
 
                 function LikeButton() {
+                    //getting liked pokemon and seeing if the pokemon is liked or not...
+                        if(!likes){
+                        axios.
+                        get("http://localhost:4000/api/likes", {
+                            headers:{
+                                Authorization: "Bearer " + localStorage.getItem('userToken')
+                            }
+                        })
+                        .then((res)=>{
+                            let data = res.data;
+                            setLikes(data.likes)
+                            if(data.likes.includes(`${pokeData.species.url}`)){
+                                setClick(true)
+                            }
+                        })
+                        .catch((err)=>{
+                            console.log(err)
+                        })
+                    }
+                        
+                            console.log(likes)
                     function handleCLick(){
                     //setting isClick to false as of right
-                    setClick(!isClick) 
+                    // setClick(!isClick) 
                     const config = {
                         headers:{
                             Authorization: "Bearer " + localStorage.getItem('userToken')
                         }
                     }
+                   
+                    
+                    
                     //seeing if the state is liked or not liked and from there I could determine whether if I need to delete or post to my DB
                     if(isClick=== false){
                     //posting to my DB and sending the specific pokemon url to it
                     axios.post("http://localhost:4000/api/likes" , {pokemon:`${pokeData.species.url}`},  config)
                     .then(res=>{
-                        console.log(res)
+                        setClick(true)
                     })
                     .catch(err=>{
                         console.log(err)
                     })
                     }
+
+
                     if(isClick === true){
                     //deleting my pokemon like from the database and resetting the state to unliked 
-                    axios.delete("http://localhost:4000/api/likes" , {config ,pokemon:`${pokeData.species.url}`})
+                    axios.post("http://localhost:4000/api/delete" , {pokemon:`${pokeData.species.url}`}, config)
                     .then(res=>{
+                        setClick(false)
                         console.log(res)
                     })
                     .catch(err=>{
