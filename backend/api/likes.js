@@ -29,6 +29,17 @@ router.post('/', authenticateToken, async(req,res)=>{
         return err
     }
 })
+//delete route to delete any 
+router.delete('/', authenticateToken, async(req,res)=>{
+    try{
+        console.log(req.body); 
+        await Profile.updateOne({email:req.user.name}, {$pull:{likes:req.body.pokemon}})
+        return res.status(204).send('deleted like')
+    }catch(err){
+        return err
+    }
+})
+
 //middleware in order to verify and decode token
 function authenticateToken(req,res,next){
     const authHeader = req.headers['authorization'];
