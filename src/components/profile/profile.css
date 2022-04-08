@@ -9,10 +9,20 @@
     align-items: center;
     flex-direction: column;
     background-color: aliceblue;
+    position: relative;
+    top: 5%;
+    left: 10%;
+    border-radius: 1%;
+}
+
+.container{
+    height: 100vh;
 }
 
 .text-lineup{
-    margin-top: 10rem;
+    position: relative;
+   left: 10%;
+   top: 20%;
 }
 
 

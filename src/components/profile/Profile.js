@@ -39,17 +39,17 @@ export default class Profile extends Component{
 
     render(){
         return(
-            <div>
-                <div>
-                    <div className='text-lineup main-profile-styles'>
+            <div className='container'>
+                <div className='text-lineup'>
+                    <div className='main-profile-styles'>
                     <img src={this.state.profileData.profilePicture} className="main-ProfileImage"/>
                         <h1>{this.state.profileData.name}</h1>
                     </div>
 
                     <div>
-                        <Button>View Liked Pokemon</Button>
-                        
-                        <Button>Edit Profile</Button>
+                        {/* <Button>View Liked Pokemon</Button>
+
+                        <Button>Edit Profile</Button> */}
                     </div>
 
                 </div>
