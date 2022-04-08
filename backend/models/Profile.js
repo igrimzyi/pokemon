@@ -12,11 +12,22 @@ const ProfileSchema = new mongoose.Schema({
         },
     profilePicture: {
         type:String, 
-        required:false,
-        default: 'https://i.stack.imgur.com/l60Hf.png'
+        default: 'https://i.stack.imgur.com/l60Hf.png',
+        required:true
+        
     }, 
     likes:{
         type:Array
+    },
+    experience:{
+        type:Number, 
+        default: 0
+    }, 
+    class:{
+        type:String,
+        default:"Pokemon Trainer",
+        required:true
+
     }
 })
 

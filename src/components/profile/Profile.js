@@ -1,5 +1,5 @@
 import React, {Component} from 'react'; 
-import { Button } from 'reactstrap';
+import { Button, Progress } from 'reactstrap';
 import './profile.css'; 
 const axios = require('axios');
 
@@ -14,9 +14,13 @@ export default class Profile extends Component{
         };
 
     }
+    
 
 
     componentDidMount(){
+
+    let baseUrl = 'https://pokeapi.co/api/v2/'
+
         const config = {
             headers:{
                 Authorization: "Bearer " + localStorage.getItem('userToken')
@@ -26,9 +30,9 @@ export default class Profile extends Component{
             .then((res)=>{
                 let data = res.data
                 console.log(data)
+                
                 this.setState({
                     profileData: data
-                
                 })
             })
             .catch((err)=>{
@@ -40,11 +44,28 @@ export default class Profile extends Component{
     render(){
         return(
             <div className='container'>
+                {/* Profile Edit Buttton and display */}
                 <div className='text-lineup'>
                     <div className='main-profile-styles'>
-                    <img src={this.state.profileData.profilePicture} className="main-ProfileImage"/>
-                        <h1>{this.state.profileData.name}</h1>
-                    </div>
+                        <a className='text-decoration' href=''>
+                           <div className='edit-profile' >
+                                <img src={this.state.profileData.profilePicture} className="main-ProfileImage"/>
+                                <p className='edit-profile-text'>Edit Profile</p>
+                            </div> 
+                        </a>
+                        <h1 className='digi-text'>Hello, {this.state.profileData.name}!</h1>
+                        <Button color='danger' outline className='edit-profile-button'>Edit Profile</Button>
+                </div>
+                <div className='stat-bar'>
+                    <h1 className='digi-text'>Poke Trainer</h1>
+                    <Progress animated value="20" max="90"/>
+                </div>
+                {/* View Liked Pokemon */}
+                <div className='view-pokemon'>
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"></img>
+                    <Button outline color='danger'>View Liked Pokemon</Button>
+                </div>
+
 
                     <div>
                         {/* <Button>View Liked Pokemon</Button>
