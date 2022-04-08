@@ -1,0 +1,23 @@
+
+
+/* specifically for profile name and image */
+.main-profile-styles{
+    display: flex;
+    width: 18rem;
+    height: 20rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: aliceblue;
+}
+
+.text-lineup{
+    margin-top: 10rem;
+}
+
+
+.main-ProfileImage{
+    border-radius: 50%;
+    height:10rem;
+    width: 12rem;
+}
