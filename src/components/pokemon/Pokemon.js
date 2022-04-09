@@ -9,6 +9,7 @@ import {
     CardTitle, 
     Button,
     Progress,
+    Alert
     } from "reactstrap";
     import './pokemon.css'
     import Heart from "react-animated-heart";
@@ -29,6 +30,10 @@ import {
         const [isClick, setClick] = useState(false);
 
         const [likes, setLikes] = useState();
+
+        const [isLoggedIn, setIsLoggedIn] = useState();
+
+        const [isOpen, setIsOpen] = useState(true);
        
 
         //Incrementing the pokemon's url in order to go to the next pokemon in order...
@@ -81,8 +86,9 @@ import {
             })
         }
 
-           //Like button feature
+        
 
+           //Like button feature
                 function LikeButton() {
                     //getting liked pokemon and seeing if the pokemon is liked or not...
                         if(!likes){
@@ -101,6 +107,7 @@ import {
                         })
                         .catch((err)=>{
                             console.log(err)
+                            setIsLoggedIn(false)
                         })
                     }
                         
@@ -124,7 +131,8 @@ import {
                         setClick(true)
                     })
                     .catch(err=>{
-                        console.log(err)
+                        setIsLoggedIn(false)
+                        console.log(isLoggedIn)
                     })
                     }
 
@@ -142,27 +150,37 @@ import {
                     }
                     }
 
-                    
+                    //checking if they are logged in and if they are not logged in then the like button wont render
+                    if(isLoggedIn === false){
+                        return <></>
+                    }else{
                     return (
                         
-                    <div className="App">
-                        <Heart isClick={isClick} onClick={handleCLick} />
-                    </div>
-                    );
+                        <div className="App">
+                            <Heart isClick={isClick} onClick={handleCLick} />
+                        </div>
+                        
+                        );
+                    }
                 }
+                    
+                   
+       
+                
+                
+                
         
             //returning an empty card during the loading phase of the react state
             if(!pokeData){
                 return(
         <div className='title'>
-        <Card>
-            <CardBody>
+        <Card className='loading-iphone'>
+            <CardBody >
                <CardText tag='h2'>
                    Loading...
                </CardText>
-               
             </CardBody>
-            </Card>
+        </Card>
            
         </div>
             )
