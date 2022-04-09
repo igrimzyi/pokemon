@@ -39,9 +39,7 @@ class Game extends Component {
                         localStorage.removeItem("userToken")
                        this.setState({
                                isLoggedIn:err.response.status
-                       })
-                 
-                      
+                       }) 
                 })
         }
 
@@ -52,7 +50,7 @@ class Game extends Component {
         }
 
         render(){
-                if(this.state.isLoggedIn){
+                if(this.state.isLoggedIn === 403){
                         
                         return(
                                  <Navigate to='/login' replace={true}></Navigate>

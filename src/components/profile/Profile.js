@@ -1,5 +1,6 @@
 import React, {Component} from 'react'; 
 import { Button, Progress } from 'reactstrap';
+import { Navigate } from 'react-router-dom';
 import './profile.css'; 
 const axios = require('axios');
 
@@ -10,7 +11,7 @@ export default class Profile extends Component{
         this.state ={
             profileData: {},
             profilePicture:'', 
-
+            isLoggedIn: {}
         };
 
     }
@@ -34,12 +35,20 @@ export default class Profile extends Component{
                 })
             })
             .catch((err)=>{
-                return err
+                this.setState({
+                    isLoggedIn: err.response.status
+                })
             })
 
     }
 
     render(){
+        if(this.state.isLoggedIn === 403){
+                        
+            return(
+                     <Navigate to='/login' replace={true}></Navigate>
+            )
+    }else 
         return(
             <div className='profile-container container'>
                 {/* Profile Edit Buttton and display */}
