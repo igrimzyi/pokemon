@@ -16,7 +16,7 @@
     border-radius: 1rem;
 }
 
-.container{
+.profile-container{
     height: 100vh;
     width: 70rem;
  
@@ -85,7 +85,7 @@
    align-items: center;
    margin: 0rem;
    left:5%;
-   bottom: 12%;
+   bottom: 24%;
    width: 10rem;
 }
 
@@ -95,4 +95,7 @@
     position: relative;
     left: 30%;
     bottom: 50%;
+}
+.level-button{
+    margin-top: 1rem;
 }

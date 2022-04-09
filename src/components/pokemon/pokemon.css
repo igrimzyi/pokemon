@@ -34,15 +34,19 @@
         }
         .title-iphone{
         height: 40rem;
-        justify-content: space-between;
+        justify-content: space-evenly;
         position: absolute;
         left: 52%;
-        top: 30%;
-       
+        top: 25%;
         margin: -100px 0 0 -150px;
         text-align: center;
         color: black;
-    }
+        }
+        .loading-iphone{
+            width: 10rem;
+            position: relative;
+            right:40%;
+        }
 }
 .card-body-width{
 width: 18rem;
