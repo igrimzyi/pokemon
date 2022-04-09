@@ -14,8 +14,6 @@ export default class Profile extends Component{
         };
 
     }
-    
-
 
     componentDidMount(){
 
@@ -43,7 +41,7 @@ export default class Profile extends Component{
 
     render(){
         return(
-            <div className='container'>
+            <div className='profile-container container'>
                 {/* Profile Edit Buttton and display */}
                 <div className='text-lineup'>
                     <div className='main-profile-styles'>
@@ -54,16 +52,17 @@ export default class Profile extends Component{
                             </div> 
                         </a>
                         <h1 className='digi-text'>Hello, {this.state.profileData.name}!</h1>
-                        <Button color='danger' outline className='edit-profile-button'>Edit Profile</Button>
+                        <Button color='danger' href="/profile/edit" outline className='edit-profile-button'>Edit Profile</Button>
                 </div>
                 <div className='stat-bar'>
                     <h1 className='digi-text'>Poke Trainer</h1>
                     <Progress animated value="20" max="90"/>
+                    <Button className='level-button' block outline href="/game" color='success'> Level Up!</Button>
                 </div>
                 {/* View Liked Pokemon */}
                 <div className='view-pokemon'>
                     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"></img>
-                    <Button outline color='danger'>View Liked Pokemon</Button>
+                    <Button href="/profile/likes"outline color='danger'>View Liked Pokemon</Button>
                 </div>
 
 
