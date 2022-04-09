@@ -36,6 +36,7 @@ class Game extends Component {
                         })
                 })
                 .catch((err)=>{
+                        localStorage.removeItem("userToken")
                        this.setState({
                                isLoggedIn:err.response.status
                        })
