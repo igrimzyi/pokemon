@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import NavbarReact from './components/navbar/Navbar';
 import Home from './components/home/Home';
 import Pokedex from './components/pokedex/Pokedex';
-import Game from './components/Game';
+import Game from './components/game/Game';
 import Register from './components/register/Register';
 import Pokemon from './components/pokemon/Pokemon';
 import Login from './components/login/Login';
