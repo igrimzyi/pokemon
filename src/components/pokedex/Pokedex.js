@@ -14,7 +14,7 @@ import {useParams} from 'react-router-dom';
 
 const axios = require('axios')
 
-const baseURL= "https://pokeapi.co/api/v2/pokemon?offset=1&limit=105"
+const baseURL= "https://pokeapi.co/api/v2/pokemon?offset=0&"
 
 class PokemonDetails extends Component {
     constructor(props) {
@@ -85,12 +85,18 @@ class Pokedex extends Component{
     super(props);
     
     this.state = {
-      poks: []
+      poks: [],
+      pokeCount: 100
     }
+
+    this.handleClick = this.handleClick.bind(this)
+  }
+  handleClick= ()=>{
+    this.setState({pokeCount: this.state.pokeCount+10})
   }
 
   componentDidMount() {
-    axios.get(baseURL)
+    axios.get(`${baseURL}limit=${this.state.pokeCount}`)
       .then(response => {
         this.setState({
           poks: response.data.results
@@ -99,10 +105,12 @@ class Pokedex extends Component{
       .catch(error => {
         console.log('***', error);
       })
-  }
+      }
 
+      
+ 
     render(){
-
+     
       if (this.state.poks.length === 0) {
         return <h1>Loading...</h1>
       }
@@ -114,6 +122,7 @@ class Pokedex extends Component{
                 return <PokemonDetails key={i} pokemon={pokemon} />
               })}
           </div>
+          {/* <Button onClick={this.handleClick}>View More</Button> */}
         </div>
       )
     }
