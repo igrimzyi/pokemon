@@ -22,6 +22,7 @@ export default class NavbarReact extends Component {
     this.state = { 
       isOpen: false,
       profilePicture: "", 
+      isLoggedIn:false
 
     }
   }
@@ -35,6 +36,7 @@ export default class NavbarReact extends Component {
   .then((res)=>{
     let data = res.data;
     this.setState({
+      isLoggedIn:true,
       profilePicture:data.profilePicture
     })
     console.log(this.state.profilePicture)
@@ -53,7 +55,7 @@ export default class NavbarReact extends Component {
 
 
         render(){
-          if(this.state.profilePicture){
+          if(this.state.isLoggedIn){
             return(
             
   <Navbar

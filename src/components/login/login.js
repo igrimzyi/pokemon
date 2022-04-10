@@ -1,5 +1,5 @@
 import React, {Component} from 'react'; 
-import { NavLink } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import {Form, FormGroup, Label, Input, Button,Alert} from 'reactstrap';
 
 const axios = require('axios');
@@ -15,13 +15,15 @@ export default class login extends Component {
       email:'',
       password:'',  
       errResponse: '',
-      isOpen:false
+      isOpen:false, 
+      isLoggedIn:false
     }
-
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
 //essentially we are handling the form submit as we are in our login page.
+
 
   handleSubmit(e){
     e.preventDefault()
@@ -29,11 +31,13 @@ export default class login extends Component {
     axios
     .post('http://localhost:4000/api/auth', this.state)
     .then(res =>{
-      
+      this.setState({
+        isLoggedIn:true
+      })
       //store token in local storage based off response
       localStorage.setItem('userToken', res.data.accessToken)
       console.log(res.data.accessToken)
-      return res.data.accessToken; 
+      return <Navigate to='/home' replace={true}></Navigate>
     })
     .catch(error =>{
       this.setState({errResponse: error.response.data})
@@ -42,6 +46,8 @@ export default class login extends Component {
     })
 
   }
+
+
   handleInputChange(e){
     const target = e.target; 
     const value = target.value;
@@ -54,6 +60,10 @@ export default class login extends Component {
 
 
         render(){
+
+          if(this.state.isLoggedIn){
+            return <Navigate to='/' replace={true}></Navigate>
+          }else
                 return(
     <div>
 

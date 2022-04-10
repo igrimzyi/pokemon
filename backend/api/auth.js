@@ -54,7 +54,7 @@ async(req,res) =>{
             id: checkUser._id}
     
         const accessToken = jwt.sign(userToken, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1h'})
-        res.json({accessToken: accessToken})
+        res.json({accessToken: accessToken}).status(200)
 
 
      }catch(err){
