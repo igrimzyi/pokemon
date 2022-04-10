@@ -1,11 +1,17 @@
 import React, {Component} from "react";
 import './home.css'
-import {Button} from 'reactstrap'
+import {Button} from 'reactstrap';
+
+import NavbarReact from "../navbar/Navbar";
 
  class Home extends Component{
         render(){
             return(
+
+                
                 <section className="main">
+
+                    <NavbarReact/>
                 <div>
                     
                     <div className="main-title">

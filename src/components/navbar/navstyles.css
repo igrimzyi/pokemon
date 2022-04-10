@@ -27,3 +27,17 @@
     width:2.1rem;
     border-radius: 50%;
 }
+@media screen and (max-width: 767px) {
+    .profile-picture-styles{
+        display: none;
+    }
+    .profile-name-styles{
+        visibility: visible;
+    }
+}
+
+@media screen and (min-width:767px){
+    .profile-name-styles{
+        visibility: hidden;
+    }
+}

@@ -46,17 +46,10 @@ export default class NavbarReact extends Component {
   .catch((err)=>{
     return err
   })
-
-  console.log(this.state.profile)
-
-
-
   }
-
-
         render(){
-          if(this.state.isLoggedIn){
-            return(
+if(this.state.isLoggedIn){
+ return(
             
   <Navbar
     color="dark"
@@ -87,13 +80,19 @@ export default class NavbarReact extends Component {
         </NavItem>
        
       </Nav>
-      
-      <NavItem>
+      <NavItem className="profile-name-styles">
+          <NavLink className={'text-decoration right-link' } to="/profile">
+            Profile
+          </NavLink>
+        </NavItem>
+
+      </Collapse>
+      <NavItem className="profile-picture-styles">
           <NavLink className={'text-decoration right-link' } to="/profile">
             <img src={this.state.profilePicture} className="profile-styles"></img>
           </NavLink>
         </NavItem>
-    </Collapse>
+    
   </Navbar>
           
 
