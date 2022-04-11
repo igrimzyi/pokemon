@@ -19,7 +19,6 @@ export default class Profile extends Component{
     componentDidMount(){
 
     let baseUrl = 'https://pokeapi.co/api/v2/'
-
         const config = {
             headers:{
                 Authorization: "Bearer " + localStorage.getItem('userToken')
@@ -33,9 +32,9 @@ export default class Profile extends Component{
                 this.setState({
                     profileData: data
                 })
+
             })
             .catch((err)=>{
-
                 localStorage.removeItem("userToken")
                 this.setState({
                     isLoggedIn: err.response.status
@@ -66,8 +65,8 @@ export default class Profile extends Component{
                         <Button color='danger' href="/profile/edit" outline className='edit-profile-button'>Edit Profile</Button>
                 </div>
                 <div className='stat-bar'>
-                    <h1 className='digi-text'>Poke Trainer</h1>
-                    <Progress animated value="20" max="90"/>
+                    <h1 className='digi-text'>{this.state.profileData.class}</h1>
+                    <Progress animated value={this.state.profileData.experience} max="90"/>
                     <Button className='level-button' block outline href="/game" color='success'> Level Up!</Button>
                 </div>
                 {/* Profile Buttons */}
@@ -80,7 +79,7 @@ export default class Profile extends Component{
 
                     <div className='view-pokemon'>
                         <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png"></img>
-                        <Button href="/logout"outline color='danger'>Logout</Button>
+                        <Button href="/logout" outline color='danger'>Logout</Button>
                     </div>
                 </div>
 

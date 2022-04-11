@@ -35,6 +35,8 @@
 /* for any text that would be good for digital text */
 .digi-text{
     font-family: 'VT323', monospace;
+    display: flex;
+    justify-content: center;
 
 }
 .main-ProfileImage{
