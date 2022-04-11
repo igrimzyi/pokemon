@@ -100,3 +100,13 @@
     margin-top: 1rem;
 }
 
+/* Profile buttons (View likes Logout... etc) */
+
+
+.main-profile-buttons-div{
+    display: flex;
+    position:relative;
+    bottom: 20%;
+
+    
+}

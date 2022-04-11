@@ -70,10 +70,18 @@ export default class Profile extends Component{
                     <Progress animated value="20" max="90"/>
                     <Button className='level-button' block outline href="/game" color='success'> Level Up!</Button>
                 </div>
-                {/* View Liked Pokemon */}
-                <div className='view-pokemon'>
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"></img>
-                    <Button href="/profile/likes"outline color='danger'>View Liked Pokemon</Button>
+                {/* Profile Buttons */}
+                
+                <div className='main-profile-buttons-div'>
+                    <div className='view-pokemon'>
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"></img>
+                        <Button href="/profile/likes"outline color='success'>View Likes</Button>
+                    </div>
+
+                    <div className='view-pokemon'>
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png"></img>
+                        <Button href="/logout"outline color='danger'>Logout</Button>
+                    </div>
                 </div>
 
 

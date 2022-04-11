@@ -9,6 +9,7 @@ import Login from './components/login/Login';
 import LikedPokemon from './components/likedPokemon/LikedPokemon';
 import Profile from './components/profile/Profile';
 import NotFound from './components/notfound/NotFound';
+import Logout from './components/logout/Logout'
 
 import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -36,6 +37,7 @@ import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
           <Route path='/pokedex/:pokeId' element={<Pokemon/>}/>
           <Route path='/likes' element={<LikedPokemon/>}/>
           <Route path='/profile' element={<Profile/>}/>
+          <Route path='/logout' element={<Logout/>}/>
 
 
           <Route

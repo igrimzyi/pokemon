@@ -23,7 +23,6 @@ export default class NavbarReact extends Component {
       isOpen: false,
       profilePicture: "", 
       isLoggedIn:false
-
     }
   }
 
@@ -44,11 +43,14 @@ export default class NavbarReact extends Component {
     
   })
   .catch((err)=>{
-    return err
+    localStorage.removeItem("userToken")
+    this.setState({
+      isLoggedIn:false
+    })
   })
   }
         render(){
-if(this.state.isLoggedIn){
+if(this.state.isLoggedIn === true){
  return(
             
   <Navbar
@@ -99,7 +101,7 @@ if(this.state.isLoggedIn){
             )
             }
             
-      else if(!this.state.profilePicture){
+      else if(this.state.isLoggedIn === false){
               return(
               
     <Navbar
