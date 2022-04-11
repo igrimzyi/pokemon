@@ -10,7 +10,6 @@ CardBody,
 CardTitle, 
 Button} from "reactstrap";
 import './pokedex.css'
-import {useParams} from 'react-router-dom';
 
 const axios = require('axios')
 
