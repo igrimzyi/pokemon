@@ -55,7 +55,7 @@ export default class Profile extends Component{
                 {/* Profile Edit Buttton and display */}
                 <div className='text-lineup'>
                     <div className='main-profile-styles'>
-                        <a className='text-decoration' href=''>
+                        <a className='text-decoration' href='/profile/edit'>
                            <div className='edit-profile' >
                                 <img src={this.state.profileData.profilePicture} className="main-ProfileImage"/>
                                 <p className='edit-profile-text'>Edit Profile</p>
