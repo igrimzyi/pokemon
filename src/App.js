@@ -12,6 +12,7 @@ import NotFound from './components/notfound/NotFound';
 import Logout from './components/logout/Logout'
 
 import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Edit from './components/profile/Edit';
 
 
 // this is my main app component and will be the heart of the poke project for now 
@@ -37,6 +38,7 @@ import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
           <Route path='/pokedex/:pokeId' element={<Pokemon/>}/>
           <Route path='/likes' element={<LikedPokemon/>}/>
           <Route path='/profile' element={<Profile/>}/>
+          <Route path='/profile/edit' element={<Edit/>}/>
           <Route path='/logout' element={<Logout/>}/>
 
 
