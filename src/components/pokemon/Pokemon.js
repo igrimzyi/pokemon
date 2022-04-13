@@ -31,9 +31,10 @@ import {
 
         const [likes, setLikes] = useState();
 
-        const [isLoggedIn, setIsLoggedIn] = useState();
+        const [isLoggedIn, setIsLoggedIn] = useState(false);
 
         const [isOpen, setIsOpen] = useState(true);
+
        
 
         //Incrementing the pokemon's url in order to go to the next pokemon in order...
@@ -91,7 +92,8 @@ import {
            //Like button feature
                 function LikeButton() {
                     //getting liked pokemon and seeing if the pokemon is liked or not...
-                        if(!likes){
+                    
+                        if(isLoggedIn){
                         axios.
                         get("http://localhost:4000/api/likes", {
                             headers:{
