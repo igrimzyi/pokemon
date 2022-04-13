@@ -20,13 +20,17 @@ export default class Edit extends Component{
             profileName: null,
             imageData: null
         }
+        this.handleClick = this.handleClick.bind(this)
     }
 
-    updateName(e){
+    updateName(pfp){
         this.setState({
-            profileName:e.target.value
+            profileName:pfp
         });
     }
+
+    
+
 
     componentDidMount(){
         const config = {
@@ -34,36 +38,24 @@ export default class Edit extends Component{
                 Authorization: "Bearer " + localStorage.getItem('userToken')
             }
         }
-
-        console.log(pfp)
-        
-
-
-        axios.get('http://localhost:4000/api/profile' , config)
+          axios.get('http://localhost:4000/api/profile' , config)
         .then((res)=>{
             this.setState({
                 profileData: res.data,
                 profileName: res.data.name
             })
 
-            console.log(this.state.profileData)
         })
         .catch((err)=>{
 
         })
         
-        axios.get('https://pokeapi.co/api/v2/pokemon/squirtle')
-        .then((res)=>{
-            this.setState({
-                imageData: res.data.sprites.front_default
-            })
-            console.log(this.state.imageData)
-        })
-        .catch((err)=>{
 
-        })
     }
-
+    handleClick(e){
+        console.log(e.target.value)
+       
+    }
 
 
     render(){
@@ -81,29 +73,45 @@ export default class Edit extends Component{
                        <div className='edit-trainer-picture'>
                            <h3>Edit Trainer Picture!</h3>
                            <div className='images'>
-                            <ButtonGroup>
+                                <div className='single-image'>
+                                <img src={pfp} className='profile-image'></img>
                                 <Button
                                 outline
                                 color="primary"
-                                onClick={function noRefCheck(){}}
-                                >
-                                    <img src={pfp} className='profile-image'></img>
-                                </Button>
+                                onClick={(e)=>this.handleClick(e)}
+                                type="button"
+                                value={pfp}
+                                 >
+                                     ASH
+                                 </Button>
+                                 </div>
+                                
+                                <div className='single-image'>
+                                <img src={squirtlePfp} value={squirtlePfp} className='profile-image'></img>
                                 <Button
                                 outline
                                 color="primary"
-                                onClick={function noRefCheck(){}}
+                                onClick={(e)=>this.handleClick(e)}
+                                value={squirtlePfp}
+                                type="button"
                                 >
-                                <img src={squirtlePfp} className='profile-image'></img>
+                                Squirtle
                                 </Button>
+                                </div>
+
+                                <div className='single-image'>
+                                <img src={misty} value={misty} className='profile-image'></img>
                                 <Button
                                 color="primary"
                                 outline
-                                onClick={function noRefCheck(){}}
+                                onClick={(e)=>this.handleClick(e)}
+                                value={misty}
+                                type="button"
                                 >
-                                <img src={misty} className='profile-image'></img>
+                               misty
                                 </Button>
-                            </ButtonGroup>
+                                </div>
+                            
                             </div>
                        </div>
                     <Button className='submit-btn' outline color='success'>Submit</Button>

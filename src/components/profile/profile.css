@@ -176,12 +176,16 @@
 .images{
     display: flex;
     flex-direction: row;
-    width: 50rem;
-    justify-content: center;
+    width: 30rem;
+    justify-content: space-evenly;
     
     
 }
 .submit-btn{
     width: 10rem;
    align-items: center;
+}
+.single-image{
+    flex-direction: column;
+    display: flex;
 }
