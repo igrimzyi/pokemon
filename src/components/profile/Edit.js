@@ -17,20 +17,22 @@ export default class Edit extends Component{
             
         }
         this.state = {
-            profileName: null,
+            profileName: 'lol',
             imageData: null
         }
         this.handleClick = this.handleClick.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+        
     }
 
-    updateName(pfp){
+    updateName(e){
         this.setState({
-            profileName:pfp
+            profileName:e.target.value
         });
+        console.log(e.target.value)
     }
 
-    
-
+   
 
     componentDidMount(){
         const config = {
@@ -42,7 +44,8 @@ export default class Edit extends Component{
         .then((res)=>{
             this.setState({
                 profileData: res.data,
-                profileName: res.data.name
+                profileName: res.data.name,
+                imageData:res.data.profilePicture
             })
 
         })
@@ -53,8 +56,33 @@ export default class Edit extends Component{
 
     }
     handleClick(e){
-        console.log(e.target.value)
+        this.setState({
+            imageData: e.target.value
+        })
+        console.log(this.state.imageData)
        
+    }
+    
+    handleSubmit(e){
+        e.preventDefault()
+
+        const config = {
+            headers:{
+                Authorization: "Bearer " + localStorage.getItem('userToken')
+            }
+        }
+       console.log(this.state )
+
+        // axios.patch('http://localhost:4000/api/profile', this.state, config)
+        // .then((res)=>{
+        //     console.log(res)
+        // })
+        // .catch((err)=>{
+        // })
+
+
+
+
     }
 
 
@@ -64,12 +92,14 @@ export default class Edit extends Component{
         return(
             <div className='container container-editor'>
                 <h1 className='h1-edit-styles'>Edit Your Trainer Profile!</h1>
-               <Form className='edit-form'>
-                   <FormGroup className='form-group-margins' >
+               <Form className='edit-form' onSubmit={this.handleSubmit}>
+                   <FormGroup  >
                        <div className='edit-name-div'>
                         <h3>Edit Trainer Name!</h3>
-                        <Input value={this.state.profileName} onChange={this.updateName.bind(this)} className='input'/>
+                        <Input onChange={this.updateName.bind(this)} value={this.state.profileName}className='input'/>
                        </div>
+                 </FormGroup>
+                 <FormGroup>
                        <div className='edit-trainer-picture'>
                            <h3>Edit Trainer Picture!</h3>
                            <div className='images'>
@@ -82,7 +112,7 @@ export default class Edit extends Component{
                                 type="button"
                                 value={pfp}
                                  >
-                                     ASH
+                                     Ash
                                  </Button>
                                  </div>
                                 
@@ -114,8 +144,10 @@ export default class Edit extends Component{
                             
                             </div>
                        </div>
+                       </FormGroup>
+
                     <Button className='submit-btn' outline color='success'>Submit</Button>
-                   </FormGroup>
+                  
                </Form>
             </div>
         )
