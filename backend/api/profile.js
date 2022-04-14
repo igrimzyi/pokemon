@@ -21,10 +21,10 @@ router.patch('/', authenticateToken, async(req,res)=>{
         
         await Profile.findOneAndUpdate({name:req.body.profileData.name}, {name:req.body.profileName})
         await Profile.findOneAndUpdate({name:req.body.profileData.name}, {profilePicture:req.body.imageData})
-        
-        res.status(200).send('LGM')
+
+        res.status(200).send('Profile Has Been Updated')
     }catch(err){
-        res.status(400).send('not accepted sorry not sorry')
+        res.status(400).send('Looks like something went wrong')
     }
 })
 

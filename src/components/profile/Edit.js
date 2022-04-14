@@ -1,10 +1,14 @@
 
 import React, {Component} from 'react'; 
-import { Button, Form, FormGroup, Input,ButtonGroup } from 'reactstrap';
+import { Button, Form, FormGroup, Input,ButtonGroup, Alert } from 'reactstrap';
 import  './profile.css';
 import pfp from '../../images/ashPFP.jpeg'
 import squirtlePfp from '../../images/SQUIRTLE.jpeg'
 import misty from '../../images/misty.jpg'
+
+
+
+
 
 
 const axios = require('axios');
@@ -18,7 +22,9 @@ export default class Edit extends Component{
         }
         this.state = {
             profileName: 'lol',
-            imageData: null
+            imageData: null,
+            isOpen:false,
+            resMessage:null
         }
         this.handleClick = this.handleClick.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -48,6 +54,7 @@ export default class Edit extends Component{
                 imageData:res.data.profilePicture
             })
 
+
         })
         .catch((err)=>{
 
@@ -59,7 +66,7 @@ export default class Edit extends Component{
         this.setState({
             imageData: e.target.value
         })
-        console.log(this.state.imageData)
+
        
     }
     
@@ -75,7 +82,10 @@ export default class Edit extends Component{
 
         axios.patch('http://localhost:4000/api/profile', this.state, config)
         .then((res)=>{
-            console.log(res)
+            this.setState({
+                isOpen:true,
+                resMessage: res.data
+            })
         })
         .catch((err)=>{
         })
@@ -91,14 +101,22 @@ export default class Edit extends Component{
 
         return(
             <div className='container container-editor'>
-                <h1 className='h1-edit-styles'>Edit Your Trainer Profile!</h1>
-               <Form className='edit-form' onSubmit={this.handleSubmit}>
-                   <FormGroup  >
+
+                <Alert className='edit-alert-styles' isOpen={this.state.isOpen} toggle={() =>{this.setState({isOpen:false})}}>
+                 {this.state.resMessage}   
+                </Alert>
+                <h1 className='h1-edit-styles iphone-edit-styles-title'>Edit Your Trainer Profile!</h1>
+                <div className='iphone-edit-name'>
+                        <h3>Edit Trainer Name!</h3>
+                        <Input onChange={this.updateName.bind(this)} value={this.state.profileName}className='input'/>
+                </div>
+               <Form className='edit-form iphone-edit-styles ' onSubmit={this.handleSubmit}>
+                   
                        <div className='edit-name-div'>
                         <h3>Edit Trainer Name!</h3>
                         <Input onChange={this.updateName.bind(this)} value={this.state.profileName}className='input'/>
                        </div>
-                 </FormGroup>
+                 
                  <FormGroup>
                        <div className='edit-trainer-picture'>
                            <h3>Edit Trainer Picture!</h3>
