@@ -16,7 +16,12 @@ router.get('/', authenticateToken, async(req,res)=>{
 
 router.patch('/', authenticateToken, async(req,res)=>{
     try{
-        console.log(req.body)
+        console.log(req.body.profileName)
+        console.log(req.body.imageData)
+        
+        await Profile.findOneAndUpdate({name:req.body.profileData.name}, {name:req.body.profileName})
+        await Profile.findOneAndUpdate({name:req.body.profileData.name}, {profilePicture:req.body.imageData})
+        
         res.status(200).send('LGM')
     }catch(err){
         res.status(400).send('not accepted sorry not sorry')

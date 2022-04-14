@@ -73,12 +73,12 @@ export default class Edit extends Component{
         }
        console.log(this.state )
 
-        // axios.patch('http://localhost:4000/api/profile', this.state, config)
-        // .then((res)=>{
-        //     console.log(res)
-        // })
-        // .catch((err)=>{
-        // })
+        axios.patch('http://localhost:4000/api/profile', this.state, config)
+        .then((res)=>{
+            console.log(res)
+        })
+        .catch((err)=>{
+        })
 
 
 

@@ -8,7 +8,8 @@ const ProfileSchema = new mongoose.Schema({
         },
     name:{
         type:String,
-        required:true
+        required:true,
+        unique:true
         },
     profilePicture: {
         type:String, 
