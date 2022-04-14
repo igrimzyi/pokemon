@@ -28,18 +28,18 @@ import Edit from './components/profile/Edit';
           
           <Routes>
           {/* components need to be wrapped in </> or will be considered a function and throw an error */}
-            <Route path='/' element={<Home/>}/>
+            <Route path='/' exact element={<Home/>}/>
            
-            <Route path='/game' element={<Game/>}/>
-            <Route path='/login' element={<Login/>}/>
-            <Route path='/register' element={<Register/>}/>
+            <Route path='/game'  exact element={<Game/>}/>
+            <Route path='/login'exact element={<Login/>}/>
+            <Route path='/register'exact element={<Register/>}/>
           {/*dynamic routing in the navbar component  */}
-          <Route path='/pokedex' element={<Pokedex />}/> 
-          <Route path='/pokedex/:pokeId' element={<Pokemon/>}/>
-          <Route path='/likes' element={<LikedPokemon/>}/>
-          <Route path='/profile' element={<Profile/>}/>
-          <Route path='/profile/edit' element={<Edit/>}/>
-          <Route path='/logout' element={<Logout/>}/>
+          <Route path='/pokedex' exact element={<Pokedex />}/> 
+          <Route path='/pokedex/:pokeId' exact element={<Pokemon/>}/>
+          <Route path='/likes' exact element={<LikedPokemon/>}/>
+          <Route path='/profile' exact element={<Profile/>}/>
+          <Route path='/profile/edit' exact element={<Edit/>}/>
+          <Route path='/logout'exact element={<Logout/>}/>
 
 
           <Route
