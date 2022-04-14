@@ -14,6 +14,15 @@ router.get('/', authenticateToken, async(req,res)=>{
     }
 })
 
+router.patch('/', authenticateToken, async(req,res)=>{
+    try{
+        console.log(req.body)
+        res.status(200).send('LGM')
+    }catch(err){
+        res.status(400).send('not accepted sorry not sorry')
+    }
+})
+
 
 
 

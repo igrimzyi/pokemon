@@ -35,8 +35,7 @@ import {
 
         const [isOpen, setIsOpen] = useState(true);
 
-       
-
+      
         //Incrementing the pokemon's url in order to go to the next pokemon in order...
         function IterateButtons(){
             let urlParams = useParams();
@@ -92,8 +91,7 @@ import {
            //Like button feature
                 function LikeButton() {
                     //getting liked pokemon and seeing if the pokemon is liked or not...
-                    
-                        if(isLoggedIn){
+                        if(!likes){
                         axios.
                         get("http://localhost:4000/api/likes", {
                             headers:{
@@ -103,6 +101,7 @@ import {
                         .then((res)=>{
                             let data = res.data;
                             setLikes(data.likes)
+                            setIsLoggedIn(true)
                             if(data.likes.includes(`${pokeData.species.url}`)){
                                 setClick(true)
                             }
