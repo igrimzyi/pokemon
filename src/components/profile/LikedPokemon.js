@@ -49,7 +49,7 @@ class PokemonDetails extends Component {
       return <p>Loading...</p>
     }
     
-    return   <Card className='card-align liked-div'>  
+    return   <Card className='liked-card-align liked-div'>  
               <CardImg 
                 alt="Card image cap"
                 src={this.state.details.sprites.front_default}
@@ -124,18 +124,25 @@ export default class LikedPokemon extends Component{
         } else if(this.state.likes.length === 0){
             return(
                 <div className='liked-div'>
-                    oops you have not liked any pokemon yet!
+                    <div>
+                        oops you have not liked any pokemon yet!Click this button to catch your favorite pokemon!
+                    </div>
+                    <Button color='success' outline block href="/pokedex">
+                        View Pokemon
+                    </Button>
+
+
                 </div>
             )
         }else
         
         return(
-        <div className='container'>
-            <div>
+        <div className='container alignment'>
+          
                 {this.state.likes.map((pokemon, i) =>{
                     return <PokemonDetails key={i} pokemon={pokemon}></PokemonDetails>  
                 })}
-            </div>
+            
 
         </div>
         )

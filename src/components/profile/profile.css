@@ -241,6 +241,10 @@
     position: relative;
     top:9rem;
 }
+.alignment{
+    justify-content: center;
+}
+
 
 
 }
@@ -259,15 +263,31 @@
         bottom: 20%;
     
         
-    }
+      }
     
+      .alignment{
+        justify-content: space-between;
+    }
       
 }
 
 
 /* This section is for pokemon likes */
 
+  
 .liked-div{
     position: relative;
     top: 5rem;
 }
+.liked-card-align{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    
+    
+}
+.alignment{
+    display: flex;
+    flex-wrap: wrap;
+  }
