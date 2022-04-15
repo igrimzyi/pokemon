@@ -1,5 +1,4 @@
 
-
 import React, {Component} from "react";
 import { CardGroup, 
 Card, 
@@ -34,6 +33,7 @@ class PokemonDetails extends Component {
           details: response.data
         })
       })
+    
   }
 
 
@@ -43,37 +43,37 @@ class PokemonDetails extends Component {
     }
     
     return   <Card className='card-align'>  
-    <CardImg 
-      alt="Card image cap"
-      src={this.state.details.sprites.front_default}
-      top
-      className="image-margins"
-      width="25%"
-      height="50%"
-    />
-    <CardBody className="body-styles">
-      <CardTitle tag="h5">
-        { this.state.details.name }
-      </CardTitle>
-      <CardSubtitle
-        className="mb-2 text-muted"
-        tag="h6"
-      >
-        
-        {/* {this.state.stats} */}
-      </CardSubtitle>
-      <CardText>
-      type: {this.state.details.types[0].type.name}  
-      </CardText>
-      <Button
-      color="success"
-      block
-      href={`pokedex/${this.state.details.id}`}
-      >
-        View This Pokemon
-      </Button>
-    </CardBody>
-  </Card>;
+              <CardImg 
+                alt="Card image cap"
+                src={this.state.details.sprites.front_default}
+                top
+                className="image-margins"
+                width="25%"
+                height="50%"
+              />
+              <CardBody className="body-styles">
+                <CardTitle tag="h5">
+                  { this.state.details.name }
+                </CardTitle>
+                <CardSubtitle
+                  className="mb-2 text-muted"
+                  tag="h6"
+                >
+                  
+                  {/* {this.state.stats} */}
+                </CardSubtitle>
+                <CardText>
+                type: {this.state.details.types[0].type.name}  
+                </CardText>
+                <Button
+                color="success"
+                block
+                href={`pokedex/${this.state.details.id}`}
+                >
+                  View This Pokemon
+                </Button>
+              </CardBody>
+            </Card>;
   }
 }
 
@@ -88,11 +88,11 @@ class Pokedex extends Component{
       pokeCount: 100
     }
 
-    this.handleClick = this.handleClick.bind(this)
+    // this.handleClick = this.handleClick.bind(this)
   }
-  handleClick= ()=>{
-    this.setState({pokeCount: this.state.pokeCount+10})
-  }
+  // handleClick= ()=>{
+  //   this.setState({pokeCount: this.state.pokeCount+10})
+  // }
 
   componentDidMount() {
     axios.get(`${baseURL}limit=${this.state.pokeCount}`)
@@ -100,6 +100,7 @@ class Pokedex extends Component{
         this.setState({
           poks: response.data.results
         })
+        console.log(this.state.poks)
       })
       .catch(error => {
         console.log('***', error);

@@ -35,6 +35,8 @@ import {
 
         const [isOpen, setIsOpen] = useState(true);
 
+        const [exactUrl, setExactUrl] = useState('')
+
       
         //Incrementing the pokemon's url in order to go to the next pokemon in order...
         function IterateButtons(){
@@ -90,6 +92,8 @@ import {
 
            //Like button feature
                 function LikeButton() {
+                   setExactUrl(`${baseUrl}${pokeId}`)
+                  
                     //getting liked pokemon and seeing if the pokemon is liked or not...
                         if(!likes){
                         axios.
@@ -102,7 +106,7 @@ import {
                             let data = res.data;
                             setLikes(data.likes)
                             setIsLoggedIn(true)
-                            if(data.likes.includes(`${pokeData.species.url}`)){
+                            if(data.likes.includes(exactUrl)){
                                 setClick(true)
                             }
                         })
@@ -122,12 +126,12 @@ import {
                         }
                     }
                    
-                    
+            
                     
                     //seeing if the state is liked or not liked and from there I could determine whether if I need to delete or post to my DB
                     if(isClick=== false){
                     //posting to my DB and sending the specific pokemon url to it
-                    axios.post("http://localhost:4000/api/likes" , {pokemon:`${pokeData.species.url}`},  config)
+                    axios.post("http://localhost:4000/api/likes" , {pokemon: exactUrl},  config)
                     .then(res=>{
                         setClick(true)
                     })
@@ -140,7 +144,7 @@ import {
 
                     if(isClick === true){
                     //deleting my pokemon like from the database and resetting the state to unliked 
-                    axios.post("http://localhost:4000/api/delete" , {pokemon:`${pokeData.species.url}`}, config)
+                    axios.post("http://localhost:4000/api/delete" , {pokemon:exactUrl}, config)
                     .then(res=>{
                         setClick(false)
                         console.log(res)

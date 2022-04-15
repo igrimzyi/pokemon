@@ -263,3 +263,11 @@
     
       
 }
+
+
+/* This section is for pokemon likes */
+
+.liked-div{
+    position: relative;
+    top: 5rem;
+}
