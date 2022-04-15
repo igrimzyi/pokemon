@@ -9,7 +9,8 @@ export default class LikedPokemon extends Component{
     
         this.state = {
             name:'',
-            likes:null
+            likes:null,
+            errResponse:null
 
         }
     }
@@ -21,22 +22,25 @@ export default class LikedPokemon extends Component{
             }
         }
 
-        axios.get('http://localhost:4000/api/likes', config, (req,res)=>{
-            try{
+        axios.get('http://localhost:4000/api/likes', config)
+            .then((res)=>{
                 this.setState({
-                    likes:res
+                    likes: res.data.likes
                 })
-               return console.log(response)
-            }catch(err){
-                console.log(err)
-            }
-        })
+            })
+            .catch((err)=>{
+                this.setState({
+                    errResponse:err
+                })
+            })
+
+
     }
 
     render(){
         return(
             <div>
-                    This is the likes div
+                   
             </div>
         )
     }
