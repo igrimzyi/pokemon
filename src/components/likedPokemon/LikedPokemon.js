@@ -8,7 +8,9 @@ export default class LikedPokemon extends Component{
         super(props);
     
         this.state = {
-            name:''
+            name:'',
+            likes:null
+
         }
     }
    
@@ -21,7 +23,10 @@ export default class LikedPokemon extends Component{
 
         axios.get('http://localhost:4000/api/likes', config, (req,res)=>{
             try{
-                console.log(res)
+                this.setState({
+                    likes:res
+                })
+               return console.log(response)
             }catch(err){
                 console.log(err)
             }
@@ -31,7 +36,7 @@ export default class LikedPokemon extends Component{
     render(){
         return(
             <div>
-
+                    This is the likes div
             </div>
         )
     }

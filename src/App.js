@@ -39,6 +39,7 @@ import Edit from './components/profile/Edit';
           <Route path='/likes' exact element={<LikedPokemon/>}/>
           <Route path='/profile' exact element={<Profile/>}/>
           <Route path='/profile/edit' exact element={<Edit/>}/>
+          <Route path= '/profile/likes' exact element={<LikedPokemon/>}/>
           <Route path='/logout'exact element={<Logout/>}/>
 
 
