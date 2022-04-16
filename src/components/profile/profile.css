@@ -105,8 +105,7 @@
 
 .main-profile-buttons-div{
     display: flex;
-
-
+    justify-content: space-evenly;
 }
 
 /* Styles for the form */

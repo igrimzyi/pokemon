@@ -122,42 +122,40 @@ export default class Edit extends Component{
                            <h3>Edit Trainer Picture!</h3>
                            <div className='images'>
                                 <div className='single-image'>
-                                <img src={pfp} className='profile-image'></img>
-                                <Button
-                                outline
-                                color="primary"
-                                onClick={(e)=>this.handleClick(e)}
-                                type="button"
-                                value={pfp}
-                                 >
-                                     Ash
-                                 </Button>
+                                    <img src={pfp} className='profile-image'></img>
+                                    <Button
+                                    outline
+                                    color="primary"
+                                    onClick={(e)=>this.handleClick(e)}
+                                    type="button"
+                                    value={pfp}
+                                    >
+                                        Ash
+                                    </Button>
                                  </div>
-                                
                                 <div className='single-image'>
-                                <img src={squirtlePfp} value={squirtlePfp} className='profile-image'></img>
-                                <Button
-                                outline
-                                color="primary"
-                                onClick={(e)=>this.handleClick(e)}
-                                value={squirtlePfp}
-                                type="button"
-                                >
-                                Squirtle
-                                </Button>
+                                    <img src={squirtlePfp} value={squirtlePfp} className='profile-image'></img>
+                                    <Button
+                                    outline
+                                    color="primary"
+                                    onClick={(e)=>this.handleClick(e)}
+                                    value={squirtlePfp}
+                                    type="button"
+                                    >
+                                    Squirtle
+                                    </Button>
                                 </div>
-
                                 <div className='single-image'>
-                                <img src={misty} value={misty} className='profile-image'></img>
-                                <Button
-                                color="primary"
-                                outline
-                                onClick={(e)=>this.handleClick(e)}
-                                value={misty}
-                                type="button"
-                                >
-                               misty
-                                </Button>
+                                    <img src={misty} value={misty} className='profile-image'></img>
+                                    <Button
+                                    color="primary"
+                                    outline
+                                    onClick={(e)=>this.handleClick(e)}
+                                    value={misty}
+                                    type="button"
+                                    >
+                                    misty
+                                    </Button>
                                 </div>
                             
                             </div>
