@@ -6,40 +6,28 @@ import pfp from '../../images/ashPFP.jpeg'
 import squirtlePfp from '../../images/SQUIRTLE.jpeg'
 import misty from '../../images/misty.jpg'
 
-
-
-
-
-
-const axios = require('axios');
+    const axios = require('axios');
 
 export default class Edit extends Component{
     constructor(props){
         super(props); 
-        this.state= {
-            profileData:null,
-            
-        }
         this.state = {
-            profileName: 'lol',
+            profileData:null,
+            profileName: null,
             imageData: null,
             isOpen:false,
-            resMessage:null
+            resMessage:null, 
+            errResponse:null
         }
         this.handleClick = this.handleClick.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        
+        this.handleSubmit = this.handleSubmit.bind(this) 
     }
-
     updateName(e){
         this.setState({
             profileName:e.target.value
         });
         console.log(e.target.value)
     }
-
-   
-
     componentDidMount(){
         const config = {
             headers:{
@@ -57,7 +45,7 @@ export default class Edit extends Component{
 
         })
         .catch((err)=>{
-
+            console.log(err.response)
         })
         
 

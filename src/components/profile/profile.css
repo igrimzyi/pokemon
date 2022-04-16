@@ -264,7 +264,7 @@
       }
     
       .alignment{
-        justify-content: space-between;
+        justify-content: space-evenly;
     }
       
 }

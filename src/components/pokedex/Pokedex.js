@@ -26,6 +26,7 @@ class PokemonDetails extends Component {
   }
 
   componentDidMount() {
+
     axios.get(this.props.pokemon.url)
       .then((response) => {
         this.setState({ 
@@ -95,6 +96,7 @@ class Pokedex extends Component{
   // }
 
   componentDidMount() {
+
     axios.get(`${baseURL}limit=${this.state.pokeCount}`)
       .then(response => {
         this.setState({

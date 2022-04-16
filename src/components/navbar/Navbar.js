@@ -38,8 +38,6 @@ export default class NavbarReact extends Component {
       isLoggedIn:true,
       profilePicture:data.profilePicture
     })
-    console.log(this.state.profilePicture)
-    return this.state.profilePicture
     
   })
   .catch((err)=>{
@@ -71,10 +69,11 @@ if(this.state.isLoggedIn === true){
       >
        
         <NavItem>
-          <NavLink className= {'text-decoration margins'} to="/pokedex">
+          <NavLink className= {'text-decoration margins'} to='/pokedex'>
             Pokedex
           </NavLink>
         </NavItem>
+
         <NavItem>
           <NavLink className={'text-decoration'} to="/game">
             Poke Game
@@ -89,11 +88,11 @@ if(this.state.isLoggedIn === true){
         </NavItem>
 
       </Collapse>
-      <NavItem className="profile-picture-styles">
-          <NavLink className={'text-decoration right-link' } to="/profile">
-            <img src={this.state.profilePicture} className="profile-styles"></img>
-          </NavLink>
-        </NavItem>
+        <NavItem className="profile-picture-styles">
+            <NavLink className={'text-decoration right-link' } to="/profile">
+              <img src={this.state.profilePicture} className="profile-styles"></img>
+            </NavLink>
+          </NavItem>
     
   </Navbar>
           
