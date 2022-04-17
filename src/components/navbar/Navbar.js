@@ -79,14 +79,12 @@ if(this.state.isLoggedIn === true){
             Poke Game
           </NavLink>
         </NavItem>
-       
       </Nav>
       <NavItem className="profile-name-styles">
           <NavLink className={'text-decoration right-link' } to="/profile">
             Profile
           </NavLink>
         </NavItem>
-
       </Collapse>
         <NavItem className="profile-picture-styles">
             <NavLink className={'text-decoration right-link' } to="/profile">
