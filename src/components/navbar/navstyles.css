@@ -35,7 +35,6 @@
         visibility: visible;
     }
 }
-
 @media screen and (min-width:767px){
     .profile-name-styles{
         visibility: hidden;

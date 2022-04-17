@@ -3,7 +3,7 @@ require('dotenv').config()
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const {check, validationResult} = require('express-validator');
+const {check, validationResult, buildCheckFunction} = require('express-validator');
 const jwt = require('jsonwebtoken')
 const User = require('../models/User');
 
@@ -32,16 +32,19 @@ async(req,res) =>{
         .status(400)
         .send(errors.array()[0].msg)
     }
-    const {email,password} = req.body;
-
+    const {email,password} = req.body
      try{
         
         let checkUser = await User.findOne({email});
+        console.log(checkUser)
+        //finding if the user even exists and if not return and invalid credential message
         if(!checkUser){
             return res
             .status(400)
             .send("Invalid Credentials");
         }
+
+        // comparing the match to the users passwords.
         const isMatch = await bcrypt.compare(password, checkUser.password);
         if(!isMatch){
             return res
@@ -49,10 +52,13 @@ async(req,res) =>{
             .send("Invalid Credentials")
         }
 
+        //storing data thats only unique to that user 
         const userToken = {
             name: email, 
-            id: checkUser._id}
-    
+            id: checkUser._id,
+            email: checkUser.name
+        }
+
         const accessToken = jwt.sign(userToken, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1h'})
         res.json({accessToken: accessToken}).status(200)
 
