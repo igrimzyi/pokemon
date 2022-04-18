@@ -7,6 +7,7 @@ import { Form,
      Alert } from 'reactstrap';
     const axios = require('axios'); 
 import './register.css'
+import {Navigate} from 'react-router-dom'
 
 
 export default class Register extends Component {
@@ -19,7 +20,8 @@ export default class Register extends Component {
       password:'',
       errResponse: '',
       passwordCheck:'',
-      isOpen:false
+      isOpen:false,
+      isRegistered: false
 
     };
 
@@ -63,6 +65,9 @@ export default class Register extends Component {
     })
   }
     render(){
+      if(this.state.isRegistered === true || localStorage.userToken ){
+        return <Navigate to='/' replace={true}></Navigate>
+      }
             return(
 <div>
   <Alert className="alert-margins iphone-xr-alert" color="danger" isOpen={this.state.isOpen} toggle={() =>{this.setState({isOpen:false})}}>
