@@ -8,11 +8,12 @@ const User = require('../models/User')
 
 router.get('/', authenticateToken, async(req,res)=>{
     try{
-   
         console.log(req.user)
-        // console.log(req.user.id)
+        //gain information by username 
         const profile = await Profile.findOne({name:req.user.name});
         console.log(profile)
+
+        //send profile with status of 200 
         res.status(200).send(profile);
     }catch(err){
         res.status(500).send(err)
@@ -24,9 +25,13 @@ router.patch('/', authenticateToken, async(req,res)=>{
         await User.findOneAndUpdate({name:req.body.profileData.name}, {name:req.body.profileName})
         await Profile.findOneAndUpdate({name:req.body.profileData.name}, {name:req.body.profileName})
         await Profile.findOneAndUpdate({name:req.body.profileData.name}, {profilePicture:req.body.imageData})
-
         res.status(200).send('Profile Has Been Updated')
     }catch(err){
+       
+        if(err.codeName === "DuplicateKey"){
+            res.status(400).send('That name has been taken by someone!')
+        }else 
+        
         res.status(400).send('Looks like something went wrong')
     }
 })
