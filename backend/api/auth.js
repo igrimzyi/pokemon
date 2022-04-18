@@ -53,9 +53,9 @@ async(req,res) =>{
 
         //storing data thats only unique to that user 
         const userToken = {
-            name: email, 
+            email: email, 
             id: checkUser._id,
-            email: checkUser.name
+            name: checkUser.name
         }
 
         const accessToken = jwt.sign(userToken, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1h'})

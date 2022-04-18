@@ -19,7 +19,7 @@ export default class Profile extends Component{
     componentDidMount(){
 
     let baseUrl = 'https://pokeapi.co/api/v2/'
-    
+
         const config = {
             headers:{
                 Authorization: "Bearer " + localStorage.getItem('userToken')
@@ -28,11 +28,12 @@ export default class Profile extends Component{
         axios.get('http://localhost:4000/api/profile', config)
             .then((res)=>{
                 let data = res.data
-                console.log(data)
                 
                 this.setState({
                     profileData: data
                 })
+
+                console.log(this.state.profileData)
 
             })
             .catch((err)=>{

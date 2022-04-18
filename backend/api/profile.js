@@ -8,9 +8,11 @@ const User = require('../models/User')
 
 router.get('/', authenticateToken, async(req,res)=>{
     try{
+   
         console.log(req.user)
-        console.log(req.user.id)
-        const profile = await Profile.findOne({email:req.user.name})
+        // console.log(req.user.id)
+        const profile = await Profile.findOne({name:req.user.name});
+        console.log(profile)
         res.status(200).send(profile);
     }catch(err){
         res.status(500).send(err)
