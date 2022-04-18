@@ -14,8 +14,7 @@ const ProfileSchema = new mongoose.Schema({
     profilePicture: {
         type:String, 
         default: 'https://i.stack.imgur.com/l60Hf.png',
-        required:true
-        
+        required:true  
     }, 
     likes:{
         type:Array

@@ -34,9 +34,8 @@ async(req,res) =>{
     }
     const {email,password} = req.body
      try{
-        
         let checkUser = await User.findOne({email});
-        console.log(checkUser)
+        console.log(checkUser);
         //finding if the user even exists and if not return and invalid credential message
         if(!checkUser){
             return res

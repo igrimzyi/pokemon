@@ -4,10 +4,13 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const {check , validationResult} = require('express-validator'); 
 const Profile = require('../models/Profile');
+const User = require('../models/User')
 
 router.get('/', authenticateToken, async(req,res)=>{
     try{
-        const profile = await Profile.findOne({email:req.user.id})
+        console.log(req.user)
+        console.log(req.user.id)
+        const profile = await Profile.findOne({email:req.user.name})
         res.status(200).send(profile);
     }catch(err){
         res.status(500).send(err)
@@ -16,9 +19,7 @@ router.get('/', authenticateToken, async(req,res)=>{
 
 router.patch('/', authenticateToken, async(req,res)=>{
     try{
-        console.log(req.body.profileName)
-        console.log(req.body.imageData)
-        
+        await User.findOneAndUpdate({name:req.body.profileData.name}, {name:req.body.profileName})
         await Profile.findOneAndUpdate({name:req.body.profileData.name}, {name:req.body.profileName})
         await Profile.findOneAndUpdate({name:req.body.profileData.name}, {profilePicture:req.body.imageData})
 

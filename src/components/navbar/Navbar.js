@@ -48,7 +48,7 @@ export default class NavbarReact extends Component {
   })
   }
         render(){
-if(this.state.isLoggedIn === true){
+if(localStorage.userToken){
  return(
             
   <Navbar
@@ -98,7 +98,7 @@ if(this.state.isLoggedIn === true){
             )
             }
             
-      else if(this.state.isLoggedIn === false){
+      else if(!localStorage.userToken){
               return(
               
     <Navbar
