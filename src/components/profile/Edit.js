@@ -17,7 +17,9 @@ export default class Edit extends Component{
             imageData: null,
             isOpen:false,
             resMessage:null, 
-            errResponse:null
+            errResponse:null,
+            colorResponse:null
+
         }
         this.handleClick = this.handleClick.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this) 
@@ -71,12 +73,14 @@ export default class Edit extends Component{
         axios.patch('http://localhost:4000/api/profile', this.state, config)
         .then((res)=>{
             this.setState({
+                colorResponse:"success",
                 isOpen:true,
                 resMessage: res.data
             })
         })
         .catch((err)=>{
             this.setState({
+                colorResponse:"danger",
                 isOpen:true,
                 resMessage:err.response.data
             })
@@ -95,7 +99,7 @@ export default class Edit extends Component{
         return(
             <div className='container container-editor'>
 
-                <Alert className='edit-alert-styles' isOpen={this.state.isOpen} toggle={() =>{this.setState({isOpen:false})}}>
+                <Alert className='edit-alert-styles' color={this.state.colorResponse} isOpen={this.state.isOpen} toggle={() =>{this.setState({isOpen:false})}}>
                  {this.state.resMessage}   
                 </Alert>
                 <h1 className='h1-edit-styles iphone-edit-styles-title'>Edit Your Trainer Profile!</h1>

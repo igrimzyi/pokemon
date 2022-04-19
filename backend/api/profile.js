@@ -23,9 +23,11 @@ router.get('/', authenticateToken, async(req,res)=>{
 
 router.patch('/', authenticateToken, async(req,res)=>{
     try{
-        let checkUsername = await Profile.findOne({name:req.body.profileData.name})
+        let checkUsername = await Profile.findOne({name:req.body.profileName})
+        console.log(req.body)
+       
 
-        if(checkUsername){
+        if(checkUsername.name != req.body.profileData.name){
             return res.status(400).send("That name has been taken by someone!")
         }
 
