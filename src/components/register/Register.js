@@ -44,7 +44,12 @@ export default class Register extends Component {
     axios
         .post('http://localhost:4000/api/users' ,this.state)
         .then(res =>{
+          this.setState({
+            isRegistered:true
+          })
+          localStorage.setItem('userToken', res.data.accessToken)
           return res.data
+          
         })
         .catch(error =>{
           //<param>.response.data is what gets the backend response and allows the data to be console logged 
@@ -123,7 +128,7 @@ export default class Register extends Component {
         id="passwordCheck"
         name="passwordCheck"
         placeholder="Password"
-        type="passwordCheck"
+        type="password"
         value={this.state.value} 
         onChange={this.handleInputChange}
       />

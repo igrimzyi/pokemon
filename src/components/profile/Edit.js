@@ -76,6 +76,8 @@ export default class Edit extends Component{
             })
         })
         .catch((err)=>{
+
+            console.log(err)
         })
 
 

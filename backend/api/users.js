@@ -54,6 +54,7 @@ try{
     });
     const profile = new Profile({
         name,
+        email
     }) 
 
     //salting and hashing the password 
@@ -68,8 +69,10 @@ try{
     //user is now saved and token is the only thing that should be sent in order to access the user privileged tabs
 
     const userToken = {
-        name: email, 
-        id: user._id}
+        email: email, 
+        id: user._id,
+        name: name 
+        }
     const accessToken = jwt.sign(userToken, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1h'})
 
     res.status(200).send({accessToken: accessToken})

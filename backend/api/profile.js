@@ -10,12 +10,13 @@ router.get('/', authenticateToken, async(req,res)=>{
     try{
         console.log(req.user)
         //gain information by username 
-        const profile = await Profile.findOne({name:req.user.name});
+        const profile = await Profile.findOne({email:req.user.email});
         console.log(profile)
 
         //send profile with status of 200 
         res.status(200).send(profile);
     }catch(err){
+        console.log(err)
         res.status(500).send(err)
     }
 })
@@ -31,7 +32,7 @@ router.patch('/', authenticateToken, async(req,res)=>{
         if(err.codeName === "DuplicateKey"){
             res.status(400).send('That name has been taken by someone!')
         }else 
-        
+
         res.status(400).send('Looks like something went wrong')
     }
 })

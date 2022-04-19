@@ -27,7 +27,10 @@ const ProfileSchema = new mongoose.Schema({
         type:String,
         default:"Pokemon Trainer",
         required:true
-
+    },
+    email:{
+        type:String, 
+        required:true
     }
 })
 
