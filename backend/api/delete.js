@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const Profile = require('../models/Profile');
 
+//delete user likes 
 router.post('/', authenticateToken, async(req,res)=>{
     try{
         console.log(req.body); 

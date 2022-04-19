@@ -6,6 +6,8 @@ const {check , validationResult} = require('express-validator');
 const Profile = require('../models/Profile');
 const User = require('../models/User')
 
+
+//get user profile data
 router.get('/', authenticateToken, async(req,res)=>{
     try{
         console.log(req.user)
@@ -21,6 +23,8 @@ router.get('/', authenticateToken, async(req,res)=>{
     }
 })
 
+
+//patch username and patch user profile picture 
 router.patch('/', authenticateToken, async(req,res)=>{
     try{
         let checkUsername = await Profile.findOne({name:req.body.profileName})
