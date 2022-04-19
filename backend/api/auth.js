@@ -3,7 +3,7 @@ require('dotenv').config()
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const {check, validationResult, buildCheckFunction} = require('express-validator');
+const {check, validationResult} = require('express-validator');
 const jwt = require('jsonwebtoken')
 const User = require('../models/User');
 
@@ -54,8 +54,7 @@ async(req,res) =>{
         //storing data thats only unique to that user 
         const userToken = {
             email: email, 
-            id: checkUser._id,
-            name: checkUser.name
+            id: checkUser._id
         }
 
         const accessToken = jwt.sign(userToken, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1h'})
