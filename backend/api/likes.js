@@ -9,7 +9,8 @@ const Profile = require('../models/Profile');
 //protected route that receives user information and sends it to my frontend 
 router.get('/',authenticateToken, async(req,res)=>{
     try{
-        const profile = await Profile.findOne({email:req.user.id})
+        console.log(req.user.id)
+        const profile = await Profile.findOne({email:req.user.email})
         const likes = {likes:profile.likes}
         return res.status(200).send(likes) 
     }catch(err){
@@ -22,8 +23,8 @@ router.get('/',authenticateToken, async(req,res)=>{
 router.post('/', authenticateToken, async(req,res)=>{
     try{    
         console.log(req.body)
-        const profile = await Profile.findOne({email:req.user.id})
-        await Profile.updateOne({email:req.user.name},{$push:{likes:req.body.pokemon}})
+        const profile = await Profile.findOne({email:req.user.email})
+        await Profile.updateOne({email:req.user.email},{$push:{likes:req.body.pokemon}})
         return res.status(201).send("created page")
     }catch(err){
         return err
