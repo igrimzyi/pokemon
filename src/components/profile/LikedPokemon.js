@@ -123,10 +123,13 @@ export default class LikedPokemon extends Component{
             )
         } else if(this.state.likes.length === 0){
             return(
-                <div className=' container liked-div'>
-                    <div>
-                        oops you have not liked any pokemon yet!Click this button to catch your favorite pokemon!
-                    </div>
+                <div className='container null-likes'>
+                    <h4>
+                        oops you have not liked any pokemon yet!
+                    </h4>
+                    <h4>
+                    Click this button to catch your favorite pokemon!
+                    </h4>
                     <Button color='success' outline block href="/pokedex">
                         View Pokemon
                     </Button>

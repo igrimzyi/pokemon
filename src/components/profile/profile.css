@@ -299,6 +299,7 @@
 .liked-div{
     position: relative;
     top: 5rem;
+  
 }
 .liked-card-align{
     display: flex;
@@ -312,3 +313,10 @@
     display: flex;
     flex-wrap: wrap;
   }
+.null-likes{
+    position: relative;
+    top: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
