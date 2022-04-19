@@ -10,7 +10,7 @@ const Profile = require('../models/Profile');
 router.post('/', authenticateToken, async(req,res)=>{
     try{
         console.log(req.body); 
-        await Profile.updateOne({email:req.user.name}, {$pull:{likes:req.body.pokemon}})
+        await Profile.updateOne({email:req.user.email}, {$pull:{likes:req.body.pokemon}})
         return res.status(204).send('deleted like')
     }catch(err){
       return res.status(500).send(err)
