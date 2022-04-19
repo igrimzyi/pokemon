@@ -76,8 +76,11 @@ export default class Edit extends Component{
             })
         })
         .catch((err)=>{
-
-            console.log(err)
+            this.setState({
+                isOpen:true,
+                resMessage:err.response.data
+            })
+            console.log(err.response.data)
         })
 
 

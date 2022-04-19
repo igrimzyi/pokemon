@@ -70,8 +70,7 @@ try{
 
     const userToken = {
         email: email, 
-        id: user._id,
-        name: name 
+        id: user._id
         }
     const accessToken = jwt.sign(userToken, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1h'})
 
