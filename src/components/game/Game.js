@@ -15,7 +15,9 @@ class Game extends Component {
                 this.state ={
                         isStarted:false,
                         profile:{}, 
-                        isLoggedIn:{}
+                        isLoggedIn:{},
+                        userPokemon:null,
+                        enemyPokemon:null
                         
                 }
 
@@ -23,6 +25,15 @@ class Game extends Component {
         }
 
         componentDidMount(){
+                const randomNum = Math.floor(Math.random() * 10) + 1;
+                axios.get(`https://pokeapi.co/api/v2/pokemon/${randomNum}`)
+                .then((res)=>{
+                        console.log(res)
+                })
+                .catch((err)=>{
+                        console.log(err)
+                })
+                console.log(randomNum)
                 const config = {
                         headers:{
                             Authorization: "Bearer " + localStorage.getItem('userToken')
@@ -36,7 +47,7 @@ class Game extends Component {
                         })
                 })
                 .catch((err)=>{
-                        localStorage.removeItem("userToken")
+                       localStorage.removeItem("userToken")
                        this.setState({
                                isLoggedIn:err.response.status
                        }) 
@@ -56,8 +67,7 @@ class Game extends Component {
                                  <Navigate to='/login' replace={true}></Navigate>
                         )
                 }
-
-               if(this.state.isStarted === false){
+              else if(this.state.isStarted === false){
                         return (
                                <div className="game-container">
                                 <div className="button-view" >
@@ -65,12 +75,12 @@ class Game extends Component {
                                 </div>
                          </div> 
                         )
-                }else  {
+                }else {
             return(
 
                 <div className="game-container">
                         <div className="button-view " >
-                        <h1 className="center-content" >hello world</h1>
+
                         </div>
                 </div>
                         
