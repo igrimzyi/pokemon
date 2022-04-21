@@ -17,14 +17,15 @@ class Game extends Component {
                         profile:{}, 
                         isLoggedIn:{},
                         userPokemon:null,
-                        enemyPokemon:null
-                        
+                        enemyPokemon:null,
+                        didGameEnd:false
                 }
 
                 this.handleClickStart = this.handleClickStart.bind(this)
         }
 
         componentDidMount(){
+                //get the random pokemon for the user
                 const randomNum = Math.floor(Math.random() * 10) + 1;
                 axios.get(`https://pokeapi.co/api/v2/pokemon/${randomNum}`)
                 .then((res)=>{
@@ -33,7 +34,16 @@ class Game extends Component {
                 .catch((err)=>{
                         console.log(err)
                 })
-                console.log(randomNum)
+                //get the random pokemon for the user to fight against 
+                const randomNumComputer = Math.floor(Math.random() * 10) + 1;
+                axios.get(`https://pokeapi.co/api/v2/pokemon/${randomNumComputer}`)
+                .then((res)=>{
+                        console.log(res)
+                })
+                .catch((err)=>{
+                        console.log(err)
+                })
+                //get user profile to insert winning or losing data to his stats 
                 const config = {
                         headers:{
                             Authorization: "Bearer " + localStorage.getItem('userToken')
@@ -52,6 +62,12 @@ class Game extends Component {
                                isLoggedIn:err.response.status
                        }) 
                 })
+
+        }
+        //function will handle attack from user
+        handleAttack(){
+
+
         }
 
         handleClickStart(){
@@ -69,7 +85,7 @@ class Game extends Component {
                 }
               else if(this.state.isStarted === false){
                         return (
-                               <div className="game-container">
+                        <div className="game-container">
                                 <div className="button-view" >
                                 <Button color="danger" className="center-content" onClick={this.handleClickStart}>Start Game</Button>  
                                 </div>
@@ -80,8 +96,11 @@ class Game extends Component {
 
                 <div className="game-container">
                         <div className="button-view " >
-
+                        
                         </div>
+
+
+
                 </div>
                         
                 )
