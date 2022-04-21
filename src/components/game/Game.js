@@ -59,14 +59,19 @@ class Game extends Component {
 
                if(this.state.isStarted === false){
                         return (
-                                <div className="button-view">
-                                <Button className="center-content" onClick={this.handleClickStart}>Start Game</Button>  
+                               <div className="game-container">
+                                <div className="button-view" >
+                                <Button color="danger" className="center-content" onClick={this.handleClickStart}>Start Game</Button>  
                                 </div>
+                         </div> 
                         )
                 }else  {
             return(
-                    <div className="button-view" >
-                <h1 className="center-content" >hello world</h1>
+
+                <div className="game-container">
+                        <div className="button-view " >
+                        <h1 className="center-content" >hello world</h1>
+                        </div>
                 </div>
                         
                 )

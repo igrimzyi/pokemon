@@ -1,6 +1,11 @@
+.game-container{
+    height: 100vh;
+}
+
 .center-content{
     position: relative;
-   top:50%;
+   top:45%;
+   left:45%;
 
 }
 .button-view{
@@ -10,4 +15,5 @@
 .margin-top{
     margin-top: 10rem;
 }
+
 
