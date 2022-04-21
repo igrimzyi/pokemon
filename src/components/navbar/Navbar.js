@@ -43,8 +43,7 @@ export default class NavbarReact extends Component {
   .catch((err)=>{
     localStorage.removeItem("userToken")
     this.setState({
-      isLoggedIn:false,
-      profilePicture:null
+      isLoggedIn:false
     })
   })
   }

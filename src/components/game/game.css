@@ -3,10 +3,9 @@
 }
 
 .center-content{
-   position: relative;
-   top:45%;
-   left:45%;
-
+   position: fixed;
+   bottom: 0;
+  
 }
 .button-view{
     height: 100vh;
@@ -15,5 +14,25 @@
 .margin-top{
     margin-top: 10rem;
 }
+.chat-box-styles{
+    border: 1px solid black;
+}
+.ui{
+    display: flex;
+    flex-direction: row;
+    background-color: grey;
+    width: 100vw;
+    justify-content: space-between;
 
+}
+.ui-button-group{
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.ui-button{
+    width:15rem;
+    height:3rem;
+}
 

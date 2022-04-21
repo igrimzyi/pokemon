@@ -18,7 +18,8 @@ class Game extends Component {
                         isLoggedIn:{},
                         userPokemon:null,
                         enemyPokemon:null,
-                        didGameEnd:false
+                        didGameEnd:false,
+                        chatBoxMessage:"hi this is pokeon"
                 }
 
                 this.handleClickStart = this.handleClickStart.bind(this)
@@ -29,7 +30,10 @@ class Game extends Component {
                 const randomNum = Math.floor(Math.random() * 10) + 1;
                 axios.get(`https://pokeapi.co/api/v2/pokemon/${randomNum}`)
                 .then((res)=>{
-                        console.log(res)
+                        this.setState({
+                                userPokemon: res.data
+                        })
+                        console.log(this.state.userPokemon)
                 })
                 .catch((err)=>{
                         console.log(err)
@@ -66,7 +70,7 @@ class Game extends Component {
         }
         //function will handle attack from user
         handleAttack(){
-
+                
 
         }
 
@@ -86,7 +90,7 @@ class Game extends Component {
               else if(this.state.isStarted === false){
                         return (
                         <div className="game-container">
-                                <div className="button-view" >
+                                <div className="button-view">
                                 <Button color="danger" className="center-content" onClick={this.handleClickStart}>Start Game</Button>  
                                 </div>
                          </div> 
@@ -95,12 +99,35 @@ class Game extends Component {
             return(
 
                 <div className="game-container">
-                        <div className="button-view " >
-                        
+
+                        <div className="center-content">
+                                <div className="ui">
+                                        <div className="chat-box-styles">
+                                                <span>
+                                                        {this.state.chatBoxMessage}
+                                                </span>
+                                        </div>
+                                                
+                                                <div className="ui-button-group">
+                                                        <Button color="danger" outline className="ui-button">
+                                                                Fight
+                                                        </Button>       
+                                                        <Button color="warning" outline className="ui-button">
+                                                                Bag
+                                                        </Button>  
+                                                        </div>
+                                                <div className="ui-button-group">
+                                                        <Button color="success" outline className="ui-button">
+                                                                Pokemon
+                                                        </Button>  
+                                                        <Button color="info" outline className="ui-button">
+                                                                Run
+                                                        </Button>  
+                                                </div>
+                                               
+                                   
+                                </div>
                         </div>
-
-
-
                 </div>
                         
                 )

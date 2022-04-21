@@ -61,7 +61,7 @@ export default class login extends Component {
 
         render(){
 
-          if(this.state.isLoggedIn){
+          if(localStorage.userToken){
             return <Navigate to='/' replace={true}></Navigate>
           }else
                 return(
