@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-
+//config database and allow export this function to my server
 const connectDB = async () =>{
     try{
         await mongoose.connect('mongodb://localhost:27017/pokeapp', {useNewUrlParser: true, useUnifiedTopology: true})
