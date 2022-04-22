@@ -20,7 +20,9 @@ class Game extends Component {
                         userPokemon:null,
                         enemyPokemon:null,
                         didGameEnd:false,
-                        chatBoxMessage:`thinking...`
+                        chatBoxMessage:`thinking...`,
+                        enemyHealth:null,
+                        userHealth:null
                 }
 
                 this.handleClickStart = this.handleClickStart.bind(this)
@@ -33,6 +35,7 @@ class Game extends Component {
                 .then((res)=>{
                         this.setState({
                                 userPokemon: res.data,
+                                userHealth:res.data.stats[0].base_stat,
                                 chatBoxMessage:`What will ${res.data.name} do!?`
                         })
                         console.log(this.state.userPokemon)
@@ -45,7 +48,8 @@ class Game extends Component {
                 axios.get(`https://pokeapi.co/api/v2/pokemon/${randomNumComputer}`)
                 .then((res)=>{
                         this.setState({
-                                enemyPokemon:res.data
+                                enemyPokemon:res.data,
+                                enemyHealth:res.data.stats[0].base_stat
                         })
                         console.log(res)
                 })
@@ -105,15 +109,19 @@ class Game extends Component {
 
                 <div className="game-container">
                         {/* displaying pokmon and their health */}
-                        <div>
+                        <div className="rendered-game container">
                                 <div className="enemy-side">
-                                        <div className="enemy-info">
+                                        <div className="enemy-info game-text">
+                                                <div>
+                                                        {this.state.enemyPokemon.name }
+                                                </div>
                                                 <div className="text-center">
-                                                        1 of 5
+                                                        {this.state.enemyHealth} of {this.state.enemyPokemon.stats[0].base_stat}
                                                 </div>
                                                 <Progress
-                                                max="5"
-                                                value="1"
+                                                max={this.state.enemyPokemon.stats[0].base_stat}
+                                                value={this.state.enemyHealth} 
+                                                color='danger'
                                                 />
                                         </div>
                                         <div className="enemy-pokemon">
@@ -121,13 +129,24 @@ class Game extends Component {
                                         </div>
 
                                 </div>
-                                <div>
-                                        <div className="user-pokemon">
-
-                                        </div>
+                                <div className="user-side">
                                         <div className="pokemon">
-                                                
+                                                <img src={this.state.userPokemon.sprites.back_default}></img>
+                                         </div>
+                                        <div className="user-info game-text">
+                                                <div>
+                                                        {this.state.userPokemon.name }
+                                                </div>
+                                                <div className="text-center">
+                                                        {this.state.userHealth} of {this.state.userPokemon.stats[0].base_stat}
+                                                </div>
+                                                <Progress
+                                                max={this.state.userPokemon.stats[0].base_stat}
+                                                value={this.state.userHealth} 
+                                                color='danger'
+                                                />
                                         </div>
+                                        
 
                                 </div>
                         </div>
