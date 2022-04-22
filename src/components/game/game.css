@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 .game-container{
     height: 100vh;
 }
@@ -26,7 +28,7 @@
 .ui{
     display: flex;
     flex-direction: row;
-    background-color: silver;
+    background-color:rgba(100, 100, 100, .2);
     width: 100vw;
     height: 10rem;
     justify-content: space-between;
@@ -39,12 +41,73 @@
    
 }
 .ui-button{
-    width:15rem;
-    height:3rem;
+    width:20rem;
+    height:100%;
+    font-weight: 900;
+    color: white;
 }
 .chat-text{
    position: relative;
    left: 1rem;
    top: 1rem;
+   font-family: 'VT323', monospace;
+   font-size: 1.5rem;
+}
+.ui-buttons-all{
+    display: flex;
 }
 
+
+/* buttons color */
+.green{
+    background-color: #4DAD5B;
+    border: 1px solid green;
+    opacity: .8;
+    border-radius: 2%;
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+}
+.green:hover{
+    transition: .3s;
+    opacity: 1;
+}
+.red{
+    background-color: #E3350D;
+    border: 1px solid darkred;
+    opacity: .8;
+    border-radius: 2%;
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+}
+.red:hover{
+    transition: .3s;
+    opacity: 1;
+}
+.yellow{
+    background-color: #FFCC00;
+    border: 1px solid #ffd900;
+    opacity: .8;
+    border-radius: 2%;
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+}
+.yellow:hover{
+    transition: .3s;
+    opacity: 1;
+}
+.blue{
+    background-color: #1847D7;
+    border: 1px solid darkblue;
+    opacity: .8;
+    border-radius: 2%;
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+}
+.blue:hover{
+    transition: .3s;
+    opacity: 1;
+}
+
+.game-text{
+    font-family: 'VT323', monospace;
+}

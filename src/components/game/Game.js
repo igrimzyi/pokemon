@@ -108,23 +108,25 @@ class Game extends Component {
                                                         {this.state.chatBoxMessage}
                                                 </span>
                                         </div>
-                                                
+                                             <div className="ui-buttons-all">
                                                 <div className="ui-button-group">
-                                                        <Button color="danger" outline className="ui-button">
+                                                        <button  className="ui-button red">
                                                                 Fight
-                                                        </Button>       
-                                                        <Button color="warning" outline className="ui-button">
+                                                        </button>       
+                                                        <button  className="ui-button yellow">
                                                                 Bag
-                                                        </Button>  
+                                                        </button>  
                                                         </div>
                                                 <div className="ui-button-group">
-                                                        <Button color="success" outline className="ui-button">
+                                                        <button className=" green ui-button">
                                                                 Pokemon
-                                                        </Button>  
-                                                        <Button color="info" outline className="ui-button">
+                                                        </button>  
+                                                        <button  className=" blue ui-button">
                                                                 Run
-                                                        </Button>  
+                                                        </button>  
                                                 </div>
+                                                </div>
+                                               
                                                
                                    
                                 </div>
