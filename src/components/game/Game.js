@@ -19,7 +19,7 @@ class Game extends Component {
                         userPokemon:null,
                         enemyPokemon:null,
                         didGameEnd:false,
-                        chatBoxMessage:"hi this is pokeon"
+                        chatBoxMessage:`thinking...`
                 }
 
                 this.handleClickStart = this.handleClickStart.bind(this)
@@ -31,7 +31,8 @@ class Game extends Component {
                 axios.get(`https://pokeapi.co/api/v2/pokemon/${randomNum}`)
                 .then((res)=>{
                         this.setState({
-                                userPokemon: res.data
+                                userPokemon: res.data,
+                                chatBoxMessage:`What will ${res.data.name} do!?`
                         })
                         console.log(this.state.userPokemon)
                 })
@@ -103,7 +104,7 @@ class Game extends Component {
                         <div className="center-content">
                                 <div className="ui">
                                         <div className="chat-box-styles">
-                                                <span>
+                                                <span className="chat-text">
                                                         {this.state.chatBoxMessage}
                                                 </span>
                                         </div>

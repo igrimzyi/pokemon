@@ -16,13 +16,21 @@
 }
 .chat-box-styles{
     border: 1px solid black;
+    border-radius: 2%;
+    width: 20rem;
+    height: 8rem;
+    position: relative;
+    top: 1rem;
+    left: 2rem;
 }
 .ui{
     display: flex;
     flex-direction: row;
-    background-color: grey;
+    background-color: silver;
     width: 100vw;
+    height: 10rem;
     justify-content: space-between;
+    border-top:1px solid black;
 
 }
 .ui-button-group{
@@ -30,9 +38,13 @@
     flex-direction: column;
    
 }
-
 .ui-button{
     width:15rem;
     height:3rem;
+}
+.chat-text{
+   position: relative;
+   left: 1rem;
+   top: 1rem;
 }
 
