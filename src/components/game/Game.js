@@ -1,4 +1,4 @@
-import { Button } from "reactstrap";
+import { Button, Progress } from "reactstrap";
 import React,{ Component } from "react";
 import axios from 'axios';
 import Login from '../login/Login'; 
@@ -6,6 +6,7 @@ import Login from '../login/Login';
 import {Navigate,Route, Routes} from 'react-router-dom'
 
 import './game.css'
+
 
 
 class Game extends Component {
@@ -43,6 +44,9 @@ class Game extends Component {
                 const randomNumComputer = Math.floor(Math.random() * 10) + 1;
                 axios.get(`https://pokeapi.co/api/v2/pokemon/${randomNumComputer}`)
                 .then((res)=>{
+                        this.setState({
+                                enemyPokemon:res.data
+                        })
                         console.log(res)
                 })
                 .catch((err)=>{
@@ -100,6 +104,33 @@ class Game extends Component {
             return(
 
                 <div className="game-container">
+                        {/* displaying pokmon and their health */}
+                        <div>
+                                <div className="enemy-side">
+                                        <div className="enemy-info">
+                                                <div className="text-center">
+                                                        1 of 5
+                                                </div>
+                                                <Progress
+                                                max="5"
+                                                value="1"
+                                                />
+                                        </div>
+                                        <div className="enemy-pokemon">
+                                                <img src={this.state.enemyPokemon.sprites.front_default}></img>
+                                        </div>
+
+                                </div>
+                                <div>
+                                        <div className="user-pokemon">
+
+                                        </div>
+                                        <div className="pokemon">
+                                                
+                                        </div>
+
+                                </div>
+                        </div>
 
                         <div className="center-content">
                                 <div className="ui">
@@ -109,22 +140,22 @@ class Game extends Component {
                                                 </span>
                                         </div>
                                              <div className="ui-buttons-all">
-                                                <div className="ui-button-group">
-                                                        <button  className="ui-button red">
-                                                                Fight
-                                                        </button>       
-                                                        <button  className="ui-button yellow">
-                                                                Bag
-                                                        </button>  
+                                                        <div className="ui-button-group">
+                                                                <button  className="ui-button red">
+                                                                        Fight
+                                                                </button>       
+                                                                <button  className="ui-button yellow">
+                                                                        Bag
+                                                                </button>  
+                                                                </div>
+                                                        <div className="ui-button-group">
+                                                                <button className=" green ui-button">
+                                                                        Pokemon
+                                                                </button>  
+                                                                <button  className=" blue ui-button">
+                                                                        Run
+                                                                </button>  
                                                         </div>
-                                                <div className="ui-button-group">
-                                                        <button className=" green ui-button">
-                                                                Pokemon
-                                                        </button>  
-                                                        <button  className=" blue ui-button">
-                                                                Run
-                                                        </button>  
-                                                </div>
                                                 </div>
                                                
                                                

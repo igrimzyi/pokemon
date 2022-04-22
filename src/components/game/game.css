@@ -63,7 +63,7 @@
     background-color: #4DAD5B;
     border: 1px solid green;
     opacity: .8;
-    border-radius: 2%;
+    border-radius: 4%;
     font-family: 'VT323', monospace;
     font-size: 2rem;
 }
@@ -75,7 +75,7 @@
     background-color: #E3350D;
     border: 1px solid darkred;
     opacity: .8;
-    border-radius: 2%;
+    border-radius: 4%;
     font-family: 'VT323', monospace;
     font-size: 2rem;
 }
@@ -87,7 +87,7 @@
     background-color: #FFCC00;
     border: 1px solid #ffd900;
     opacity: .8;
-    border-radius: 2%;
+    border-radius: 4%;
     font-family: 'VT323', monospace;
     font-size: 2rem;
 }
@@ -99,7 +99,7 @@
     background-color: #1847D7;
     border: 1px solid darkblue;
     opacity: .8;
-    border-radius: 2%;
+    border-radius: 4%;
     font-family: 'VT323', monospace;
     font-size: 2rem;
 }
@@ -110,4 +110,18 @@
 
 .game-text{
     font-family: 'VT323', monospace;
+}
+
+
+
+/* this is the actual rendered game */
+.enemy-side{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: 5rem;
+    justify-content: space-between;
+}
+.enemy-info{
+    width: 15rem;
 }
