@@ -27,25 +27,24 @@ router.get('/', authenticateToken, async(req,res)=>{
 //patch username and patch user profile picture 
 router.patch('/', authenticateToken, async(req,res)=>{
     try{
-        let checkUsername = await Profile.findOne({name:req.body.profileName})
+        const checkUsername = await Profile.findOne({name:req.body.profileName})
+        console.log(checkUsername)
         console.log(req.body)
+        
        
+        await User.findOneAndUpdate({email:req.body.profileData.email}, {name:req.body.profileName})
+        await Profile.findOneAndUpdate({email:req.body.profileData.email}, {name:req.body.profileName})
+        await Profile.findOneAndUpdate({email:req.body.profileData.email}, {profilePicture:req.body.imageData})
 
-        if(checkUsername.name != req.body.profileData.name){
-            return res.status(400).send("That name has been taken by someone!")
-        }
-
-        await User.findOneAndUpdate({name:req.body.profileData.name}, {name:req.body.profileName})
-        await Profile.findOneAndUpdate({name:req.body.profileData.name}, {name:req.body.profileName})
-        await Profile.findOneAndUpdate({name:req.body.profileData.name}, {profilePicture:req.body.imageData})
         res.status(200).send('Profile Has Been Updated')
+       
     }catch(err){
        
         if(err.codeName === "DuplicateKey"){
             res.status(400).send('That name has been taken by someone!')
-        }else 
-
-        res.status(400).send('Looks like something went wrong')
+        }
+        // console.log(err)
+        // res.status(400).send('Looks like something went wrong')
     }
 })
 
