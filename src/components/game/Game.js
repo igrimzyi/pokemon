@@ -19,7 +19,11 @@ class Game extends Component {
                         isLoggedIn:{},
                         userPokemon:null,
                         enemyPokemon:null,
+                        //the states for below would be for the game winner
                         didGameEnd:false,
+                        didUserWin:false,
+                        didEnemyWin:false,
+                        //the states below are for ui 
                         chatBoxMessage:`thinking...`,
                         enemyHealth:null,
                         userHealth:null,
@@ -102,6 +106,9 @@ class Game extends Component {
                         selector: this.state.selector +1
                 })
         }
+
+        //this is the attack portion of the game
+        //user will choose their attack and then the enemy would have a random choice...
         
         handleUserAttack(){
                 let grass = 'grass'
@@ -109,7 +116,8 @@ class Game extends Component {
                 let water = 'water'
 
                 this.setState({
-                        chatBoxMessage: `${this.state.userPokemon.name} chose ${this.state.userPokemon.moves[this.state.selector].move.name} `
+                        chatBoxMessage: `${this.state.userPokemon.name} chose ${this.state.userPokemon.moves[this.state.selector].move.name} `,
+                        show:'enemy-choice'
                 })
                 //conditionals to weaker attack... if the user is weaker then it would be a weaker attack based off pokemon type
                 if(this.state.userPokemon.types[0].type.name === grass && this.state.enemyPokemon.types[0].type.name === fire ||
@@ -124,30 +132,104 @@ class Game extends Component {
                                 })
                         }
                         let newHealth = this.state.enemyHealth - attackDamage;
-                        
+                        if (newHealth <= 0){
+                                this.setState({
+                                        didGameEnd:true
+                                })
+                        }  else 
                         this.setState({
                                 enemyHealth:newHealth
                         })
+                        //user strong attack
                 } else if(this.state.userPokemon.types[0].type.name === fire && this.state.enemyPokemon.types[0].type.name === grass ||
                         this.state.userPokemon.types[0].type.name === grass && this.state.enemyPokemon.types[0].type.name === water||
-                        this.state.userPokemon.types[0].type.name === water && this.state.enemyPokemon.types[0].type.name === fire
+                        this.state.userPokemon.types[0].type.name === water && this.state.enemyPokemon.types[0].type.name === fire ||
+                        this.state.userPokemon.base_experience > this.state.enemyPokemon.base_experience
                              ){
-                             let newHealth = this.state.enemyHealth - Math.floor(Math.random() * 20); 
+                             let newHealth = this.state.enemyHealth - Math.floor(Math.random() * 20) - 5; 
+
+                             if (newHealth <= 0){
+                                this.setState({
+                                        didGameEnd:true
+                                })
+                        }  else 
                              this.setState({
                                      enemyHealth:newHealth
                              })
                 }else{
                         let newHealth = this.state.enemyHealth - Math.floor(Math.random() * 10); 
+                        if (newHealth <= 0){
+                                this.setState({
+                                        didGameEnd:true
+                                })
+                        }  else   
                         this.setState({
-                                enemyHealth:newHealth,
+                                enemyHealth:newHealth
                                 
                         }) 
                 }
-                //enemy's choice to now
-                setTimeout(() =>{
+                //enemy's choice to now attack 
+                setTimeout(() => {
+                        let randomChoice = Math.floor(Math.random() * 10);
+                        this.setState({
+                                chatBoxMessage: `${this.state.enemyPokemon.name} chose ${this.state.userPokemon.moves[randomChoice].move.name}`
+                        })
+
+                        //strong attacks from the enemy 
+                        if(this.state.userPokemon.types[0].type.name === grass && this.state.enemyPokemon.types[0].type.name === fire ||
+                                this.state.userPokemon.types[0].type.name === water && this.state.enemyPokemon.types[0].type.name === grass ||
+                                this.state.userPokemon.types[0].type.name === fire && this.state.enemyPokemon.types[0].type.name === water ||
+                                this.state.userPokemon.base_experience <= this.state.enemyPokemon.base_experience
+                                     ){
+                                     let attackDamage = Math.floor(Math.random() * 20) -5 ; 
+                                //      if(attackDamage === 0 ){
+                                //              this.setState({
+                                //                      chatBoxMessage: `${this.state.enemyPokemon.moves[this.state.selector].move.name} had no effect!`
+                                //              })
+                                //      }
+                                     let newHealth = this.state.userHealth - attackDamage;
+                                     if (newHealth <= 0){
+                                        this.setState({
+                                                didGameEnd:true
+                                        })
+                                }  else 
+                                     this.setState({
+                                             userHealth:newHealth
+                                     })
+                                     //weak attacks from enemy  
+                             } else if(this.state.userPokemon.types[0].type.name === fire && this.state.enemyPokemon.types[0].type.name === grass ||
+                                     this.state.userPokemon.types[0].type.name === grass && this.state.enemyPokemon.types[0].type.name === water||
+                                     this.state.userPokemon.types[0].type.name === water && this.state.enemyPokemon.types[0].type.name === fire ||
+                                     this.state.userPokemon.base_experience > this.state.enemyPokemon.base_experience
+                                          ){
+                                          let newHealth = this.state.userHealth - Math.floor(Math.random() * 5); 
+
+                                          if (newHealth <= 0){
+                                                this.setState({
+                                                        didGameEnd:true
+                                                })
+                                        }  else 
+                                          this.setState({
+                                                  userHealth:newHealth
+                                          })
+                             }else{
+                                     let newHealth = this.state.enemyHealth - Math.floor(Math.random() * 10); 
+
+                                     if (newHealth <= 0){
+                                        this.setState({
+                                                didGameEnd:true
+                                        })
+                                }  else 
+                                     this.setState({
+                                             userHealth:newHealth,
+                                             
+                                     }) 
+                             }
+
                         this.setState({
                                 chatBoxMessage: 'enemy chose to attack',
-                                userHealth: 5
+                                show: null
+                              
                         })
                 }, 3000);
 
@@ -181,9 +263,10 @@ class Game extends Component {
                         )
                 }else {
             return(
-
+                
                 <div className="game-container">
                         {/* displaying pokmon and their health */}
+                        {!this.state.didGameEnd &&
                         <div className="rendered-game container">
                                 <div className="enemy-side">
                                         <div className="enemy-info game-text">
@@ -225,7 +308,7 @@ class Game extends Component {
 
                                 </div>
                         </div>
-
+                        }       
                         <div className="center-content">
                                 <div className="ui">
                                         <div className="chat-box-styles">
@@ -267,10 +350,18 @@ class Game extends Component {
                                                 </div>
 
                                         }
+                                        {
+                                                this.state.show === 'enemy-choice' &&
+                                                <div>
+                                                        its the enemy's turn!
+                                                </div>
+
+                                        }
                                                
                                    
                                 </div>
                         </div>
+                
                 </div>
                         
                 )
