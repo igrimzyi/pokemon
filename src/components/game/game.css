@@ -12,6 +12,9 @@
 .button-view{
     height: 100vh;
 }
+.pokemon-size{
+    height: 8rem;
+}
 
 .margin-top{
     margin-top: 10rem;

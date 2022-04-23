@@ -28,7 +28,9 @@ class Game extends Component {
                         enemyHealth:null,
                         userHealth:null,
                         show:null,
-                        selector:0
+                        selector:0,
+                        //check if the pokemon was recently changed... user cant change pokemon over and over again!
+                        wasChanged:false
                 }
 
                 this.handleClickStart = this.handleClickStart.bind(this);
@@ -36,6 +38,8 @@ class Game extends Component {
                 this.showGui = this.showGui.bind(this);
                 this.incrementSelector = this.incrementSelector.bind(this);
                 this.handleUserAttack = this.handleUserAttack.bind(this)
+                this.handleRun = this.handleRun.bind(this);
+                this.changePokemon = this.changePokemon.bind(this);
         }
 
         componentDidMount(){
@@ -146,7 +150,7 @@ class Game extends Component {
                         this.state.userPokemon.types[0].type.name === water && this.state.enemyPokemon.types[0].type.name === fire ||
                         this.state.userPokemon.base_experience > this.state.enemyPokemon.base_experience
                              ){
-                             let newHealth = this.state.enemyHealth - Math.floor(Math.random() * 20) - 5; 
+                             let newHealth = this.state.enemyHealth - Math.floor(Math.random() * 20) ; 
 
                              if (newHealth <= 0){
                                 this.setState({
@@ -181,7 +185,8 @@ class Game extends Component {
                                 this.state.userPokemon.types[0].type.name === fire && this.state.enemyPokemon.types[0].type.name === water ||
                                 this.state.userPokemon.base_experience <= this.state.enemyPokemon.base_experience
                                      ){
-                                     let attackDamage = Math.floor(Math.random() * 20) -5 ; 
+                                     let attackDamage = Math.floor(Math.random() * 20) + 5 ; 
+                                     console.log(attackDamage)
                                 //      if(attackDamage === 0 ){
                                 //              this.setState({
                                 //                      chatBoxMessage: `${this.state.enemyPokemon.moves[this.state.selector].move.name} had no effect!`
@@ -213,7 +218,7 @@ class Game extends Component {
                                                   userHealth:newHealth
                                           })
                              }else{
-                                     let newHealth = this.state.enemyHealth - Math.floor(Math.random() * 10); 
+                                     let newHealth = this.state.userHealth - Math.floor(Math.random() * 10); 
 
                                      if (newHealth <= 0){
                                         this.setState({
@@ -239,11 +244,39 @@ class Game extends Component {
                 console.log(this.state.userPokemon.types[0].type.name)
 
         }
+        handleRun(){
+                this.setState({
+                        didGameEnd:true,
+                        didEnemyWin:true
+                })
+        }
 
         handleClickStart(){
                 this.setState({
                         isStarted:true 
                 })
+        }
+
+        changePokemon(){
+                if(!this.state.wasChanged){
+                const randomNum = Math.floor(Math.random() * 10) + 1;
+                axios.get(`https://pokeapi.co/api/v2/pokemon/${randomNum}`)
+                .then((res)=>{
+                        this.setState({
+                                userPokemon: res.data,
+                                userHealth:res.data.stats[0].base_stat,
+                                chatBoxMessage:`Your new Pokemon is ${res.data.name}`,
+                                wasChanged:true
+                        })
+                })
+                .catch((err)=>{
+                        console.log(err)
+                })
+        } else if(this.state.wasChanged){
+                this.setState({
+                        chatBoxMessage:`You can only change your pokemon once!`
+                })   
+        }
         }
 
         render(){
@@ -283,14 +316,14 @@ class Game extends Component {
                                                 />
                                         </div>
                                         <div className="enemy-pokemon">
-                                                <img src={this.state.enemyPokemon.sprites.front_default}></img>
+                                                <img src={this.state.enemyPokemon.sprites.front_default} className ="pokemon-size"></img>
                                         </div>
 
                                 </div>
                                 <div className="user-side">
                                         <div className="pokemon">
-                                                <img src={this.state.userPokemon.sprites.back_default}></img>
-                                         </div>
+                                                <img src={this.state.userPokemon.sprites.back_default} className ="pokemon-size"></img>
+                                        </div>
                                         <div className="user-info game-text">
                                                 <div>
                                                         {this.state.userPokemon.name }
@@ -308,7 +341,13 @@ class Game extends Component {
 
                                 </div>
                         </div>
-                        }       
+                        }   
+                        {this.state.didGameEnd && this.state.didUserWin &&
+                        <div className="rendered-game container">
+                                you won 
+                        </div> 
+                        
+                        }   
                         <div className="center-content">
                                 <div className="ui">
                                         <div className="chat-box-styles">
@@ -319,7 +358,7 @@ class Game extends Component {
                                         {!this.state.show  &&
                                              <div className="ui-buttons-all">
                                                         <div className="ui-button-group">
-                                                                <button onClick={this.showAttack}className="ui-button red">
+                                                                <button onClick={this.showAttack} className="ui-button red">
                                                                         Fight
                                                                 </button>       
                                                                 <button  className="ui-button yellow">
@@ -327,10 +366,10 @@ class Game extends Component {
                                                                 </button>  
                                                                 </div>
                                                         <div className="ui-button-group">
-                                                                <button className=" green ui-button">
+                                                                <button onClick={this.changePokemon} className=" green ui-button">
                                                                         Pokemon
                                                                 </button>  
-                                                                <button className=" blue ui-button">
+                                                                <button onClick={this.handleRun} className=" blue ui-button">
                                                                         Run
                                                                 </button>  
                                                         </div>
