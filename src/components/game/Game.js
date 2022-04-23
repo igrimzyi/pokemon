@@ -23,12 +23,15 @@ class Game extends Component {
                         chatBoxMessage:`thinking...`,
                         enemyHealth:null,
                         userHealth:null,
-                        show:null
+                        show:null,
+                        selector:0
                 }
 
                 this.handleClickStart = this.handleClickStart.bind(this);
                 this.showAttack = this.showAttack.bind(this);
                 this.showGui = this.showGui.bind(this);
+                this.incrementSelector = this.incrementSelector.bind(this);
+                this.handleUserAttack = this.handleUserAttack.bind(this)
         }
 
         componentDidMount(){
@@ -90,10 +93,41 @@ class Game extends Component {
                 this.setState({
                         show:"attack"
                 })
+            
+        }
+        incrementSelector(){
+                console.log(this.state.userPokemon.stats.length)
+                if(this.state.selector != this.state.userPokemon.moves.length)
+                this.setState({
+                        selector: this.state.selector +1
+                })
         }
         
-        handleAttack(){
-                
+        handleUserAttack(){
+                let grass = 'grass'
+                let fire = 'fire'
+                let water = 'water'
+
+                this.setState({
+                        chatBoxMessage: `${this.state.userPokemon.name} chose ${this.state.userPokemon.moves[this.state.selector].move.name} `
+                })
+                //conditionals to weaker attack... if the user is weaker then it would be a weaker attack based off pokemon type
+                if(this.state.userPokemon.types[0].type.name === grass && this.state.enemyPokemon.types[0].type.name === fire ||
+                   this.state.userPokemon.types[0].type.name === water && this.state.enemyPokemon.types[0].type.name === grass ||
+                   this.state.userPokemon.types[0].type.name === fire && this.state.enemyPokemon.types[0].type.name === water 
+                   
+                        
+                        ){
+                        let newHealth = this.state.enemyHealth - Math.floor(Math.random() * 5); 
+                        this.setState({
+                                enemyHealth:newHealth
+                        })
+
+
+                }
+
+
+                console.log(this.state.userPokemon.types[0].type.name)
 
         }
 
@@ -186,7 +220,7 @@ class Game extends Component {
                                                                 <button className=" green ui-button">
                                                                         Pokemon
                                                                 </button>  
-                                                                <button  className=" blue ui-button">
+                                                                <button className=" blue ui-button">
                                                                         Run
                                                                 </button>  
                                                         </div>
@@ -195,10 +229,14 @@ class Game extends Component {
                                         {
                                                 this.state.show === 'attack' &&
                                                 <div className="attack-toolbar">
-                                                        <button className="go-back" onClick={this.showGui}>
-                                                                Go Back!
+                                                        <button className="go-back" value="attack" onClick={this.showGui}>
+                                                                Go back!
                                                         </button>
-                                                        hello 
+                                                        {this.state.userPokemon.moves[this.state.selector].move.name}
+                                                        <button onClick={this.handleUserAttack}>Attack!</button>
+                                                        <button onClick={this.incrementSelector}>
+                                                                next
+                                                        </button>
                                                 </div>
 
                                         }
