@@ -114,17 +114,44 @@ class Game extends Component {
                 //conditionals to weaker attack... if the user is weaker then it would be a weaker attack based off pokemon type
                 if(this.state.userPokemon.types[0].type.name === grass && this.state.enemyPokemon.types[0].type.name === fire ||
                    this.state.userPokemon.types[0].type.name === water && this.state.enemyPokemon.types[0].type.name === grass ||
-                   this.state.userPokemon.types[0].type.name === fire && this.state.enemyPokemon.types[0].type.name === water 
-                   
-                        
+                   this.state.userPokemon.types[0].type.name === fire && this.state.enemyPokemon.types[0].type.name === water ||
+                   this.state.userPokemon.base_experience <= this.state.enemyPokemon.base_experience
                         ){
-                        let newHealth = this.state.enemyHealth - Math.floor(Math.random() * 5); 
+                        let attackDamage = Math.floor(Math.random() * 5)
+                        if(attackDamage === 0 ){
+                                this.setState({
+                                        chatBoxMessage: `${this.state.userPokemon.moves[this.state.selector].move.name} had no effect!`
+                                })
+                        }
+                        let newHealth = this.state.enemyHealth - attackDamage;
+                        
                         this.setState({
                                 enemyHealth:newHealth
                         })
-
-
+                } else if(this.state.userPokemon.types[0].type.name === fire && this.state.enemyPokemon.types[0].type.name === grass ||
+                        this.state.userPokemon.types[0].type.name === grass && this.state.enemyPokemon.types[0].type.name === water||
+                        this.state.userPokemon.types[0].type.name === water && this.state.enemyPokemon.types[0].type.name === fire
+                             ){
+                             let newHealth = this.state.enemyHealth - Math.floor(Math.random() * 20); 
+                             this.setState({
+                                     enemyHealth:newHealth
+                             })
+                }else{
+                        let newHealth = this.state.enemyHealth - Math.floor(Math.random() * 10); 
+                        this.setState({
+                                enemyHealth:newHealth,
+                                
+                        }) 
                 }
+                //enemy's choice to now
+                setTimeout(() =>{
+                        this.setState({
+                                chatBoxMessage: 'enemy chose to attack',
+                                userHealth: 5
+                        })
+                }, 3000);
+
+               
 
 
                 console.log(this.state.userPokemon.types[0].type.name)
