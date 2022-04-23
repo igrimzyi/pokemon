@@ -153,3 +153,12 @@
     font-weight: 900;
 }
 
+/* go back button */
+.go-back{
+    width: 10rem;
+}
+/* attack toolbar */
+.attack-toolbar{
+    display: flex;
+    flex-direction: column;
+}

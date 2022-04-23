@@ -22,10 +22,13 @@ class Game extends Component {
                         didGameEnd:false,
                         chatBoxMessage:`thinking...`,
                         enemyHealth:null,
-                        userHealth:null
+                        userHealth:null,
+                        show:null
                 }
 
-                this.handleClickStart = this.handleClickStart.bind(this)
+                this.handleClickStart = this.handleClickStart.bind(this);
+                this.showAttack = this.showAttack.bind(this);
+                this.showGui = this.showGui.bind(this);
         }
 
         componentDidMount(){
@@ -78,6 +81,17 @@ class Game extends Component {
 
         }
         //function will handle attack from user
+        showGui(){
+                this.setState({
+                        show:false
+                })
+        }
+        showAttack(){
+                this.setState({
+                        show:"attack"
+                })
+        }
+        
         handleAttack(){
                 
 
@@ -158,9 +172,10 @@ class Game extends Component {
                                                         {this.state.chatBoxMessage}
                                                 </span>
                                         </div>
+                                        {!this.state.show  &&
                                              <div className="ui-buttons-all">
                                                         <div className="ui-button-group">
-                                                                <button  className="ui-button red">
+                                                                <button onClick={this.showAttack}className="ui-button red">
                                                                         Fight
                                                                 </button>       
                                                                 <button  className="ui-button yellow">
@@ -176,7 +191,17 @@ class Game extends Component {
                                                                 </button>  
                                                         </div>
                                                 </div>
-                                               
+                                        }
+                                        {
+                                                this.state.show === 'attack' &&
+                                                <div className="attack-toolbar">
+                                                        <button className="go-back" onClick={this.showGui}>
+                                                                Go Back!
+                                                        </button>
+                                                        hello 
+                                                </div>
+
+                                        }
                                                
                                    
                                 </div>
