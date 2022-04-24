@@ -31,7 +31,8 @@ class Game extends Component {
                         selector:0,
                         //check if the pokemon was recently changed... user cant change pokemon over and over again!
                         wasChanged:false,
-                        bagUsed:false
+                        bagUsed:false,
+                        isPoweredUp:false
                 }
 
                 this.handleClickStart = this.handleClickStart.bind(this);
@@ -43,6 +44,7 @@ class Game extends Component {
                 this.changePokemon = this.changePokemon.bind(this);
                 this.handleBag = this.handleBag.bind(this);
                 this.healUser = this.healUser.bind(this)
+                this.powerUpUser = this.powerUpUser.bind(this);
         }
 
         componentDidMount(){
@@ -310,7 +312,16 @@ class Game extends Component {
 
         }
         powerUpUser(){
-
+                this.setState({
+                        isPoweredUp:true,
+                        chatBoxMessage:"You are powered up!"
+                })
+                setTimeout(()=>{
+                        this.setState({
+                                isPoweredUp:false,
+                                chatBoxMessage:"Your power up wore off!"
+                        })
+                }, 15000)
         }
 
 
