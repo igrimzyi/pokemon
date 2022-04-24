@@ -32,7 +32,8 @@ class Game extends Component {
                         //check if the pokemon was recently changed... user cant change pokemon over and over again!
                         wasChanged:false,
                         bagUsed:false,
-                        isPoweredUp:false
+                        isPoweredUp:false,
+                        powerUpUsed:false
                 }
 
                 this.handleClickStart = this.handleClickStart.bind(this);
@@ -129,7 +130,20 @@ class Game extends Component {
                         show:'enemy-choice'
                 })
                 //conditionals to weaker attack... if the user is weaker then it would be a weaker attack based off pokemon type
-                if(this.state.userPokemon.types[0].type.name === grass && this.state.enemyPokemon.types[0].type.name === fire ||
+                if(this.state.isPoweredUp){
+                        let attackDamage = Math.floor(Math.random() * 20) + 5; 
+                        let newHealth = this.state.enemyHealth - attackDamage;
+                        if (newHealth <= 0){
+                                this.setState({
+                                        didGameEnd:true,
+                                        didUserWin:true 
+                                })
+                        }  else 
+                        this.setState({
+                                enemyHealth:newHealth
+                        })
+
+                }else if(this.state.userPokemon.types[0].type.name === grass && this.state.enemyPokemon.types[0].type.name === fire ||
                    this.state.userPokemon.types[0].type.name === water && this.state.enemyPokemon.types[0].type.name === grass ||
                    this.state.userPokemon.types[0].type.name === fire && this.state.enemyPokemon.types[0].type.name === water ||
                    this.state.userPokemon.base_experience <= this.state.enemyPokemon.base_experience
@@ -143,7 +157,8 @@ class Game extends Component {
                         let newHealth = this.state.enemyHealth - attackDamage;
                         if (newHealth <= 0){
                                 this.setState({
-                                        didGameEnd:true
+                                        didGameEnd:true,
+                                        didUserWin:true
                                 })
                         }  else 
                         this.setState({
@@ -185,18 +200,24 @@ class Game extends Component {
                         })
 
                         //strong attacks from the enemy 
-                        if(this.state.userPokemon.types[0].type.name === grass && this.state.enemyPokemon.types[0].type.name === fire ||
+                        if(this.state.isPoweredUp){
+                                let attackDamage = Math.floor(Math.random() * 5) + 5 ;  
+                                let newHealth = this.state.userHealth - attackDamage;
+                                     if (newHealth <= 0){
+                                        this.setState({
+                                                didGameEnd:true
+                                        })
+                                }  else 
+                                this.setState({
+                                        userHealth:newHealth
+                                })
+
+                        }else if(this.state.userPokemon.types[0].type.name === grass && this.state.enemyPokemon.types[0].type.name === fire ||
                                 this.state.userPokemon.types[0].type.name === water && this.state.enemyPokemon.types[0].type.name === grass ||
                                 this.state.userPokemon.types[0].type.name === fire && this.state.enemyPokemon.types[0].type.name === water ||
                                 this.state.userPokemon.base_experience <= this.state.enemyPokemon.base_experience
                                      ){
-                                     let attackDamage = Math.floor(Math.random() * 20) + 5 ; 
-                                     console.log(attackDamage)
-                                //      if(attackDamage === 0 ){
-                                //              this.setState({
-                                //                      chatBoxMessage: `${this.state.enemyPokemon.moves[this.state.selector].move.name} had no effect!`
-                                //              })
-                                //      }
+                                     let attackDamage = Math.floor(Math.random() * 20) + 5 ;      
                                      let newHealth = this.state.userHealth - attackDamage;
                                      if (newHealth <= 0){
                                         this.setState({
@@ -312,6 +333,7 @@ class Game extends Component {
 
         }
         powerUpUser(){
+                if(!this.state.powerUpUsed){
                 this.setState({
                         isPoweredUp:true,
                         chatBoxMessage:"You are powered up!"
@@ -322,6 +344,11 @@ class Game extends Component {
                                 chatBoxMessage:"Your power up wore off!"
                         })
                 }, 15000)
+        }else if (this.state.powerUpUsed === true){
+                this.setState({
+                        chatBoxMessage:"You have used your power up!"
+                })
+        }
         }
 
 
