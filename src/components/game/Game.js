@@ -30,7 +30,8 @@ class Game extends Component {
                         show:null,
                         selector:0,
                         //check if the pokemon was recently changed... user cant change pokemon over and over again!
-                        wasChanged:false
+                        wasChanged:false,
+                        bagUsed:false
                 }
 
                 this.handleClickStart = this.handleClickStart.bind(this);
@@ -40,6 +41,8 @@ class Game extends Component {
                 this.handleUserAttack = this.handleUserAttack.bind(this)
                 this.handleRun = this.handleRun.bind(this);
                 this.changePokemon = this.changePokemon.bind(this);
+                this.handleBag = this.handleBag.bind(this);
+                this.healUser = this.healUser.bind(this)
         }
 
         componentDidMount(){
@@ -279,6 +282,38 @@ class Game extends Component {
         }
         }
 
+
+        //Every thing in the bag ready to be used for the user
+        handleBag(){
+                this.setState({
+                        show:'bag'
+                })
+        }
+        healUser(){
+
+                //will be able to heal users pokemon 
+                let addHealth = Math.floor(Math.random() * 10);
+                if(this.state.bagUsed === true){
+                        this.setState({
+                                chatBoxMessage:'You used up your heal!'
+                        })  
+                }else if(this.state.userHealth + addHealth >= this.state.userPokemon.stats[0].base_stat){
+                        this.setState({
+                                bagUsed:true,
+                                userHealth: this.state.userPokemon.stats[0].base_stat
+                        })
+                }else 
+                this.setState({
+                        bagUsed:true,
+                        userHealth: this.state.userHealth + addHealth
+                })
+
+        }
+        powerUpUser(){
+
+        }
+
+
         render(){
                 if(this.state.isLoggedIn === 403){
                         
@@ -361,7 +396,7 @@ class Game extends Component {
                                                                 <button onClick={this.showAttack} className="ui-button red">
                                                                         Fight
                                                                 </button>       
-                                                                <button  className="ui-button yellow">
+                                                                <button onClick={this.handleBag} className="ui-button yellow">
                                                                         Bag
                                                                 </button>  
                                                                 </div>
@@ -388,6 +423,21 @@ class Game extends Component {
                                                         </button>
                                                 </div>
 
+                                        }
+                                        {
+                                                this.state.show === 'bag' &&
+                                                <div>
+                                                        <button className="go-back" value="attack" onClick={this.showGui}>
+                                                                Go back!
+                                                        </button>
+                                                        <button className="go-back" onClick={this.healUser}>
+                                                                Heal
+                                                        </button>
+                                                        <button className="go-back" onClick={this.powerUpUser}>
+                                                                Use Power Up!
+                                                        </button>
+
+                                                </div>
                                         }
                                         {
                                                 this.state.show === 'enemy-choice' &&
