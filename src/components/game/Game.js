@@ -47,6 +47,13 @@ class Game extends Component {
                 this.healUser = this.healUser.bind(this)
                 this.powerUpUser = this.powerUpUser.bind(this);
         }
+        componentDidUpdate(prevProps, prevState){
+                console.log(this.state.didGameEnd)
+                console.log(prevState.didGameEnd)
+                if(this.state.didGameEnd !== prevState.didGameEnd){
+                        console.log('ended game')
+                }
+        }
 
         componentDidMount(){
                 //get the random pokemon for the user
