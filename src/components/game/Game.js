@@ -53,6 +53,12 @@ class Game extends Component {
                 if(this.state.didGameEnd !== prevState.didGameEnd){
                         console.log('ended game')
                 }
+                if(this.state.didUserWin !== prevState.didUserWin){
+                        console.log('user won the game')
+                }
+                if(this.state.didEnemyWin !== prevState.didEnemyWin){
+                        console.log('user did not win the game')
+                }
         }
 
         componentDidMount(){
@@ -181,7 +187,8 @@ class Game extends Component {
 
                              if (newHealth <= 0){
                                 this.setState({
-                                        didGameEnd:true
+                                        didGameEnd:true,
+                                        didUserWin:true
                                 })
                         }  else 
                              this.setState({
@@ -191,7 +198,8 @@ class Game extends Component {
                         let newHealth = this.state.enemyHealth - Math.floor(Math.random() * 10); 
                         if (newHealth <= 0){
                                 this.setState({
-                                        didGameEnd:true
+                                        didGameEnd:true,
+                                        didUserWin:true
                                 })
                         }  else   
                         this.setState({
@@ -212,7 +220,8 @@ class Game extends Component {
                                 let newHealth = this.state.userHealth - attackDamage;
                                      if (newHealth <= 0){
                                         this.setState({
-                                                didGameEnd:true
+                                                didGameEnd:true,
+                                                didEnemyWin:true
                                         })
                                 }  else 
                                 this.setState({
@@ -228,7 +237,8 @@ class Game extends Component {
                                      let newHealth = this.state.userHealth - attackDamage;
                                      if (newHealth <= 0){
                                         this.setState({
-                                                didGameEnd:true
+                                                didGameEnd:true,
+                                                didEnemyWin:true
                                         })
                                 }  else 
                                      this.setState({
@@ -244,7 +254,8 @@ class Game extends Component {
 
                                           if (newHealth <= 0){
                                                 this.setState({
-                                                        didGameEnd:true
+                                                        didGameEnd:true,
+                                                        didEnemyWin:true
                                                 })
                                         }  else 
                                           this.setState({
@@ -255,7 +266,8 @@ class Game extends Component {
 
                                      if (newHealth <= 0){
                                         this.setState({
-                                                didGameEnd:true
+                                                didGameEnd:true,
+                                                didEnemyWin:true
                                         })
                                 }  else 
                                      this.setState({
