@@ -55,6 +55,24 @@ class Game extends Component {
                 }
                 if(this.state.didUserWin !== prevState.didUserWin){
                         console.log('user won the game')
+
+                        const config = {
+                                headers:{
+                                    Authorization: "Bearer " + localStorage.getItem('userToken')
+                                }
+                            }
+
+                            axios.patch('http://localhost:4000/api/levels', this.state.didUserWin, config)
+                            .then((res)=>{
+                                
+                            })
+                            .catch((err)=>{
+                            
+                            })
+                    
+
+
+
                 }
                 if(this.state.didEnemyWin !== prevState.didEnemyWin){
                         console.log('user did not win the game')
