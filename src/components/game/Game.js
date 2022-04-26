@@ -46,6 +46,7 @@ class Game extends Component {
                 this.handleBag = this.handleBag.bind(this);
                 this.healUser = this.healUser.bind(this)
                 this.powerUpUser = this.powerUpUser.bind(this);
+                this.decrementSelector = this.decrementSelector.bind(this)
         }
         componentDidUpdate(prevProps, prevState){
                 console.log(this.state.didGameEnd)
@@ -140,6 +141,7 @@ class Game extends Component {
                 })
             
         }
+        //increment and decrement through the move list 
         incrementSelector(){
                 if(this.state.selector === 6){
                         this.setState({
@@ -150,6 +152,17 @@ class Game extends Component {
                         selector: this.state.selector +1
                 })
         }
+        decrementSelector(){
+                if(this.state.selector === 0 ){
+                        this.setState({
+                                selector:0
+                        })
+                }else
+                this.setState({
+                        selector: this.state.selector - 1
+                })
+        }
+
 
         //this is the attack portion of the game
         //user will choose their attack and then the enemy would have a random choice...
@@ -499,13 +512,18 @@ class Game extends Component {
                                                         <button className="go-back" value="attack" onClick={this.showGui}>
                                                                 Go back!
                                                         </button>
-                                                        
+                                                        {this.state.selector != 0 &&
+                                                        <button onClick={this.decrementSelector}>
+                                                                        previous
+                                                        </button>
+                }
                                                         {this.state.userPokemon.moves[this.state.selector].move.name}
                                                         <button onClick={this.handleUserAttack}>Attack!</button>
+                                                                {/* If selector hits 6... user cant go ot any more moves */}
                                                                 {this.state.selector != 6 &&
-                                                                <button onClick={this.incrementSelector}>
-                                                                next
-                                                                </button>
+                                                                        <button onClick={this.incrementSelector}>
+                                                                        next
+                                                                        </button>
                                                                 }       
                                                                                                         
                                                         
