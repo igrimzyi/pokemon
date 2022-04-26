@@ -413,17 +413,20 @@ class Game extends Component {
                         <div className="rendered-game container">
                                 <div className="enemy-side">
                                         <div className="enemy-info game-text">
-                                                <div>
+                                                <div className="poke-name-level">
                                                         {this.state.enemyPokemon.name }
+                                                        
+                                                    <span> Lv{this.state.enemyPokemon.base_experience}</span>  
                                                 </div>
-                                                <div className="text-center">
-                                                        {this.state.enemyHealth} of {this.state.enemyPokemon.stats[0].base_stat}
-                                                </div>
+
                                                 <Progress
                                                 max={this.state.enemyPokemon.stats[0].base_stat}
                                                 value={this.state.enemyHealth} 
                                                 color='danger'
                                                 />
+                                                <div className="text-center">
+                                                        {this.state.enemyHealth} / {this.state.enemyPokemon.stats[0].base_stat}
+                                                </div>
                                         </div>
                                         <div className="enemy-pokemon">
                                                 <img src={this.state.enemyPokemon.sprites.front_default} className ="pokemon-size"></img>
@@ -435,17 +438,19 @@ class Game extends Component {
                                                 <img src={this.state.userPokemon.sprites.back_default} className ="pokemon-size"></img>
                                         </div>
                                         <div className="user-info game-text">
-                                                <div>
+                                                <div className="poke-name-level">
                                                         {this.state.userPokemon.name }
+                                                        <span>Lv{this.state.userPokemon.base_experience}</span>
                                                 </div>
-                                                <div className="text-center">
-                                                        {this.state.userHealth} of {this.state.userPokemon.stats[0].base_stat}
-                                                </div>
+                                               
                                                 <Progress
                                                 max={this.state.userPokemon.stats[0].base_stat}
                                                 value={this.state.userHealth} 
                                                 color='danger'
                                                 />
+                                                 <div className="text-center">
+                                                        {this.state.userHealth} / {this.state.userPokemon.stats[0].base_stat}
+                                                </div>
                                         </div>
                                         
 

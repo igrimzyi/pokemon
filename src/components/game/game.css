@@ -133,6 +133,9 @@
     width: 20rem;
     font-size: 1.2rem;
     font-weight: 900;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .rendered-game{
     display: flex;
@@ -154,8 +157,14 @@
     width: 20rem;
     font-size: 1.2rem;
     font-weight: 900;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-
+.poke-name-level{
+    display: flex;
+    justify-content: space-between;
+}
 /* go back button */
 .go-back{
     width: 10rem;
