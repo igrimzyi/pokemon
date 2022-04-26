@@ -81,7 +81,7 @@ class Game extends Component {
 
         componentDidMount(){
                 //get the random pokemon for the user
-                const randomNum = Math.floor(Math.random() * 10) + 1;
+                const randomNum = Math.floor(Math.random() * 100) + 1;
                 axios.get(`https://pokeapi.co/api/v2/pokemon/${randomNum}`)
                 .then((res)=>{
                         this.setState({
@@ -95,7 +95,7 @@ class Game extends Component {
                         console.log(err)
                 })
                 //get the random pokemon for the user to fight against 
-                const randomNumComputer = Math.floor(Math.random() * 10) + 1;
+                const randomNumComputer = Math.floor(Math.random() * 100) + 1;
                 axios.get(`https://pokeapi.co/api/v2/pokemon/${randomNumComputer}`)
                 .then((res)=>{
                         this.setState({
