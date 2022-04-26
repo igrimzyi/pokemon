@@ -29,11 +29,8 @@ bottom: 0%;
 .chat-box-styles{
     border: 1px solid black;
     border-radius: 2%;
-    width: 20rem;
+    width: 25rem;
     height: 8rem;
-    position: relative;
-    top: 1rem;
-    left: 2rem;
 }
 .ui{
     display: flex;
@@ -41,18 +38,19 @@ bottom: 0%;
     background-color:rgba(100, 100, 100, .2);
     width: 100vw;
     height: 10rem;
-    justify-content: space-between;
+    justify-content: space-evenly;
     border-top:1px solid black;
+    align-items: center;
 
 }
 .ui-button-group{
     display: flex;
     flex-direction: column;
-   
+   width: 10rem;
 }
 .ui-button{
-    width:20rem;
-    height:100%;
+    width: 12.5rem;
+    height:5rem;
     font-weight: 900;
     color: white;
 }
@@ -65,6 +63,9 @@ bottom: 0%;
 }
 .ui-buttons-all{
     display: flex;
+    width: 25rem;
+    flex-wrap: wrap;
+
 }
 
 
@@ -185,7 +186,14 @@ bottom: 0%;
     border-radius: 1rem;
     background-color: lightcoral;
 } 
-/* attack toolbar */
+/* attack attack ui */
+.attack-ui{
+    display: flex;
+    flex-direction: row;
+   
+    justify-content: space-between;
+    align-items: center;
+}
 .attack-toolbar{
     width: 20rem;
     display: flex;
@@ -196,5 +204,48 @@ bottom: 0%;
 .attack-modifiers{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
+    width: 18rem;
+}
+.maxed{
+    background-color: gray;
+    border:1px solid darkgray;
+    border-radius: 1rem;
+}
+.selector{
+    background-color: skyblue;
+    border:1px solid darkblue;
+    border-radius: 1rem;
+}
+
+/* bag selection  */
+.bag-selection{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 800px) {
+    .rendered-game{
+        justify-content: space-evenly;
+    }
+    .ui{
+        height: 20rem;
+    flex-direction: column;
+    justify-content: space-evenly;
+    }
+    .chat-box-styles{
+        width: 20rem;
+    }
+}
+@media screen and (max-width: 800px) {
+    .rendered-game{
+        height: 60vh;
+    }
+    .enemy-info{
+        border: none;
+    }
+    .user-info{
+        border: none;
+    }
 }

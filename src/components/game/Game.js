@@ -48,9 +48,9 @@ class Game extends Component {
                 this.powerUpUser = this.powerUpUser.bind(this);
                 this.decrementSelector = this.decrementSelector.bind(this)
         }
+        //Sending stats based off user win
         componentDidUpdate(prevProps, prevState){
-                console.log(this.state.didGameEnd)
-                console.log(prevState.didGameEnd)
+               
                 if(this.state.didGameEnd !== prevState.didGameEnd){
                         console.log('ended game')
                 }
@@ -491,22 +491,22 @@ class Game extends Component {
                                         </div>
                                         {!this.state.show  &&
                                              <div className="ui-buttons-all">
-                                                        <div className="ui-button-group">
+                                                    
                                                                 <button onClick={this.showAttack} className="ui-button red">
                                                                         Fight
                                                                 </button>       
                                                                 <button onClick={this.handleBag} className="ui-button yellow">
                                                                         Bag
                                                                 </button>  
-                                                                </div>
-                                                        <div className="ui-button-group">
+                                                              
+                                                        
                                                                 <button onClick={this.changePokemon} className=" green ui-button">
                                                                         Pokemon
                                                                 </button>  
                                                                 <button onClick={this.handleRun} className=" blue ui-button">
                                                                         Run
                                                                 </button>  
-                                                        </div>
+                                                        
                                                 </div>
                                         }
                                         {
@@ -517,14 +517,24 @@ class Game extends Component {
                                                         </button>
 
                                                         <div className="attack-modifiers">
-                                                                {this.state.selector != 0 &&
-                                                                <button onClick={this.decrementSelector}>
+                                                                {this.state.selector <= 0 &&
+                                                                <button className="maxed" onClick={this.decrementSelector}>
                                                                 previous
                                                                 </button>
                                                                 }
-                                                        {this.state.userPokemon.moves[this.state.selector].move.name}
-                                                                {this.state.selector != 6 &&
-                                                                        <button onClick={this.incrementSelector}>
+                                                                {this.state.selector > 0 &&
+                                                                <button className="selector" onClick={this.decrementSelector}>
+                                                                previous
+                                                                </button>
+                                                                }
+                                                                 <div className="attack-text">{this.state.userPokemon.moves[this.state.selector].move.name}</div>       
+                                                                {this.state.selector < 6 &&
+                                                                        <button className="selector" onClick={this.incrementSelector}>
+                                                                        next
+                                                                        </button>
+                                                                }    
+                                                                {this.state.selector >= 6 &&
+                                                                        <button className="maxed" onClick={this.incrementSelector}>
                                                                         next
                                                                         </button>
                                                                 }       
@@ -539,7 +549,7 @@ class Game extends Component {
                                         }
                                         {
                                                 this.state.show === 'bag' &&
-                                                <div>
+                                                <div className="bag-selection">
                                                         <button className="go-back" value="attack" onClick={this.showGui}>
                                                                 Go back!
                                                         </button>
