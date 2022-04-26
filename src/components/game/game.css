@@ -6,11 +6,18 @@
 
 .center-content{
    position: fixed;
-   bottom: 0;
-  
+bottom: 0%; 
+}
+.center-button{
+    position: fixed;
+    bottom: 50%; 
 }
 .button-view{
     height: 100vh;
+}
+.align-start{
+    display: flex;
+    justify-content: center;
 }
 .pokemon-size{
     height: 8rem;
@@ -168,7 +175,16 @@
 /* go back button */
 .go-back{
     width: 10rem;
+    border: 1px solid;
+    border-radius: 1rem;
+    background-color: lightblue;
 }
+.attack{
+    width: 10rem;
+    border: 1px solid;
+    border-radius: 1rem;
+    background-color: lightcoral;
+} 
 /* attack toolbar */
 .attack-toolbar{
     display: flex;

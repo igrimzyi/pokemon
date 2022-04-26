@@ -419,10 +419,8 @@ class Game extends Component {
                 }
               else if(this.state.isStarted === false){
                         return (
-                        <div className="game-container">
-                                <div className="button-view">
-                                <Button color="danger" className="center-content" onClick={this.handleClickStart}>Start Game</Button>  
-                                </div>
+                        <div className="game-container align-start">
+                                <Button color="danger" className="center-button" onClick={this.handleClickStart}>Start Game</Button>  
                          </div> 
                         )
                 }else {
@@ -523,7 +521,7 @@ class Game extends Component {
                                                                 </button>
                                                                 }
                                                         {this.state.userPokemon.moves[this.state.selector].move.name}
-                                                        <button onClick={this.handleUserAttack}>Attack!</button>
+                                                        <button className="attack" onClick={this.handleUserAttack}>Attack!</button>
                                                                 {/* If selector hits 6... user cant go ot any more moves */}
                                                                 {this.state.selector != 6 &&
                                                                         <button onClick={this.incrementSelector}>
