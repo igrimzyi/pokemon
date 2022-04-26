@@ -515,19 +515,23 @@ class Game extends Component {
                                                         <button className="go-back" value="attack" onClick={this.showGui}>
                                                                 Go back!
                                                         </button>
+
+                                                        <div className="attack-modifiers">
                                                                 {this.state.selector != 0 &&
                                                                 <button onClick={this.decrementSelector}>
-                                                                                previous
+                                                                previous
                                                                 </button>
                                                                 }
                                                         {this.state.userPokemon.moves[this.state.selector].move.name}
-                                                        <button className="attack" onClick={this.handleUserAttack}>Attack!</button>
-                                                                {/* If selector hits 6... user cant go ot any more moves */}
                                                                 {this.state.selector != 6 &&
                                                                         <button onClick={this.incrementSelector}>
                                                                         next
                                                                         </button>
                                                                 }       
+                                                        </div>
+                                                        <button className="attack" onClick={this.handleUserAttack}>Attack!</button>
+                                                                {/* If selector hits 6... user cant go ot any more moves */}
+                                                               
                                                                                                         
                                                         
                                                 </div>

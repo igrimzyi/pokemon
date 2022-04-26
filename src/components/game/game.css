@@ -174,7 +174,7 @@ bottom: 0%;
 }
 /* go back button */
 .go-back{
-    width: 10rem;
+    width: 15rem;
     border: 1px solid;
     border-radius: 1rem;
     background-color: lightblue;
@@ -187,6 +187,14 @@ bottom: 0%;
 } 
 /* attack toolbar */
 .attack-toolbar{
+    width: 20rem;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.attack-modifiers{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
