@@ -71,13 +71,13 @@ export default class Profile extends Component{
                     {this.state.profileData.class === 'Pokemon Trainer' && 
                         <div>
                         <Progress animated value={this.state.profileData.experience} max="100"/>
-                        <div className='sub-text'>{this.state.profileData.experience} out of 100 exp left!</div>
+                        <div className='sub-text'>{this.state.profileData.experience} out of 100 exp !</div>
                         </div>
                     }
                     {this.state.profileData.class === 'Pokémon Champion' && 
                         <div>
                         <Progress animated value={this.state.profileData.experience} max="200"/>
-                        <div className='sub-text'>{this.state.profileData.experience} out of 200 exp left!</div>
+                        <div className='sub-text'>{this.state.profileData.experience} out of 200 exp!</div>
                         </div>
                     }
                     {this.state.profileData.class === 'Gym Leader' && 
