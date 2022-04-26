@@ -141,8 +141,11 @@ class Game extends Component {
             
         }
         incrementSelector(){
-                console.log(this.state.userPokemon.stats.length)
-                if(this.state.selector != this.state.userPokemon.moves.length)
+                if(this.state.selector === 6){
+                        this.setState({
+                                selector: 6
+                        })
+                }else 
                 this.setState({
                         selector: this.state.selector +1
                 })
@@ -496,11 +499,16 @@ class Game extends Component {
                                                         <button className="go-back" value="attack" onClick={this.showGui}>
                                                                 Go back!
                                                         </button>
+                                                        
                                                         {this.state.userPokemon.moves[this.state.selector].move.name}
                                                         <button onClick={this.handleUserAttack}>Attack!</button>
-                                                        <button onClick={this.incrementSelector}>
+                                                                {this.state.selector != 6 &&
+                                                                <button onClick={this.incrementSelector}>
                                                                 next
-                                                        </button>
+                                                                </button>
+                                                                }       
+                                                                                                        
+                                                        
                                                 </div>
 
                                         }
