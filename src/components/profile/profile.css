@@ -320,3 +320,8 @@
     flex-direction: column;
     align-items: center;
 }
+.sub-text{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}

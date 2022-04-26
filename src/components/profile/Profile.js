@@ -68,7 +68,26 @@ export default class Profile extends Component{
                 </div>
                 <div className='stat-bar'>
                     <h1 className='digi-text'>{this.state.profileData.class}</h1>
-                    <Progress animated value={this.state.profileData.experience} max="90"/>
+                    {this.state.profileData.class === 'Pokemon Trainer' && 
+                        <div>
+                        <Progress animated value={this.state.profileData.experience} max="100"/>
+                        <div className='sub-text'>{this.state.profileData.experience} out of 100 exp left!</div>
+                        </div>
+                    }
+                    {this.state.profileData.class === 'Pokémon Champion' && 
+                        <div>
+                        <Progress animated value={this.state.profileData.experience} max="200"/>
+                        <div className='sub-text'>{this.state.profileData.experience} out of 200 exp left!</div>
+                        </div>
+                    }
+                    {this.state.profileData.class === 'Gym Leader' && 
+                        <div>
+                        <Progress animated value={this.state.profileData.experience} max="1"/>
+                        <div className='sub-text'>You are the highest class!</div>
+                        </div>
+                    }
+
+
                     <Button className='level-button' block outline href="/game" color='success'> Level Up!</Button>
                 </div>
                 {/* Profile Buttons */}
