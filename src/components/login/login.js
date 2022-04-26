@@ -36,7 +36,6 @@ export default class login extends Component {
       })
       //store token in local storage based off response
       localStorage.setItem('userToken', res.data.accessToken)
-      console.log(res.data.accessToken)
       return <Navigate to='/home' replace={true}></Navigate>
     })
     .catch(error =>{
@@ -61,8 +60,10 @@ export default class login extends Component {
 
         render(){
 
-          if(localStorage.userToken){
+          if(this.state.isLoggedIn === true){
             return <Navigate to='/' replace={true}></Navigate>
+          }else if(localStorage.userToken ){
+            <Navigate to='/' replace={true}></Navigate>
           }else
                 return(
     <div>
