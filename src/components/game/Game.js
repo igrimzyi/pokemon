@@ -33,7 +33,11 @@ class Game extends Component {
                         wasChanged:false,
                         bagUsed:false,
                         isPoweredUp:false,
-                        powerUpUsed:false
+                        powerUpUsed:false,
+                        // Game response end
+                        endResponse:null,
+                        endExp:null
+                        
                 }
 
                 this.handleClickStart = this.handleClickStart.bind(this);
@@ -44,9 +48,10 @@ class Game extends Component {
                 this.handleRun = this.handleRun.bind(this);
                 this.changePokemon = this.changePokemon.bind(this);
                 this.handleBag = this.handleBag.bind(this);
-                this.healUser = this.healUser.bind(this)
+                this.healUser = this.healUser.bind(this);
                 this.powerUpUser = this.powerUpUser.bind(this);
-                this.decrementSelector = this.decrementSelector.bind(this)
+                this.decrementSelector = this.decrementSelector.bind(this);
+                this.resetGame = this.resetGame.bind(this);
         }
         //Sending stats based off user win
         componentDidUpdate(prevProps, prevState){
@@ -65,10 +70,16 @@ class Game extends Component {
 
                             axios.patch('http://localhost:4000/api/levels', this.state.didUserWin, config)
                             .then((res)=>{
-                                
+                                    console.log(res)
+                                this.setState({
+                                        endResponse:res.msg,
+                                        endExp:res.exp
+
+
+                                })
                             })
                             .catch((err)=>{
-                            
+                                console.log(err)
                             })
                     
 
@@ -408,6 +419,14 @@ class Game extends Component {
                 })
         }
         }
+        resetGame(){
+                this.setState({
+                        wasChanged:false,
+                        bagUsed:false,
+                        isPoweredUp:false,
+                        powerUpUsed:false,
+                })
+        }
 
 
         render(){
@@ -476,11 +495,20 @@ class Game extends Component {
                                 </div>
                         </div>
                         }   
+
+                        {/* This is the response if the user won the game  */}
                         {this.state.didGameEnd && this.state.didUserWin &&
                         <div className="rendered-game container">
-                                you won 
+                                <div>
+                                        {this.state.endResponse}
+                                </div>
+                                <div>
+                                        EXP Gained : {this.state.endExp}
+                                </div>
+                                <button onClick={this.resetGame}>
+                                Reset Game
+                                </button>
                         </div> 
-                        
                         }   
                         <div className="center-content">
                                 <div className="ui">
@@ -575,6 +603,7 @@ class Game extends Component {
                         </div>
                 
                 </div>
+         
                         
                 )
             }
