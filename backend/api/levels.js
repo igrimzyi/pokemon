@@ -23,20 +23,26 @@ router.patch('/', authenticateToken, async(req,res)=>{
                 let newExperience = newLevel - max; 
                 await Profile.findOneAndUpdate({email:req.user.email},{experience:newExperience});
                 await Profile.findOneAndUpdate({email:req.user.email},{class:champion});
-                return res.json({msg:`You have leveled up to ${champion}!`, exp:newExperience}).status(200);
+                return res.json({msg:`You have leveled up to ${champion}!`, exp:newLevel}).status(200);
             }else{ 
                 await Profile.findOneAndUpdate({email:req.user.email},{experience:newLevel});
                 return res.json({msg:'You have gained experience', exp:newLevel}).status(200)
             }
         
         }else if (profile.class === champion){
-     
-      
-            let newLevel = 1 ; 
+            //initialize static values
+            let addExperience = Math.floor(Math.random() * 15) + 5;
+            let profile = await Profile.findOne({email:req.user.email})
+            let max = 200
+            let newLevel = profile.experience + addExperience; 
+            //conditionals to see if criteria is met or not to become a gym leader
             if(max <= newLevel){
-                await Profile.findOneAndUpdate({email:req.user.email},{experience:newLevel});
+                await Profile.findOneAndUpdate({email:req.user.email},{experience:1});
                 await Profile.findOneAndUpdate({email:req.user.email},{class:leader});
                 return res.json({msg:`You have leveled up to ${leader}!`, exp:newLevel}).status(200);
+            }else if(max > newLevel ){
+                await Profile.findOneAndUpdate({email:req.user.email}, {experience:newLevel})
+                return res.json({msg:`You have gained experience`, exp:newLevel}).status(200);
             }
 
         }
