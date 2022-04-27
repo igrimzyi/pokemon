@@ -195,9 +195,10 @@ class Game extends Component {
                         let attackDamage = Math.floor(Math.random() * 20) + 5; 
                         let newHealth = this.state.enemyHealth - attackDamage;
                         if (newHealth <= 0){
-                                this.setState({
+                               return this.setState({
                                         didGameEnd:true,
-                                        didUserWin:true 
+                                        didUserWin:true ,
+                                        show: 'ended'
                                 })
                         }  else 
                         this.setState({
@@ -217,9 +218,10 @@ class Game extends Component {
                         }
                         let newHealth = this.state.enemyHealth - attackDamage;
                         if (newHealth <= 0){
-                                this.setState({
+                                return this.setState({
                                         didGameEnd:true,
-                                        didUserWin:true
+                                        didUserWin:true,
+                                        show:'ended'
                                 })
                         }  else 
                         this.setState({
@@ -234,18 +236,19 @@ class Game extends Component {
                              let newHealth = this.state.enemyHealth - Math.floor(Math.random() * 20) ; 
 
                              if (newHealth <= 0){
-                                this.setState({
+                               return this.setState({
                                         didGameEnd:true,
-                                        didUserWin:true
+                                        didUserWin:true,
+                                        show:'ended'
                                 })
                         }  else 
                              this.setState({
                                      enemyHealth:newHealth
                              })
                 }else{
-                        let newHealth = this.state.enemyHealth - Math.floor(Math.random() * 10); 
+                        let newHealth = this.state.enemyHealth - Math.floor(Math.random() * 10) - 3; 
                         if (newHealth <= 0){
-                                this.setState({
+                              return  this.setState({
                                         didGameEnd:true,
                                         didUserWin:true
                                 })
@@ -256,12 +259,11 @@ class Game extends Component {
                         }) 
                 }
                 //enemy's choice to now attack 
-                if(this.state.enemyHealth > 0){
+                console.log(this.state.didGameEnd )
+                console.log(this.state.didGameEnd )
                         setTimeout(() => {
                                 let randomChoice = Math.floor(Math.random() * 10);
-                                this.setState({
-                                        chatBoxMessage: `${this.state.enemyPokemon.name} chose ${this.state.userPokemon.moves[randomChoice].move.name}`
-                                })
+                                
 
                                 //strong attacks from the enemy 
                                 if(this.state.isPoweredUp){
@@ -270,7 +272,8 @@ class Game extends Component {
                                         if (newHealth <= 0){
                                                 this.setState({
                                                         didGameEnd:true,
-                                                        didEnemyWin:true
+                                                        didEnemyWin:true,
+                                                        show:'ended'
                                                 })
                                         }  else 
                                         this.setState({
@@ -287,7 +290,8 @@ class Game extends Component {
                                         if (newHealth <= 0){
                                                 this.setState({
                                                         didGameEnd:true,
-                                                        didEnemyWin:true
+                                                        didEnemyWin:true,
+                                                        show:'ended'
                                                 })
                                         }  else 
                                         this.setState({
@@ -304,7 +308,8 @@ class Game extends Component {
                                                 if (newHealth <= 0){
                                                         this.setState({
                                                                 didGameEnd:true,
-                                                                didEnemyWin:true
+                                                                didEnemyWin:true,
+                                                                show:'ended'
                                                         })
                                                 }  else 
                                                 this.setState({
@@ -316,7 +321,8 @@ class Game extends Component {
                                         if (newHealth <= 0){
                                                 this.setState({
                                                         didGameEnd:true,
-                                                        didEnemyWin:true
+                                                        didEnemyWin:true,
+                                                        show:'ended'
                                                 })
                                         }  else 
                                         this.setState({
@@ -331,7 +337,7 @@ class Game extends Component {
                                 
                                 })
                         }, 3000);
-        }
+        
 
                
 
@@ -446,7 +452,7 @@ class Game extends Component {
             return(
                 
                 <div className="game-container">
-                        {/* displaying pokmon and their health */}
+                        {/* displaying pokemon and their health */}
                         {!this.state.didGameEnd &&
                         <div className="rendered-game container">
                                 <div className="enemy-side">
@@ -505,9 +511,6 @@ class Game extends Component {
                                 <div>
                                         EXP Gained : {this.state.endExp}
                                 </div>
-                                <button onClick={this.resetGame}>
-                                Reset Game
-                                </button>
                         </div> 
                         }   
                         <div className="center-content">
@@ -517,6 +520,7 @@ class Game extends Component {
                                                         {this.state.chatBoxMessage}
                                                 </span>
                                         </div>
+                                        {/* This is the bottom level of my component which renders the the buttons for my user */}
                                         {!this.state.show  &&
                                              <div className="ui-buttons-all">
                                                     
@@ -536,6 +540,18 @@ class Game extends Component {
                                                                 </button>  
                                                         
                                                 </div>
+                                        }
+                                        {/* To ignore the ui and have the user be unable to click any further moves */}
+                                        {this.state.show === 'ended' &&
+                                        <div>
+                                                <div>
+                                                        The game has ended
+                                                </div>
+                                                <button onClick={this.resetGame}>
+                                                Reset Game
+                                                </button>
+                                        </div>
+
                                         }
                                         {
                                                 this.state.show === 'attack' &&
