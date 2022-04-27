@@ -259,12 +259,11 @@ class Game extends Component {
                         }) 
                 }
                 //enemy's choice to now attack 
-                console.log(this.state.didGameEnd )
-                console.log(this.state.didGameEnd )
+               //Now is the enemy's choice to do what they want and thats all RNG. 
                         setTimeout(() => {
-                                let randomChoice = Math.floor(Math.random() * 10);
+                                let randomChoice = Math.floor(Math.random() * 3);
                                 
-
+                              
                                 //strong attacks from the enemy 
                                 if(this.state.isPoweredUp){
                                         let attackDamage = Math.floor(Math.random() * 5) + 5 ;  
