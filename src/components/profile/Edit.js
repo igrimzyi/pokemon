@@ -37,21 +37,22 @@ export default class Edit extends Component{
             }
         }
           axios.get('http://localhost:4000/api/profile' , config)
-        .then((res)=>{
-            this.setState({
-                profileData: res.data,
-                profileName: res.data.name,
-                imageData:res.data.profilePicture
+            .then((res)=>{
+                this.setState({
+                    profileData: res.data,
+                    profileName: res.data.name,
+                    imageData:res.data.profilePicture
+                })
+
+
             })
+            .catch((err)=>{
+                localStorage.removeItem("userToken")
+                console.log(err.response)
 
-
-        })
-        .catch((err)=>{
-            console.log(err.response)
-        })
-        
-
-    }
+            })
+         }
+         
     handleClick(e){
         this.setState({
             imageData: e.target.value

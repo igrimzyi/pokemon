@@ -111,7 +111,7 @@ import {
                             }
                         })
                         .catch((err)=>{
-                            console.log(err)
+                            localStorage.removeItem("userToken")
                             setIsLoggedIn(false)
                         })
                     }
@@ -132,26 +132,28 @@ import {
                     if(isClick=== false){
                     //posting to my DB and sending the specific pokemon url to it
                     axios.post("http://localhost:4000/api/likes" , {pokemon: exactUrl},  config)
-                    .then(res=>{
-                        setClick(true)
-                    })
-                    .catch(err=>{
-                        setIsLoggedIn(false)
-                        console.log(isLoggedIn)
-                    })
+                        .then(res=>{
+                            setClick(true)
+                        })
+                        .catch(err=>{
+                            setIsLoggedIn(false)
+                            localStorage.removeItem("userToken")
+                            console.log(isLoggedIn)
+                        })
                     }
 
 
                     if(isClick === true){
                     //deleting my pokemon like from the database and resetting the state to unliked 
                     axios.post("http://localhost:4000/api/delete" , {pokemon:exactUrl}, config)
-                    .then(res=>{
-                        setClick(false)
-                        console.log(res)
-                    })
-                    .catch(err=>{
-                        console.log(err)
-                    })
+                        .then(res=>{
+                            setClick(false)
+                            console.log(res)
+                        })
+                        .catch(err=>{
+                            console.log(err)
+                            localStorage.removeItem("userToken")
+                        })
                     }
                     }
 
