@@ -108,6 +108,7 @@ export default class LikedPokemon extends Component{
                 console.log(res.data.likes)
             })
             .catch((err)=>{
+                localStorage.removeItem('userToken')
                 this.setState({
                     errResponse:err.response.status
                 })
@@ -117,7 +118,7 @@ export default class LikedPokemon extends Component{
 
     render(){
 
-        if(this.state.errResponse === 401 || this.state.errResponse === 403){
+        if(this.state.errResponse === 401 || this.state.errResponse === 403 || !localStorage.userToken){
             return(
                 <Navigate to='/login' replace={true}/>
             )
