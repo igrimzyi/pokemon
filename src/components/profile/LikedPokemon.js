@@ -125,9 +125,9 @@ export default class LikedPokemon extends Component{
         } else if(this.state.likes.length === 0){
             return(
                 <div className='container null-likes'>
-                    <h4>
-                        oops you have not liked any pokemon yet!
-                    </h4>
+                        <h4>
+                            oops you have not liked any pokemon yet!
+                        </h4>
                     <h4>
                     Click this button to catch your favorite pokemon!
                     </h4>
