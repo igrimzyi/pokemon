@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, {Component, useState} from 'react'; 
-import { useNavigate, useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { 
     Card, 
     CardImg,
@@ -36,6 +36,8 @@ import {
         const [isOpen, setIsOpen] = useState(true);
 
         const [exactUrl, setExactUrl] = useState('')
+        
+        const [error, setError] = useState(false)
 
       
         //Incrementing the pokemon's url in order to go to the next pokemon in order...
@@ -83,7 +85,7 @@ import {
             setPokeData(data)   
             })
             .catch((err) =>{
-                console.log(err)
+                
 
             })
         }
@@ -191,7 +193,9 @@ import {
            
         </div>
             )
+
             }
+            
 
         //only returning the pokemon name as of right now 
         return(
