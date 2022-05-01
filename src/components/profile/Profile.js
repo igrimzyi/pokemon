@@ -18,8 +18,6 @@ export default class Profile extends Component{
 
     componentDidMount(){
 
-    let baseUrl = 'https://pokeapi.co/api/v2/'
-
         const config = {
             headers:{
                 Authorization: "Bearer " + localStorage.getItem('userToken')

@@ -333,7 +333,6 @@ class Game extends Component {
                                 this.setState({
                                         chatBoxMessage: 'enemy chose to attack',
                                         show: null
-                                
                                 })
                         }, 3000);
         
