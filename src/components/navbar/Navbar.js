@@ -98,7 +98,7 @@ if(localStorage.userToken){
             )
             }
             
-      else if(!localStorage.userToken){
+      else if(!localStorage.userToken || this.state.isLoggedIn ===  false){
               return(
               
     <Navbar
