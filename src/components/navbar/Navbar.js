@@ -5,12 +5,7 @@ NavbarBrand,
 NavbarToggler, 
 Collapse, 
 Nav, 
-NavItem, 
-UncontrolledDropdown,
-DropdownMenu,
-DropdownItem, 
-DropdownToggle,
-NavbarText} from "reactstrap";
+NavItem} from "reactstrap";
 import "./navstyles.css"
 const axios = require('axios');
 //Usage of reactstrap for navbar styles

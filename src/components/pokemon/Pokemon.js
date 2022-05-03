@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, {Component, useState} from 'react'; 
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import {useParams } from 'react-router-dom';
 import { 
     Card, 
     CardImg,
@@ -8,8 +8,7 @@ import {
     CardBody, 
     CardTitle, 
     Button,
-    Progress,
-    Alert
+    Progress
     } from "reactstrap";
     import './pokemon.css'
     import Heart from "react-animated-heart";
