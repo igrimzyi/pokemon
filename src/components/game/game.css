@@ -259,8 +259,13 @@ bottom: 0%;
     justify-content: center;
     border:1px solid black;
     align-items: center;
-    position: relative;
-    top: 8rem;
     border-radius: 2rem;
+    width: 20rem;
 }
 
+.end-game-screen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}

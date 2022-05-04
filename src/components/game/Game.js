@@ -539,20 +539,21 @@ class Game extends Component {
 
                         {/* This is the response if the user won the game  */}
                         {this.state.didGameEnd && this.state.didUserWin &&
-                        <div className="rendered-game container">
-                                <div className="end-game-box">
-                                        <div>
-                                                You have defeated: {this.state.enemyPokemon.name}
+                                <div className="end-game-screen">
+                                        <div className="end-game-box">
+                                                <div>
+                                                {this.state.enemyPokemon.name} is defeated!
+                                                </div>
+                                                        
+                                                <Button color= "success" outline onClick={this.resetGame}>
+                                                        Reset Game
+                                                </Button>
                                         </div>
-                                        <div>
-                                                EXP Gained : {this.state.endExp}
-                                        </div>
-                                        <Button onClick={this.resetGame}>
-                                                Reset Game
-                                        </Button>
                                 </div>
-                        </div> 
+                  
                         }   
+                        {/* if the game is finished in any way... the bottom portion will not render and rerender */}
+                        {!this.state.didGameEnd &&
                         <div className="center-content">
                                 <div className="ui">
                                         <div className="chat-box-styles">
@@ -656,6 +657,7 @@ class Game extends Component {
                                    
                                 </div>
                         </div>
+                        }
                 
                 </div>
          
