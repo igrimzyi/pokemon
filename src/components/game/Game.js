@@ -93,7 +93,7 @@ class Game extends Component {
 
         componentDidMount(){
                 //get the random pokemon for the user
-                const randomNum = Math.floor(Math.random() * 100) + 1;
+                const randomNum = Math.floor(Math.random() * 500) + 1;
                 axios.get(`https://pokeapi.co/api/v2/pokemon/${randomNum}`)
                 .then((res)=>{
                         this.setState({
@@ -107,7 +107,7 @@ class Game extends Component {
                         console.log(err)
                 })
                 //get the random pokemon for the user to fight against 
-                const randomNumComputer = Math.floor(Math.random() * 100) + 1;
+                const randomNumComputer = Math.floor(Math.random() * 500) + 1;
                 axios.get(`https://pokeapi.co/api/v2/pokemon/${randomNumComputer}`)
                 .then((res)=>{
                         this.setState({
@@ -424,13 +424,49 @@ class Game extends Component {
                 })
         }
         }
-        resetGame(){
+        resetGame(e){
+                e.preventDefault()
                 this.setState({
                         wasChanged:false,
                         bagUsed:false,
                         isPoweredUp:false,
                         powerUpUsed:false,
+                        didEnemyWin:false,
+                        didUserWin:false,
+                        didGameEnd:false,
+                        show:null
                 })
+
+                const randomNum = Math.floor(Math.random() * 100) + 1;
+                const randomNumEnemy = Math.floor(Math.random() * 100) + 1;
+
+                axios.get(`https://pokeapi.co/api/v2/pokemon/${randomNum}`)
+                .then((res)=>{
+                        this.setState({
+                                userPokemon: res.data,
+                                userHealth:res.data.stats[0].base_stat,
+                                chatBoxMessage:`What will ${res.data.name} do!?`
+                        })
+                        console.log(this.state.userPokemon)
+                })
+                .catch((err)=>{
+                        console.log(err)
+                })
+
+                axios.get(`https://pokeapi.co/api/v2/pokemon/${randomNumEnemy}`)
+                .then((res)=>{
+                        this.setState({
+                                enemyPokemon:res.data,
+                                enemyHealth:res.data.stats[0].base_stat
+                        })
+                        console.log(res)
+                })
+                .catch((err)=>{
+                        console.log(err)
+                })
+
+                
+                console.log('was changed back')
         }
 
 
@@ -511,6 +547,9 @@ class Game extends Component {
                                         <div>
                                                 EXP Gained : {this.state.endExp}
                                         </div>
+                                        <Button onClick={this.resetGame}>
+                                                Reset Game
+                                        </Button>
                                 </div>
                         </div> 
                         }   
