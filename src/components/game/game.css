@@ -249,3 +249,14 @@ bottom: 0%;
         border: none;
     }
 }
+
+/* ending game response that will render a the user winning or losing and a restart game function  */
+
+.end-game-box{
+    height:20rem; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border:1px solid black;
+    align-items: center;
+}

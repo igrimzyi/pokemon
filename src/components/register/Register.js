@@ -22,7 +22,6 @@ export default class Register extends Component {
       passwordCheck:'',
       isOpen:false,
       isRegistered: false
-
     };
 
   this.handleInputChange = this.handleInputChange.bind(this);
