@@ -85,7 +85,7 @@ if(localStorage.userToken){
             {localStorage.userToken &&
               <NavItem className="profile-picture-styles">
                   <NavLink className={'text-decoration right-link' } to="/profile">
-                    <img src={this.state.profilePicture} alt=""className="profile-styles"></img>
+                    <img src={this.state.profilePicture} alt="" className="profile-styles"></img>
                   </NavLink>
               </NavItem>
               }
