@@ -71,6 +71,8 @@ export default class Edit extends Component{
         }
        console.log(this.state )
 
+
+       //This is the edit form... currently the whole state is being sent as a param
         axios.patch('http://localhost:4000/api/profile', this.state, config)
         .then((res)=>{
             this.setState({
