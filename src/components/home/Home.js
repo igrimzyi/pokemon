@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import './home.css'
 import {Button} from 'reactstrap';
 import axios from 'axios';
+import github from '../../images/github.png'
 
 import NavbarReact from "../navbar/Navbar";
 
@@ -54,9 +55,14 @@ import NavbarReact from "../navbar/Navbar";
                         </div>
                         <img className="pokemon-display" src={this.state.pokeData}></img>
                     </div>
-                    
-                    
+                  
                 </div>
+
+                <footer className="footer-class">
+                    <a href="https://github.com/igrimzyi/pokemon">
+                        <img src={github}></img>
+                    </a>
+                </footer>
                 </section>
                 )
       }

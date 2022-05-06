@@ -23,6 +23,14 @@
     margin-top: 1.5rem;
 }
 
+/* all styles for my footer */
+.footer-class{
+    position: relative;
+    left: 1rem;
+    top: 90vh;
+}
+
+
 @media screen and (min-width:767px){
     .pokemon-display{
         visibility: hidden;

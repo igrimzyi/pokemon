@@ -42,6 +42,8 @@ export default class NavbarReact extends Component {
     })
   })
   }
+
+
         render(){
 if(localStorage.userToken){
  return(
@@ -52,7 +54,6 @@ if(localStorage.userToken){
           dark
           fixed="top"
           >
-
           <NavbarBrand href="/">
             Poke Complex
           </NavbarBrand>
@@ -62,7 +63,6 @@ if(localStorage.userToken){
               className="me-auto"
               navbar
             >
-            
               <NavItem>
                 <NavLink className= {'text-decoration margins'} to='/pokedex'>
                   Pokedex
@@ -81,19 +81,22 @@ if(localStorage.userToken){
                 </NavLink>
               </NavItem>
             </Collapse>
+            {localStorage.userToken &&
               <NavItem className="profile-picture-styles">
                   <NavLink className={'text-decoration right-link' } to="/profile">
                     <img src={this.state.profilePicture} className="profile-styles"></img>
                   </NavLink>
               </NavItem>
-          
+              }
+        
+      
         </Navbar>
                 
 
             )
             }
             
-      else if(!localStorage.userToken || this.state.isLoggedIn ===  false){
+      else if(!localStorage.userToken){
               return(
               
     <Navbar
@@ -112,7 +115,7 @@ if(localStorage.userToken){
           className="me-auto"
           navbar
         >
-         
+    
           <NavItem>
             <NavLink className= {'text-decoration margins'} to="/pokedex">
               Pokedex

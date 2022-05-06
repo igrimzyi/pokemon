@@ -17,6 +17,8 @@ router.get('/', async(req,res) =>{
     }
 })
 
+
+//express validation used for backend validation
 router.post('/', [
     check('email' , 'Enter a valid email')
     .isEmail(),

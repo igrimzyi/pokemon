@@ -86,7 +86,7 @@ export default class Profile extends Component{
                     }
 
 
-                    <Button className='level-button' block outline href="/game" color='success'> Level Up!</Button>
+                    <Button className='level-button' block outline href="/game" color='success'> Play the Game!</Button>
                 </div>
                 {/* Profile Buttons */}
                 

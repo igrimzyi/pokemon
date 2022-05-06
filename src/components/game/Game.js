@@ -20,8 +20,8 @@ class Game extends Component {
                         userPokemon:null,
                         enemyPokemon:null,
                         //the states for below would be for the game winner
-                        didGameEnd:true ,
-                        didUserWin:true,
+                        didGameEnd:false ,
+                        didUserWin:false,
                         didEnemyWin:false,
                         //the states below are for ui 
                         chatBoxMessage:`thinking...`,
@@ -54,44 +54,45 @@ class Game extends Component {
                 this.resetGame = this.resetGame.bind(this);
         }
         //Sending stats based off user win
-        // componentDidUpdate(prevProps, prevState){
+        componentDidUpdate(prevProps, prevState){
                
-        //         if(this.state.didGameEnd !== prevState.didGameEnd){
-        //                 console.log('ended game')
-        //         }
-        //         if(this.state.didUserWin !== prevState.didUserWin){
-        //                 console.log('user won the game')
+                if(this.state.didGameEnd !== prevState.didGameEnd){
+                        console.log('ended game')
+                }
+                if(this.state.didUserWin !== prevState.didUserWin){
+                        console.log('user won the game')
 
-        //                 const config = {
-        //                         headers:{
-        //                             Authorization: "Bearer " + localStorage.getItem('userToken')
-        //                         }
-        //                     }
+                        const config = {
+                                headers:{
+                                    Authorization: "Bearer " + localStorage.getItem('userToken')
+                                }
+                            }
 
-        //                     axios.patch('http://localhost:4000/api/levels', this.state.didUserWin, config)
-        //                     .then((res)=>{
-        //                             console.log(res)
-        //                         this.setState({
-        //                                 endResponse:res.msg,
-        //                                 endExp:res.exp
+                            axios.patch('http://localhost:4000/api/levels', this.state.didUserWin, config)
+                            .then((res)=>{
+                                    console.log(res)
+                                this.setState({
+                                        endResponse:res.msg,
+                                        endExp:res.exp
 
 
-        //                         })
-        //                     })
-        //                     .catch((err)=>{
-        //                         console.log(err)
-        //                     })
+                                })
+                            })
+                            .catch((err)=>{
+                                console.log(err)
+                            })
                     
 
 
 
-        //         }
-        //         if(this.state.didEnemyWin !== prevState.didEnemyWin){
-        //                 console.log('user did not win the game')
-        //         }
-        // }
+                }
+                if(this.state.didEnemyWin !== prevState.didEnemyWin){
+                        console.log('user did not win the game')
+                }
+        }
 
         componentDidMount(){
+        
                 //get the random pokemon for the user
                 const randomNum = Math.floor(Math.random() * 500) + 1;
                 axios.get(`https://pokeapi.co/api/v2/pokemon/${randomNum}`)
@@ -106,6 +107,7 @@ class Game extends Component {
                 .catch((err)=>{
                         console.log(err)
                 })
+                
                 //get the random pokemon for the user to fight against 
                 const randomNumComputer = Math.floor(Math.random() * 500) + 1;
                 axios.get(`https://pokeapi.co/api/v2/pokemon/${randomNumComputer}`)
@@ -341,7 +343,7 @@ class Game extends Component {
                
 
 
-                console.log(this.state.userPokemon.types[0].type.name)
+          
 
         }
         handleRun(){
@@ -542,9 +544,8 @@ class Game extends Component {
                                 <div className="end-game-screen">
                                         <div className="end-game-box">
                                                 <div>
-                                                {this.state.enemyPokemon.name} is defeated!
+                                                        {this.state.enemyPokemon.name} is defeated!
                                                 </div>
-                                                        
                                                 <Button color= "success" outline onClick={this.resetGame}>
                                                         Reset Game
                                                 </Button>

@@ -24,7 +24,7 @@ import Edit from './components/profile/Edit';
        
         <Router>
         
-           <NavbarReact/>
+          <NavbarReact/> 
           
           <Routes>
           {/* components need to be wrapped in </> or will be considered a function and throw an error */}

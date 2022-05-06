@@ -52,7 +52,7 @@ export default class Edit extends Component{
 
             })
          }
-         
+
     handleClick(e){
         this.setState({
             imageData: e.target.value
@@ -80,6 +80,7 @@ export default class Edit extends Component{
             })
         })
         .catch((err)=>{
+            localStorage.removeItem("userToken")
             this.setState({
                 colorResponse:"danger",
                 isOpen:true,

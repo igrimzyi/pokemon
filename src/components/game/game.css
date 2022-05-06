@@ -256,7 +256,7 @@ bottom: 0%;
     height:20rem; 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     border:1px solid black;
     align-items: center;
     border-radius: 2rem;
