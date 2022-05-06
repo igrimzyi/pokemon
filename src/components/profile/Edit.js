@@ -5,6 +5,7 @@ import  './profile.css';
 import pfp from '../../images/ashPFP.jpeg'
 import squirtlePfp from '../../images/SQUIRTLE.jpeg'
 import misty from '../../images/misty.jpg'
+import { Navigate } from 'react-router-dom';
 
     const axios = require('axios');
 
@@ -98,6 +99,12 @@ export default class Edit extends Component{
 
 
     render(){
+
+        if(!localStorage.userToken){
+           
+            return <Navigate to='/login' replace={true}/>
+           
+        }else(localStorage.userToken)
 
 
         return(

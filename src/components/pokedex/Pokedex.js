@@ -9,6 +9,7 @@ CardBody,
 CardTitle, 
 Button} from "reactstrap";
 import './pokedex.css'
+import NavbarReact from "../navbar/Navbar";
 
 const axios = require('axios')
 
@@ -64,7 +65,7 @@ class PokemonDetails extends Component {
                   {/* {this.state.stats} */}
                 </CardSubtitle>
                 <CardText>
-                type: {this.state.details.types[0].type.name}  
+                      <span className="poke-type-styles">TYPE:</span>  {this.state.details.types[0].type.name}  
                 </CardText>
                 <Button
                 color="success"
@@ -119,6 +120,8 @@ class Pokedex extends Component{
      
       return(
         <div className="container ">
+
+<NavbarReact/>
           <div className="card-margins phone">
               {this.state.poks.map((pokemon, i) => {
                 return <PokemonDetails key={i} pokemon={pokemon} />

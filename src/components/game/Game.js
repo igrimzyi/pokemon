@@ -2,6 +2,7 @@ import { Button, Progress } from "reactstrap";
 import React,{ Component } from "react";
 import axios from 'axios';
 import Login from '../login/Login'; 
+import NavbarReact from "../navbar/Navbar";
 
 import {Navigate,Route, Routes} from 'react-router-dom'
 
@@ -482,6 +483,7 @@ class Game extends Component {
               else if(this.state.isStarted === false){
                         return (
                         <div className="game-container align-start">
+                                   <NavbarReact/>
                                 <Button color="danger" className="center-button" onClick={this.handleClickStart}>Start Game</Button>  
                          </div> 
                         )
@@ -489,6 +491,7 @@ class Game extends Component {
             return(
                 
                 <div className="game-container">
+                        <NavbarReact/>
                         {/* displaying pokemon and their health */}
                         {!this.state.didGameEnd &&
                         <div className="rendered-game container">
@@ -559,6 +562,8 @@ class Game extends Component {
                                                 <div>
                                                         You were defeated by {this.state.enemyPokemon.name}!
                                                 </div>
+                                                <img src={this.state.enemyPokemon.sprites.front_default}/>
+                                                
                                                 <Button color= "success" outline onClick={this.resetGame}>
                                                         Reset Game
                                                 </Button>

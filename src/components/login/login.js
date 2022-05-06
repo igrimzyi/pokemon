@@ -34,7 +34,7 @@ export default class login extends Component {
         })
         //store token in local storage based off response
         localStorage.setItem('userToken', res.data.accessToken)
-        return <Navigate to='/home' replace={true}></Navigate>
+        return <Navigate to='/' replace={true}></Navigate>
       })
       .catch(error =>{
         this.setState({errResponse: error.response.data})
@@ -57,8 +57,8 @@ export default class login extends Component {
 
 
         render(){
-        if(localStorage.userToken){
-            <Navigate to='/' replace={true}></Navigate>
+        if(this.state.isLoggedIn===true || localStorage.userToken){
+           return <Navigate to='/' replace={true}></Navigate>
           }else
                 return(
     <div>
@@ -66,7 +66,6 @@ export default class login extends Component {
 <Alert className="alert-margins iphone-xr-alert" color="danger" isOpen={this.state.isOpen} toggle={() =>{this.setState({isOpen:false})}}>
             {this.state.errResponse}
   </Alert>
-
 
     <Form className='form-margins' onSubmit={this.handleSubmit} inline>
       <h2>Login</h2>

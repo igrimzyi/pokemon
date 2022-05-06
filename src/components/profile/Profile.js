@@ -3,6 +3,7 @@ import { Button, Progress } from 'reactstrap';
 import { Navigate } from 'react-router-dom';
 import './profile.css'; 
 const axios = require('axios');
+import NavbarReact from "../navbar/Navbar";
 
 
 export default class Profile extends Component{
@@ -52,6 +53,8 @@ export default class Profile extends Component{
     }else 
         return(
             <div className='profile-container container'>
+                    <NavbarReact/>
+
                 {/* Profile Edit Buttton and display */}
                 <div className='text-lineup'>
                     <div className='main-profile-styles'>

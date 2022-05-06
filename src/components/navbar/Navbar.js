@@ -33,6 +33,7 @@ export default class NavbarReact extends Component {
       isLoggedIn:true,
       profilePicture:data.profilePicture
     })
+    console.log('hello')
     
   })
   .catch((err)=>{
@@ -84,7 +85,7 @@ if(localStorage.userToken){
             {localStorage.userToken &&
               <NavItem className="profile-picture-styles">
                   <NavLink className={'text-decoration right-link' } to="/profile">
-                    <img src={this.state.profilePicture} className="profile-styles"></img>
+                    <img src={this.state.profilePicture} alt=""className="profile-styles"></img>
                   </NavLink>
               </NavItem>
               }

@@ -21,10 +21,10 @@ import Edit from './components/profile/Edit';
   render(){
     return (
      <div>
-       
+         
         <Router>
         
-          <NavbarReact/> 
+        <NavbarReact/>
           
           <Routes>
           {/* components need to be wrapped in </> or will be considered a function and throw an error */}
@@ -47,6 +47,7 @@ import Edit from './components/profile/Edit';
             path="*"
             element={<NotFound/>}
           />
+
 
           
        

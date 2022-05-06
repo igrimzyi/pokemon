@@ -12,6 +12,7 @@ import {
     } from "reactstrap";
     import './pokemon.css'
     import Heart from "react-animated-heart";
+
   
 
 
@@ -84,8 +85,7 @@ import {
             setPokeData(data)   
             })
             .catch((err) =>{
-                
-
+                setError(err.response.status)
             })
         }
 
@@ -193,7 +193,9 @@ import {
         </div>
             )
 
-            }
+            }else if(error){
+                <Navigate to='/login' replace={true}></Navigate>
+            }else
             
 
         //only returning the pokemon name as of right now 

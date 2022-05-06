@@ -31,6 +31,11 @@
         margin-left: 1rem;
 }
 
+/* type styles */
+.poke-type-styles{
+    font-weight: 700;
+}
+
 /* Responsive alignment for the pokecards that will change for the viewport of a phone */
 
 @media screen and (max-width: 700px) {
