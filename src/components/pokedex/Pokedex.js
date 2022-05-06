@@ -87,15 +87,21 @@ class Pokedex extends Component{
     
     this.state = {
       poks: [],
-      pokeCount: 24
+      pokeCount: 27
     }
 
     this.handleClick = this.handleClick.bind(this)
   }
 
   handleClick(){
-    
+ 
     this.setState({pokeCount: this.state.pokeCount +=5})
+    if(this.state.pokeCount > 898){
+      return 
+    }else if(this.state.pokeCount  < 898) {
+
+    this.setState({pokeCount: this.state.pokeCount +=5})
+
 
     axios.get(`${baseURL}limit=${this.state.pokeCount}`)
     .then(response => {
@@ -107,6 +113,7 @@ class Pokedex extends Component{
     .catch(error => {
       console.log('***', error);
     })
+  }
  
   }
 
