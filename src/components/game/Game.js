@@ -20,9 +20,9 @@ class Game extends Component {
                         userPokemon:null,
                         enemyPokemon:null,
                         //the states for below would be for the game winner
-                        didGameEnd:false ,
+                        didGameEnd:true ,
                         didUserWin:false,
-                        didEnemyWin:false,
+                        didEnemyWin:true,
                         //the states below are for ui 
                         chatBoxMessage:`thinking...`,
                         enemyHealth:null,
@@ -54,42 +54,42 @@ class Game extends Component {
                 this.resetGame = this.resetGame.bind(this);
         }
         //Sending stats based off user win
-        componentDidUpdate(prevProps, prevState){
+        // componentDidUpdate(prevProps, prevState){
                
-                if(this.state.didGameEnd !== prevState.didGameEnd){
-                        console.log('ended game')
-                }
-                if(this.state.didUserWin !== prevState.didUserWin){
-                        console.log('user won the game')
+        //         if(this.state.didGameEnd !== prevState.didGameEnd){
+        //                 console.log('ended game')
+        //         }
+        //         if(this.state.didUserWin !== prevState.didUserWin){
+        //                 console.log('user won the game')
 
-                        const config = {
-                                headers:{
-                                    Authorization: "Bearer " + localStorage.getItem('userToken')
-                                }
-                            }
+        //                 const config = {
+        //                         headers:{
+        //                             Authorization: "Bearer " + localStorage.getItem('userToken')
+        //                         }
+        //                     }
 
-                            axios.patch('http://localhost:4000/api/levels', this.state.didUserWin, config)
-                            .then((res)=>{
-                                    console.log(res)
-                                this.setState({
-                                        endResponse:res.msg,
-                                        endExp:res.exp
+        //                     axios.patch('http://localhost:4000/api/levels', this.state.didUserWin, config)
+        //                     .then((res)=>{
+        //                             console.log(res)
+        //                         this.setState({
+        //                                 endResponse:res.msg,
+        //                                 endExp:res.exp
 
 
-                                })
-                            })
-                            .catch((err)=>{
-                                console.log(err)
-                            })
+        //                         })
+        //                     })
+        //                     .catch((err)=>{
+        //                         console.log(err)
+        //                     })
                     
 
 
 
-                }
-                if(this.state.didEnemyWin !== prevState.didEnemyWin){
-                        console.log('user did not win the game')
-                }
-        }
+        //         }
+        //         if(this.state.didEnemyWin !== prevState.didEnemyWin){
+        //                 console.log('user did not win the game')
+        //         }
+        // }
 
         componentDidMount(){
         
@@ -553,6 +553,19 @@ class Game extends Component {
                                 </div>
                   
                         }   
+                        {this.state.didGameEnd && this.state.didEnemyWin &&
+                                <div className="end-game-screen">
+                                        <div className="end-game-box">
+                                                <div>
+                                                        You were defeated by {this.state.enemyPokemon.name}!
+                                                </div>
+                                                <Button color= "success" outline onClick={this.resetGame}>
+                                                        Reset Game
+                                                </Button>
+                                        </div>
+                                </div>
+                  
+                        }  
                         {/* if the game is finished in any way... the bottom portion will not render and rerender */}
                         {!this.state.didGameEnd &&
                         <div className="center-content">

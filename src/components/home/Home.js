@@ -60,7 +60,7 @@ import NavbarReact from "../navbar/Navbar";
 
                 <footer className="footer-class">
                     <a href="https://github.com/igrimzyi/pokemon">
-                        <img src={github}></img>
+                        <img src={github} alt=""></img>
                     </a>
                 </footer>
                 </section>

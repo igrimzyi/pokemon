@@ -21,28 +21,26 @@ export default class login extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
 //essentially we are handling the form submit as we are in our login page.
-
 
   handleSubmit(e){
     e.preventDefault()
-    console.log(this.state)
+
     axios
-    .post('http://localhost:4000/api/auth', this.state)
-    .then(res =>{
-      this.setState({
-        isLoggedIn:true
+      .post('http://localhost:4000/api/auth', this.state)
+      .then(res =>{
+        this.setState({
+          isLoggedIn:true
+        })
+        //store token in local storage based off response
+        localStorage.setItem('userToken', res.data.accessToken)
+        return <Navigate to='/home' replace={true}></Navigate>
       })
-      //store token in local storage based off response
-      localStorage.setItem('userToken', res.data.accessToken)
-      return <Navigate to='/home' replace={true}></Navigate>
-    })
-    .catch(error =>{
-      this.setState({errResponse: error.response.data})
-      this.setState({isOpen:true})
-      return error
-    })
+      .catch(error =>{
+        this.setState({errResponse: error.response.data})
+        this.setState({isOpen:true})
+        return error
+      })
 
   }
 
@@ -59,10 +57,7 @@ export default class login extends Component {
 
 
         render(){
-
-          if(this.state.isLoggedIn === true){
-            return <Navigate to='/' replace={true}></Navigate>
-          }else if(localStorage.userToken ){
+        if(localStorage.userToken){
             <Navigate to='/' replace={true}></Navigate>
           }else
                 return(
@@ -115,7 +110,7 @@ export default class login extends Component {
    href="/register"
    >
       Not Registered Yet?
-</Button>
+  </Button>
   </Form>
  
   </div>

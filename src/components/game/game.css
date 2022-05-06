@@ -198,7 +198,8 @@ bottom: 0%;
     width: 20rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
+    height: 8rem;
     align-items: center;
 }
 .attack-modifiers{
