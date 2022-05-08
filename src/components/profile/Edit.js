@@ -73,6 +73,15 @@ export default class Edit extends Component{
        console.log(this.state )
 
 
+        if(this.state.profileName.length > 10){
+            this.setState({
+                colorResponse:"danger",
+                isOpen:true,
+                resMessage: "Name must be 10 characters or less!"
+            })
+            
+        }else{
+
        //This is the edit form... currently the whole state is being sent as a param
         axios.patch('http://localhost:4000/api/profile', this.state, config)
         .then((res)=>{
@@ -92,7 +101,7 @@ export default class Edit extends Component{
             console.log(err.response.data)
         })
 
-
+    }
 
 
     }

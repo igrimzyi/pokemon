@@ -10,6 +10,7 @@ import './register.css'
 import {Navigate} from 'react-router-dom'
 
 
+
 export default class Register extends Component {
   constructor(props){
     super(props);
@@ -36,8 +37,10 @@ export default class Register extends Component {
     }else if(this.state.password != this.state.passwordCheck){
       this.setState({errResponse:"Passwords don't match!"})
       this.setState({isOpen:true})
-    }else{
-    
+    }else if(this.state.name.length > 10 ){
+      this.setState({errResponse:"Name must be shorter than 10 characters!"})
+      this.setState({isOpen:true})}
+    else{
     console.log(this.state)
     //post req to my backend
     axios
