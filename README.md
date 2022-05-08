@@ -1,6 +1,6 @@
 <h1 style="text-align:center">Welcome to Poke Complex! <h1/>
   <div>
-    <div style="display:flex flex-direction:column">
+    <div style="display:flex; flex-direction:column;">
       <h3>My own version of the Pokedex!</h3>
       <span>This has a game, pokedex, and user levels.</span>
     </div>
