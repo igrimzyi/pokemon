@@ -653,10 +653,10 @@ class Game extends Component {
                                                         <button className="go-back" value="attack" onClick={this.showGui}>
                                                                 Go back!
                                                         </button>
-                                                        <button className="go-back" onClick={this.healUser}>
+                                                        <button className="heal-btn" onClick={this.healUser}>
                                                                 Heal
                                                         </button>
-                                                        <button className="go-back" onClick={this.powerUpUser}>
+                                                        <button className="power-up-btn" onClick={this.powerUpUser}>
                                                                 Use Power Up!
                                                         </button>
 
