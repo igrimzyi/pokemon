@@ -31,7 +31,22 @@ bottom: 0%;
     border-radius: 2%;
     width: 25rem;
     height: 8rem;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
 }
+.chat-text{
+    position: relative;
+    text-align: center;
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    display: flex;
+ 
+ 
+ }
 .ui{
     display: flex;
     flex-direction: row;
@@ -53,13 +68,6 @@ bottom: 0%;
     height:5rem;
     font-weight: 900;
     color: white;
-}
-.chat-text{
-   position: relative;
-   left: 1rem;
-   top: 1rem;
-   font-family: 'VT323', monospace;
-   font-size: 1.5rem;
 }
 .ui-buttons-all{
     display: flex;
