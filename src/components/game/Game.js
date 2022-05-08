@@ -114,10 +114,10 @@ class Game extends Component {
                                 enemyPokemon:res.data,
                                 enemyHealth:res.data.stats[0].base_stat
                         })
-                        console.log(res)
+                  
                 })
                 .catch((err)=>{
-                        console.log(err)
+                 
                 })
                 //get user profile to insert winning or losing data to his stats 
                 const config = {
@@ -332,16 +332,11 @@ class Game extends Component {
                                 }
 
                                 this.setState({
-                                        chatBoxMessage: 'enemy chose to attack',
+                                        chatBoxMessage: `${this.state.enemyPokemon.name} chose to attack!`,
                                         show: null
                                 })
                         }, 3000);
-        
-
-               
-
-
-          
+       
 
         }
         handleRun(){

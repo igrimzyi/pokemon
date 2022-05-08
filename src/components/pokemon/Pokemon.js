@@ -12,6 +12,9 @@ import {
     } from "reactstrap";
     import './pokemon.css'
     import Heart from "react-animated-heart";
+    import { Navigate } from 'react-router-dom';
+
+    import NotFound from '../notfound/NotFound';
 
   
 
@@ -76,7 +79,7 @@ import {
         }       
 
         //get the pokemon information and render that specific pokemon on to the page!
-       if(!pokeData){
+        if(!pokeData){
    
         axios.get(`${baseUrl}${pokeId}`)
             .then((res)=>{
@@ -85,9 +88,11 @@ import {
             setPokeData(data)   
             })
             .catch((err) =>{
-                setError(err.response.status)
+                
+                setPokeData('error')
             })
         }
+       
 
         
 
@@ -181,21 +186,23 @@ import {
             //returning an empty card during the loading phase of the react state
             if(!pokeData){
                 return(
-        <div className='title'>
-        <Card className='loading-iphone'>
-            <CardBody >
-               <CardText tag='h2'>
-                   Loading...
-               </CardText>
-            </CardBody>
-        </Card>
-           
-        </div>
-            )
-
-            }else if(error){
-                <Navigate to='/login' replace={true}></Navigate>
-            }else
+                        <div className='title'>
+                        <Card className='loading-iphone'>
+                            <CardBody >
+                            <CardText tag='h2'>
+                                Loading...
+                            </CardText>
+                            </CardBody>
+                        </Card>
+                        
+                        </div>
+            )}else if(pokeData === 'error'){
+                return(
+                   <NotFound/>
+                )
+            
+             
+            }else {
             
 
         //only returning the pokemon name as of right now 
@@ -272,5 +279,6 @@ import {
             
        
         )
+            }
 
     }
