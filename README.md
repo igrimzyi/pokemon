@@ -1,3 +1,14 @@
-<h1>Pokeplex<h1/>
-<p>Pokeplex is a pokemon application that is made to render out pokemon information to users with user logins, user registration, and even a game to play! <p/>
+
+<div align="center">
+  <img  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" width="100" height="100"/>
+ </div>
+<h1 align="center">Welcome to Poke Complex! <h1/>
+  <div>
+    <h3>My own version of the Pokedex!</h3>
+    <span>This has a game, pokedex, and user levels.</span>
+  </div>
+  
+  
+  
+
 
