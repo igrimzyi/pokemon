@@ -8,10 +8,6 @@ const User = require('../models/User');
 const Profile = require('../models/Profile');
 
 
-// const authToken = require('../middleware/authMiddle')
-// const config = require('config');
-
-
 //These routes will be specifically designed to orchestrate my endpoint to create read update and delete users.
 
 
