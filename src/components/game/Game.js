@@ -14,16 +14,16 @@ class Game extends Component {
         constructor(props){
                 super(props);
 
-                this.state ={
+                this.state={
                         isStarted:false,
                         profile:{}, 
                         isLoggedIn:{},
                         userPokemon:null,
                         enemyPokemon:null,
                         //the states for below would be for the game winner
-                        didGameEnd:true ,
+                        didGameEnd:false ,
                         didUserWin:false,
-                        didEnemyWin:true,
+                        didEnemyWin:false,
                         //the states below are for ui 
                         chatBoxMessage:`thinking...`,
                         enemyHealth:null,
@@ -55,42 +55,39 @@ class Game extends Component {
                 this.resetGame = this.resetGame.bind(this);
         }
         //Sending stats based off user win
-        // componentDidUpdate(prevProps, prevState){
+        componentDidUpdate(prevProps, prevState){
                
-        //         if(this.state.didGameEnd !== prevState.didGameEnd){
-        //                 console.log('ended game')
-        //         }
-        //         if(this.state.didUserWin !== prevState.didUserWin){
-        //                 console.log('user won the game')
+                if(this.state.didGameEnd !== prevState.didGameEnd){
+                        console.log('ended game')
+                }
+                if(this.state.didUserWin !== prevState.didUserWin){
+                        console.log('user won the game')
 
-        //                 const config = {
-        //                         headers:{
-        //                             Authorization: "Bearer " + localStorage.getItem('userToken')
-        //                         }
-        //                     }
+                        const config = {
+                                headers:{
+                                    Authorization: "Bearer " + localStorage.getItem('userToken')
+                                }
+                            }
 
-        //                     axios.patch('http://localhost:4000/api/levels', this.state.didUserWin, config)
-        //                     .then((res)=>{
-        //                             console.log(res)
-        //                         this.setState({
-        //                                 endResponse:res.msg,
-        //                                 endExp:res.exp
+                            axios.patch('http://localhost:4000/api/levels', this.state.didUserWin, config)
+                            .then((res)=>{
+                                    console.log(res)
+                                this.setState({
+                                        endResponse:res.msg,
+                                        endExp:res.exp
 
 
-        //                         })
-        //                     })
-        //                     .catch((err)=>{
-        //                         console.log(err)
-        //                     })
+                                })
+                            })
+                            .catch((err)=>{
+                                console.log(err)
+                            })
                     
 
 
 
-        //         }
-        //         if(this.state.didEnemyWin !== prevState.didEnemyWin){
-        //                 console.log('user did not win the game')
-        //         }
-        // }
+                }
+        }
 
         componentDidMount(){
         
