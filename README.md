@@ -1,4 +1,4 @@
-<h1 style="text-align:center">Welcome to Poke Complex! <h1/>
+<h1 text-align:center; >Welcome to Poke Complex! <h1/>
   <div style="display:flex; flex-direction:row">
     <div>
       <h3>My own version of the Pokedex!</h3>
