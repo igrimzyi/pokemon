@@ -21,6 +21,12 @@ export default class login extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+
+  componentDidMount(){
+    console.log(this.props)
+   
+  }
 //essentially we are handling the form submit as we are in our login page.
 
   handleSubmit(e){

@@ -1,4 +1,4 @@
-import { Button, Progress } from "reactstrap";
+import { Alert, Button, Progress } from "reactstrap";
 import React,{ Component } from "react";
 import axios from 'axios';
 import Login from '../login/Login'; 
@@ -15,6 +15,7 @@ class Game extends Component {
                 super(props);
 
                 this.state={
+                        isOpen:true,
                         isStarted:false,
                         profile:{}, 
                         isLoggedIn:{},
@@ -469,7 +470,10 @@ class Game extends Component {
                 if(this.state.isLoggedIn === 403){
                         
                         return(
-                                 <Navigate to='/login' replace={true}></Navigate>
+                                <div>
+                                        <Alert isOpen={this.state.isOpen} className="alert-margins iphone-xr-alert" color="danger" toggle={() =>{this.setState({isOpen:false})}}>Must Be Logged In</Alert>
+                                        <Login/>
+                                 </div>
                         )
                 }
               else if(this.state.isStarted === false){
