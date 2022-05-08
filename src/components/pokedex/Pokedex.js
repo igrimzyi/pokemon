@@ -87,7 +87,8 @@ class Pokedex extends Component{
     
     this.state = {
       poks: [],
-      pokeCount: 27
+      pokeCount: 27,
+      isLoading:false
     }
 
     this.handleClick = this.handleClick.bind(this)
@@ -95,7 +96,11 @@ class Pokedex extends Component{
 
   handleClick(){
  
-    this.setState({pokeCount: this.state.pokeCount +=5})
+    this.setState({pokeCount: this.state.pokeCount +=5,
+      isLoading:true
+    
+    
+    })
     if(this.state.pokeCount > 898){
       return 
     }else if(this.state.pokeCount  < 898) {
@@ -106,7 +111,8 @@ class Pokedex extends Component{
     axios.get(`${baseURL}limit=${this.state.pokeCount}`)
     .then(response => {
       this.setState({
-        poks: response.data.results
+        poks: response.data.results,
+        isLoading:false
       })
       console.log(this.state.poks)
     })
@@ -150,8 +156,12 @@ class Pokedex extends Component{
               {this.state.poks.map((pokemon, i) => {
                 return <PokemonDetails key={i} pokemon={pokemon} />
               })}
-          </div>
+          </div>{!this.state.isLoading &&
           <Button className="view-more-button" color="success"block onClick={this.handleClick}>View More</Button>
+          }
+          {this.state.isLoading &&
+            <div>Loading</div>
+          }
         </div>
       )
     }
