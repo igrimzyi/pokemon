@@ -6,7 +6,7 @@
   </div>
   <img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"/>
  </div>
-<h1 align="center">Welcome to Poke Complex! <h1/>
+<h1 align="center">Welcome to Poke Complex! </h1>
   
 <h2>My own version of the Pokedex!</h2>
   <div>
