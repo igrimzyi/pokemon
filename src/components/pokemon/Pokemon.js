@@ -11,7 +11,7 @@ import {
     Progress
     } from "reactstrap";
     import './pokemon.css'
-    import Heart from "react-animated-heart";
+   
     import { Navigate } from 'react-router-dom';
 
     import NotFound from '../notfound/NotFound';
@@ -170,7 +170,7 @@ import {
                     return (
                         
                         <div className="App">
-                            <Heart isClick={isClick} onClick={handleCLick} />
+                            <Button isClick={isClick} onClick={handleCLick} />
                         </div>
                         
                         );
