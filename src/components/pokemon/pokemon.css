@@ -128,3 +128,9 @@ p:hover{
     margin-top: 5rem;
 
  }
+
+ .like-btn{
+     position: relative;
+     top: 1rem;
+     right: 1rem;
+ }

@@ -167,14 +167,24 @@ import {
                     if(isLoggedIn === false){
                         return <></>
                     }else{
+                        if(isClick){
+
+                            // Adding conditional based off if its liked
                     return (
-                        
+                       
                         <div className="App">
-                            <Button isClick={isClick} onClick={handleCLick} />
+                            <Button isClick={isClick} className="like-btn" color="danger" onClick={handleCLick} >Like</Button>
                         </div>
                         
                         );
-                    }
+                    }else{
+                        return(
+                    <div className="App">
+                    <Button isClick={isClick} color="danger" className="like-btn" outline onClick={handleCLick} >Like</Button>
+                    </div>)
+
+                }
+            }
                 }
                     
                    
