@@ -145,8 +145,13 @@ class Pokedex extends Component{
     render(){
      
       if (this.state.poks.length === 0) {
-        return <h1>Loading...</h1>
+      return(
+         
+              <h1>Loading...</h1>
+         
+        )
       }
+
      
       return(
         <div className="container ">
@@ -160,7 +165,31 @@ class Pokedex extends Component{
           <Button className="view-more-button" color="success"block onClick={this.handleClick}>View More</Button>
           }
           {this.state.isLoading &&
-            <div>Loading</div>
+          <Card>
+                
+              <CardBody className="body-styles">
+                <CardTitle tag="h5">
+                  LOADING
+                </CardTitle>
+                <CardSubtitle
+                  className="mb-2 text-muted"
+                  tag="h6"
+                >
+                  
+                 LOADING
+                </CardSubtitle>
+                <CardText>
+                      <span className="poke-type-styles">TYPE:</span>  LOADING
+                </CardText>
+                <Button
+                color="success"
+                block
+              
+                >
+                 LOADING
+                </Button>
+              </CardBody>
+           </Card>
           }
         </div>
       )
