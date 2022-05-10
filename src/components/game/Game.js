@@ -1,7 +1,7 @@
 import { Alert, Button, Progress } from "reactstrap";
 import React,{ Component } from "react";
 import axios from 'axios';
-import Login from '../login/Login'; 
+import Login from '../login/login'; 
 import NavbarReact from "../navbar/Navbar";
 
 import {Navigate,Route, Routes} from 'react-router-dom'

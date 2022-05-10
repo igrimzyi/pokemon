@@ -5,7 +5,7 @@ import Pokedex from './components/pokedex/Pokedex';
 import Game from './components/game/Game';
 import Register from './components/register/Register';
 import Pokemon from './components/pokemon/Pokemon';
-import Login from './components/login/Login';
+import Login from './components/login/login';
 import LikedPokemon from './components/profile/LikedPokemon';
 import Profile from './components/profile/Profile';
 import NotFound from './components/notfound/NotFound';
