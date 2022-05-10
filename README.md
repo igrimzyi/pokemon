@@ -12,8 +12,7 @@
   <div>
     <span>This has a game, pokedex, and user levels.</span>
   </div>
-  <img src="/images/pokebackgrounds.png"/>
-  
+ 
   
   
 
