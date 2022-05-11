@@ -33,7 +33,7 @@ export default class NavbarReact extends Component {
       isLoggedIn:true,
       profilePicture:data.profilePicture
     })
-    console.log('hello')
+
     
   })
   .catch((err)=>{

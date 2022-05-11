@@ -32,7 +32,7 @@ export default class Profile extends Component{
                     profileData: data
                 })
 
-                console.log(this.state.profileData)
+            
 
             })
             .catch((err)=>{
